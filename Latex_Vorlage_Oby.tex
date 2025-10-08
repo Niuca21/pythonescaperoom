@@ -1,0 +1,694 @@
+\documentclass[a4paper 11pt]{article}
+    \title{\textbf{Überschrift}} %% Überschrift
+    \author{Oliver Oberdick} %% Ersteller
+    \date{\today} %% Aktuelles Tagesdatum
+
+%####### für das Literaturverzeichnis
+    \usepackage[backend=biber,style=alphabetic,]{biblatex}
+    \addbibresource{Studium.bib}
+    \bibliography{Studium.bib}
+
+%####### Manipulation der Rändern
+%    \addtolength{\topmargin}{-3,5cm}
+%    \addtolength{\textwidth}{5cm}
+%    \addtolength{\textheight}{8,5cm}
+%    \addtolength{\hoffset}{-3,5cm}
+
+\usepackage{fullpage}
+\usepackage{graphicx}
+\usepackage[german]{babel} % Deutsche Rechtschreibung
+\usepackage{pdfpages} % Einfägen von PDF Dateien
+\usepackage{struktex} % Struktugramme
+\usepackage{makecell}
+\usepackage{listings} % Source-Code
+\usepackage{xcolor} % Farbvorgaben
+
+%###### Farb definitionen
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+
+%####### Bei verwendung einzelner Dateien zur Aufteilung
+% \includeonly{chap2} % Nur das aufgeführte Kapitel wird beim erstellen übernommen
+% \include{chap2} % einfügen der Datei chap2.tex 
+
+%####### Für die Kapitel Design nach Deutscher Vorgabe
+\setlength{\parindent}{0cm} % horizontaler Einzug bei neuen Kapiteln 
+\setlength{\parskip}{0,1cm} % vertikaler zusatz Abstand 
+
+\setcounter{tocdepth}{2} % Anzahl / Tiefe der Unterkapitel im Inhaltsverzeichnis 
+\setcounter{secnumdepth}{2} % Anzahl / Tiefe der Angezeigten Kapitelnummerierungen
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\begin{center}
+Beschreibung zur APL Programmierung 2 der Gruppe HH05
+\end{center}
+\end{abstract}
+
+\tableofcontents
+
+\thispagestyle{empty}
+
+%##########################################
+%##########################################
+\newpage
+\pagestyle{plain}
+\normalsize
+
+%####### Das Deckblatt wird in der Seitenzählung nicht berücksichtigt
+\setcounter{page}{1} % Start mit Seite 1 auf dem 2ten Blatt
+
+\section{Story}
+% \include{chap2} % einfügen der Datei chap2.tex
+
+Du schaltest deinen Computer ein und siehst nur eine eigenartige Eingabemaske vor dir.
+Irgendwer \/ Irgendetwas scheint ihn verändert zu haben.
+Jetzt mußt du die Kontrolle zurückerlangen. 'Freundlicherweise' wurden dir einige Hinweise
+hinterlassen.
+Finde und nutze sie!
+
+\subsection{Levelvorbereitung}
+
+\begin{enumerate}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em
+
+\item[1:] erstellen eines zufälligen Verschlüsselungs Key in einer Variable oder speichern in einer Datei 'Dateiname\: Sec\_Key\_HH05.key' zur weiteren nutzung.
+\item[2:] evtl könnte auf die Speicherung des Key in einer Datei verzichtet werden, wenn die Eingaben für die Level 1-?? vor dem Level Start generiert werden, dann könnte der Key in einer Variable verbleiben
+\item[3:] Verstecken des Key in einer Zufällig ausgewählten Bild-Datei (Eingabedaten für Level 2) Bild-Datei immer wieder neu erstellen und die alte überschreiben.
+\item[4:] generieren einer Log-Datei Bsp. wie die ausgabe von \\
+netstat -l | grep LISTEN \\
+mit zufällig ergänzten Portnummern, welche nicht offen sein sollten.
+\item[5:] Nutzen des Key für die Verschlüsselung der Log-Datei auf Bitebene (Eingabedaten für Level 4)
+\item[6:] ?
+
+\end{enumerate}
+
+%##########################################
+\newpage
+\normalsize
+\section{Levelbeschreibung}
+\subsection{Level 1}
+Bsp.: Du schaltest dein Rechner ein und bekommst nur einen eigenartigen Eingabeprompt
+
+\begin{itemize}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em
+\item ??
+\end{itemize}
+
+\subsection{Level 2}
+‘Finde das flag / den Key in dem Bild
+
+\begin{itemize}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em
+\item auf einer normalen Kommandozeile könntest du ihn mit dem Kommando Strings auslesen.
+\item merke dir den Key gut.
+\item ?
+\item nur in dieser Runde lautet der Key ???
+\end{itemize}
+
+\subsection{Level 3}
+Bsp.: Deine Dateien sind nicht da wo sie sein sollten, suche sie!
+
+\begin{itemize}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em
+\item ??
+\end{itemize}
+
+\subsection{Level 4}
+die gefundene Datei muß entschlüsselt werden.
+
+\begin{itemize}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em
+\item Vielleicht könnte dir der “gemerkte Key” dir behilflich sein.
+\item Verschlüsselung mit XOR
+\item die Verschlüsselung erfolgte auf Bitebene.
+\item wenn der Key nicht lang genug ist, Hilft vielleicht eine aneinanderreihung
+\end{itemize}
+
+\subsection{Level 5}
+Bsp: Mal schauen was in der Datei zu finden ist
+
+\begin{itemize}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em
+\item ??
+\end{itemize}
+
+\subsection{Level 6}
+Bsp: Was sollte jetzt mit den gefundenen Informationen angestellt werden.
+
+\begin{itemize}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em
+\item ??
+\end{itemize}
+
+% \include{chap2} % einfügen der Datei chap2.tex 
+%##########################################
+%##########################################
+\normalsize
+\newpage
+%####### Einleitung des Anhanges
+\appendix{} % Alphabetischen Nummerierung
+\section{Programmcode}
+\subsection{Vorbereitungen}
+\subsubsection{Generell:}
+\begin{lstlisting}[language=python, caption=Genereller Escape-Room]
+import random
+import string
+from EscapeRoom import EscapeRoom
+
+import lib.stego as STEGO # Funktionssammlung Oliver Level 2
+import lib.crypt as CRYPT # Funktionssammlung Oliver Level 4
+
+class Gruppe_HH_05(EscapeRoom):
+
+    def __init__(self):
+        super().__init__()
+        self.set_metadata("Veronika, Lucasz & Oliver", __name__)
+        self.key = CRYPT.schluessel_erstellen(30) #schluessel erstellen
+        self.bild = "static/KEY.jpg"
+        STEGO.random_bild(self.bild) # zufaelliges Bild ermitteln und umkopieren
+        STEGO.im_bild_verstecken(self.bild , self.key)
+        self.verschluesselt = "static/text.crypt"
+        CRYPT.schluesselanwendung_datei("static/originale/test.log" ,self.verschluesselt ,self.key )
+        
+        self.add_level(self.create_level1()) # Veronika
+        self.add_level(self.create_level2()) # Oliver
+        self.add_level(self.create_level3()) # Veronika
+        self.add_level(self.create_level4()) # Oliver
+        self.add_level(self.create_level5()) # Lucasz
+        self.add_level(self.create_level6()) # Lucasz
+
+    ### LEVELS ###
+    # Level 1
+    def create_level1(self):
+        task_messages = [
+            "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
+            "Hi,",
+			"das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen",
+        ]
+        hints = [
+            "schau mal im Bild!",
+            "suche nach dem flag= ",
+            "Eingabedaten sind der Dateiname des Bildes",
+            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
+            "speichern kann nicht schaden, Vorschlag game.key",
+            "als encoding wurde 'ISO-8859-1' verwendet",
+            "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
+        ]
+        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
+
+    # Level 2
+    def create_level2(self):
+        task_messages = [
+            "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
+            "Hi,",
+			"das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen"
+        ]
+        hints = [
+            "schau mal im Bild!",
+            "suche nach dem flag= ",
+            "Eingabedaten: Dateiname des Bildes",
+            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
+            "speichern kann nicht schaden, Bsp. game.key",
+            "als encoding wurde 'ISO-8859-1' verwendet",
+            "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
+        ]
+        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
+
+    # Level 3
+    def create_level3(self):
+        task_messages = [
+            "  <img src=" + self.bild + " alt='The Key you looking for' height='400'/> ",
+            "Hi,",
+			"das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen",
+        ]
+        hints = [
+            "schau mal im Bild!",
+            "suche nach dem flag= ",
+            "Eingabedaten sind der Dateiname des Bildes",
+            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
+            "speichern kann nicht schaden, Bsp. game.key",
+            "als encoding wurde 'ISO-8859-1' verwendet",
+            "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
+        ]
+        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
+
+    # Level 4
+    def create_level4(self):
+        task_messages = [
+            "Du hast jetzt einen Dateinamen " + self.verschluesselt + ", schon mar reingeschaut?",
+            "zur kontrolle, zeig mir die Zeichen 20 - 70"
+        ]
+        hints = [
+            "kannst du den Inhalt lesen?",
+            "Hattest du die flag gespeichert? Bsp. game.key?",
+            "Bitweises XOR schon mal gesehen?",
+            "als Rueckgabewert die Zeichen 20 - 70 als String zum alsolvieren dieses Level sollten erstmal reichen",
+            "Denke drann den Inhalt des Key.File zu nutzen, nicht den Dateinamen",
+            "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist",
+            "trotzdem solltest du die komplette Datei bearbeiten und auch wieder speichern. Bsp. ausgabe_encrypt.txt"
+        ]
+        return {"task_messages": task_messages, "hints": hints, "solution_function": CRYPT.entschluesseln, "data": self.verschluesselt}
+
+    # Level 5
+    def create_level5(self):
+        task_messages = [
+            "  <img src=" + self.bild + " alt='The Key you looking for' height='200'/> ",
+            "Hi,",
+			"das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen"
+        ]
+        hints = [
+            "schau mal im Bild!",
+            "suche nach dem flag= ",
+            "Eingabedaten sind der Dateiname des Bildes",
+            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
+            "speichern kann nicht schaden, Vorschlag game.key",
+            "als encoding wurde 'ISO-8859-1' verwendet",
+            "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
+        ]
+        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
+
+    # Level 6
+    def create_level6(self):
+        task_messages = [
+            "  <img src=" + self.bild + " alt='The Key you looking for' height='200'/> ",
+            "Hi,",
+			"das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen"
+        ]
+        hints = [
+            "schau mal im Bild!",
+            "suche nach dem flag= ",
+            "Eingabedaten sind der Dateiname des Bildes",
+            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
+            "speichern kann nicht schaden, Vorschlag game.key",
+            "als encoding wurde 'ISO-8859-1' verwendet",
+            "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
+        ]
+        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
+
+    ### Hilfsfunktionen ###
+    
+
+
+    ### SOLUTIONS ###
+
+
+\end{lstlisting}
+\flushleft
+
+\subsubsection{Level 1}
+\subsubsection{Level 2}
+\begin{lstlisting}[language=python, caption=Funktionalitäten für Level 2]
+#!/usr/bin/python3
+
+import random
+import os
+
+# """ Steganographie
+# verstecken und auslesen von Nachrichten in einem Bild.
+#
+# Oliver Oberdick Matrikel:548933
+# """
+
+# Hilfsfunktion nur fuer den EscapeRoom, damit unterschiedliche Bilder genutzt werden
+def random_bild(ziel_bild):
+	nummer = random.randint(1, 9)
+	dst = ziel_bild
+	src = "static/originale/Bild_Schluessel_" + str(nummer) + ".jpg"
+	if os.name == 'nt':  # pruefen ob Windows
+		kopierbefehl = f'copy "{src}" "{dst}"'
+	else:
+		kopierbefehl = f'cp "{src}" "{dst}"'
+	os.system(kopierbefehl)
+
+# Funktion zum Vorbereiten der Level
+def im_bild_verstecken(bild_datei, schluessel):
+    bild = open(bild_datei, encoding="ISO-8859-1", mode="a+")
+    bild.write("flag=" + schluessel)
+    bild.close()
+
+# Kontrollfunktion
+def im_bild_finden(bild_datei, was="flag="):
+    bild = open(bild_datei, encoding="ISO-8859-1", mode="r")
+    search = was
+    try:
+        txt = ""
+        byte = bild.read(1)
+        while byte != "":
+            txt = txt + byte
+            byte = bild.read(1)
+        pos = txt.find(search) # position des suchstring finden
+        pos = pos + len(search) # laenge des suchstrings ueberspringen
+        with open("tmp/game.key", 'w') as tmp: # gefundenen Schluessl zwischenspeichern
+            tmp.writelines(txt[pos:])
+        bild.close()
+        return txt[pos:]
+    except:
+        bild.close()
+
+##
+if __name__ == "__main__":
+    pass
+
+\end{lstlisting}
+\flushleft
+
+\subsubsection{Level 3}
+\subsubsection{Level 4}
+\begin{lstlisting}[language=python, caption=Funktionalitäten für Level 4]
+#!/usr/bin/python3
+
+import random
+
+# """ Verschluesselung 
+# Symetrische Verschluesselung mittels XOR auf Bit-Basis
+#
+# Oliver Oberdick Matrikel:548933
+# """
+
+# Hilfsfunktion zum erstellen eines Verschluesselungs key in beliebiger laenge
+def schluessel_erstellen(laenge):
+        ergebnis = ""
+        while len(ergebnis) < laenge:
+            zahl = random.randint(48, 122)
+            if ((zahl >= 48 and zahl <= 57) or (zahl >= 65 and zahl <= 90) or (zahl >= 97 and zahl <= 122)):
+				#  Damit der Schluessel nur aus Zahlen, Grossbuchstaben und Kleinbuchstaben besteht
+                ergebnis += chr(zahl)
+        return ergebnis
+
+def string_to_binaer(nachricht):
+	ergebnis = ""
+	for c in nachricht:
+		ergebnis += ''.join(format(ord(c), '08b'))
+	return ergebnis
+
+def binaer_to_string(nachricht):
+	ergebnis = ""
+	for i in range(0, len(nachricht), 8):
+		ergebnis += chr(int(nachricht[i: i+8], 2))
+	return ergebnis
+
+# Ver oder Entschluesseln eines String mittels XOR (Symetrisch)
+def schluesselanwendung(was, womit):
+	ergebnis = ""
+	schluessel = ""
+	while len(schluessel) < len(was):
+		schluessel += womit
+	binaer_schluessel = string_to_binaer(schluessel)
+	binaer_nachricht = string_to_binaer(was)
+	for i in range(len(binaer_nachricht)):
+		ergebnis += str(int(binaer_nachricht[i]) ^ int(binaer_schluessel[i]))
+	return binaer_to_string(ergebnis)
+
+# erweiterung, damit auch Dateien ver und entschluesselt werden koennen
+def schluesselanwendung_datei(eingabe_datei, ausgabe_datei, schluessel):
+	counter = 0  # nur zur kontrolle
+	ergebnis = ""  # nur zur kontrolle
+	with open(eingabe_datei, 'r') as in_file:
+		with open(ausgabe_datei, 'w') as out_file:
+			for line in in_file.read():
+				counter += 1  # nur zur kontrolle
+				tmp = schluesselanwendung(line, schluessel)
+				out_file.write(tmp)
+				if (counter >= 20 and counter >= 70): # nur zur kontrolle
+					ergebnis += tmp # nur zur kontrolle
+	return ergebnis # nur zur kontrolle im EscapeRoom Spiel
+
+# Angepasste Funktion, damit zum entschluesseln der Schluessel aus einer Daten genutzt werden kann
+def entschluesseln(eingabe, ausgabe="tmp/ausgabe_encrypt.txt", schluessel="tmp/game.key"):
+	key = ""
+	with open(schluessel, "r") as f:
+		key = f.readline()
+	return schluesselanwendung_datei(eingabe, ausgabe, key)
+
+##
+if __name__ == "__main__":
+
+	key1 = schluessel_erstellen(20)
+	key2 = schluessel_erstellen(20)
+
+	print(key1)
+	print(key2)
+
+	text = "Hallo du da im Radio!"
+
+	print("Original Text")
+	print(text)
+	print("Verschluesselt mit Key1")
+	text_verschluesselt = schluesselanwendung(text, key1)
+	print(text_verschluesselt)
+	print("Entschluesselt mit Key1")
+	text_entschluesselt = schluesselanwendung(text_verschluesselt, key1)
+	print(text_entschluesselt)
+	print("entschluesselt mit Key2")
+	text_entschluesselt = schluesselanwendung(text_verschluesselt, key2)
+	print(text_entschluesselt + "  - mit falschem Key")
+
+	print("-------------------------------------")
+
+	schluesselanwendung_datei("test.txt", "test.crypt", key1)
+
+	schluesselanwendung_datei("test.crypt", "test_entcript.txt", key1)
+
+	print("Dateien fertig")
+\end{lstlisting}
+\flushleft
+
+\subsubsection{Level 5}
+\subsubsection{Level 6}
+
+\subsection{Beispiellösungen}
+\subsubsection{Level 1}
+\subsubsection{Level 2}
+\begin{lstlisting}[language=python, caption=Beispiellösung Aufgabe 2]
+# Beispielloesung Level 2
+
+def run(wo, was="flag="):
+    bild = open(wo, encoding="ISO-8859-1", mode="r")
+    search = was
+    try:
+        txt = ""
+        byte = bild.read(1)
+        while byte != "":
+            txt = txt + byte
+            byte = bild.read(1)
+        pos = txt.find(search)
+        pos = pos + len(search)
+        with open("tmp.txt", 'w') as tmp: # gefundenen Schluessel zwischenspeichern
+            tmp.writelines(txt[pos:])
+        return txt[pos:]
+    except:
+        bild.close()
+\end{lstlisting}
+\flushleft
+
+\subsubsection{Level 3}
+\subsubsection{Level 4}
+\begin{lstlisting}[language=python, caption=Beispiellösung Aufgabe 4]
+# Beispielloesung Level 4
+
+def run(eingabe):
+	return schluesselanwendung_datei(eingabe, "ausgabe_encrypt.txt", "tmp.txt")
+
+def string_to_binaer(nachricht):
+	ergebnis = ""
+	for c in nachricht:
+		ergebnis += ''.join(format(ord(c), '08b'))
+	return ergebnis
+
+def binaer_to_string(nachricht):
+	ergebnis = ""	
+	for i in range(0, len(nachricht), 8):
+		ergebnis += chr(int(nachricht[i: i+8], 2))
+	return ergebnis
+
+def schluesselanwendung(was, womit):
+	ergebnis = ""
+	schluessel = ""
+	while len(schluessel) < len(was):
+		schluessel += womit
+	binaer_schluessel = string_to_binaer(schluessel)
+	binaer_nachricht = string_to_binaer(was)
+	for i in range(len(binaer_nachricht)):
+		ergebnis += str(int(binaer_nachricht[i]) ^ int(binaer_schluessel[i]))
+	return binaer_to_string(ergebnis)
+
+def schluesselanwendung_datei(eingabe_datei, ausgabe_datei, schluessel):
+	key = ""
+	with open(schluessel, "r") as f:
+		key = f.readline()
+	counter = 0
+	ergebnis = ""
+	with open(eingabe_datei, 'r') as in_file:
+		with open(ausgabe_datei, 'w') as out_file:
+			for line in in_file.read():
+				counter += 1
+				tmp = schluesselanwendung(line, key)
+				out_file.write(tmp)
+				if (counter >= 20 and counter >= 70):
+					ergebnis += tmp
+	return ergebnis
+\end{lstlisting}
+\flushleft
+
+\subsubsection{Level 5}
+\subsubsection{Level 6}
+
+% \include{chap2} % einfügen der Datei chap2.tex 
+
+%####### Einfügen des Literaturverzeichnis
+%\printbibliography
+
+%####### Einfügen des Abbildungsverzeichnis
+%\listoffigures
+
+%####### Einfügen von PDF Dokumenten
+%\includepdf[pages=-, scale=0.8]{Eigenstaendigkeit_Oliver.pdf} % einfügen der Datei chap2.tex 
+
+\end{document}
+
+%##########################################
+% Vorlagen / Beispiele
+\fbox{\parbox{\linewidth}{}}
+% ##
+\begin{description}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em 
+
+\item[??:] ??
+\item ???
+
+\end{description}
+% ##
+\begin{enumerate}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em
+
+\item[??:] ??
+\item ??
+
+\end{enumerate}
+% ##
+\begin{itemize}
+\addtolength{\itemindent}{0.80cm}
+\itemsep0em
+
+\item[??:] ??
+\item ??
+
+\end{itemize}
+
+% Überschriften
+\section{Seite 2 ( Section )}
+% \include{chap2} % einfügen der Datei chap2.tex
+Irgendwelcher Text
+\subsection{Subsection}
+eine 2te Zeile
+\subsubsection{Subsubsection}
+Text in der Subsubsection
+\paragraph{Paragraph}
+Text im Paragraph
+\subparagraph{Subparagraph}
+Text im Subparagraph
+\dots
+
+\addcontentsline{toc}{section}{Eintrag als Zusatzüberschrift ohne Nummer Section}
+
+\addcontentsline{toc}{subsection}{Eintrag als Zusatzüberschrift ohne Nummer SubSection}
+
+Text \ldots \footnote{Irgendeine Fußnote}.
+
+\centering
+\begin{struktogramm}(100,50)
+\assign{\mbox{}\hfil eingabe von Zahl für n}
+	\ifthenelse[15]{2}{2}{ if n größer 0 ? }{true}{false}
+		\assign{Summe auf 0 setzen}
+		\while{ for i = 1 to n}
+		\assign{Summe = Summe + i}
+		\whileend
+		\assign{Ausgabe Summe}
+		\change
+		\assign{Ausgabe "Zahl muß positiv sein}
+	\ifend
+\end{struktogramm} \\
+
+
+\begin{lstlisting}[language=c++, caption=Programm für Aufgabe 6]
+#include <stdio.h>
+
+using namespace std;
+
+int main() {
+	int n = 0;
+	printf("Bitte geben sie eine Zahl ein: ");
+	scanf("%d", &n);
+	if(n > 0) {
+		// # Berechnung mittels for-Schleife
+		int summe_for = 0;
+		for(int i = 1; i <= n; i++) {
+			summe_for = summe_for + i ;
+		}
+		printf("Diese Berechnung lief in einer for-Schleife \n");
+		printf("Die Summe ist = %d \n", summe_for);
+		printf("##\n");
+		// # Berechnung mittels while-Schleife
+		int summe_while = 0;
+		int j = 1;
+		while(j <= n) {
+			summe_while = summe_while + j ;
+			j++ ;
+		}
+		printf("Diese Berechnung lief in einer while-Schleife \n");
+		printf("Die Summe ist = %d \n", summe_while);
+		printf("##\n");
+		// # Berechnung mittels do-while-Schleife
+		int summe_dowhile = 0;
+		int k = 1 ;
+		do{
+			summe_dowhile = summe_dowhile + k ;
+			k++ ;
+		}while(k <= n);
+		printf("Diese Berechnung lief in einer do-while-Schleife \n");
+		printf("Die Summe ist = %d \n", summe_dowhile);
+		printf("##\n");
+	}
+	else {
+		printf("Die Zahl muss positiv sein");
+	}
+	return 0;
+}
+\end{lstlisting}
+\flushleft
