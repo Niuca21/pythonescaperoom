@@ -17,8 +17,10 @@ def index():
 
 @app.route('/rooms/<string:name>', methods=['POST'])
 def load_room(name):
-    game.load_room(name)
-    return jsonify({"success": True, "room_name": name})
+    response = jsonify({"success": True, "room_name": name})
+    game.load_room(name, response)
+
+    return response
 
 
 @app.route('/rooms', methods=['POST'])
@@ -40,7 +42,7 @@ def get_loaded_rooms():
 
 @app.route('/rooms/<int:room_nr>')
 def get_room(room_nr):
-    if(len(game.get_rooms()) <= room_nr):
+    if (len(game.get_rooms()) <= room_nr):
         # print(f"Room {room_nr} does not exist (yet)")
         abort(404)
     else:
