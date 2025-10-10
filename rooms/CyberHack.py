@@ -23,34 +23,23 @@ class CyberHackRoom(EscapeRoom):
         return "Level 3 Platzhalter"
 
     def level_4(self, secret):
-        # Simuliere ein Logfile aus Level 3
-        possible_ports = [21, 22, 23, 25, 53, 80, 110, 143, 443, 3306]
-        selected_ports = random.sample(possible_ports, 5)
-        log_lines = []
-        for port in selected_ports:
-            if random.random() < 0.7:
-                log_lines.append(f"[INFO] Connection attempt on port {port}")
-            else:
-                log_lines.append(f"[INFO] Port {port} is secure")
-        log_data = "\n".join(log_lines)
+def level_4(self, secret):
+    # Hole das Logfile aus Level 3
+    log_data = self.get_solution("level_3_output")
 
-        # Speichere das Logfile als Ergebnis von Level 3
-        self.set_solution("level_3_output", log_data)
+    # Berechne die Musterlösung dynamisch aus dem Logfile
+    expected_ports = self.parse_logfile(log_data)
 
-        # Analysiere das Logfile
-        expected_ports = self.parse_logfile(log_data)
+    # Speichere die erwarteten Ports für Level 5
+    self.set_solution("malware_ports", expected_ports)
 
-        # Speichere die erwarteten Ports für Level 5
-        self.set_solution("malware_ports", expected_ports)
+    # Spieler soll diese Ports extrahieren
+    player_result = self.run_player_code(secret)
 
-        # Spieler soll diese Ports extrahieren
-        player_result = self.run_player_code(secret)
-
-        if player_result == expected_ports:
-            return "✅ Malware korrekt analysiert. Weiter zu Level 5."
-        else:
-            return f"❌ Analysefehler. Erwartet: {expected_ports}, erhalten: {player_result}"
-
+    if player_result == expected_ports:
+        return "✅ Malware korrekt analysiert. Weiter zu Level 5."
+    else:
+        return f"❌ Analysefehler. Erwartet: {expected_ports}, erhalten: {player_result}"
     def parse_logfile(self, log_text):
         ports = {}
         lines = log_text.strip().split("\n")
