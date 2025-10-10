@@ -7,12 +7,12 @@ class CyberHackRoom(EscapeRoom):
     def __init__(self):
         super().__init__()
         self.set_metadata("CyberHackRoom", __name__)
-        self.add_level(self.level_1)
-        self.add_level(self.level_2)
-        self.add_level(self.level_3)
+##        self.add_level(self.level_1)
+##       self.add_level(self.level_2)
+##        self.add_level(self.level_3)
         self.add_level(self.create_level4())  # Korrekt eingebunden!
-        self.add_level(self.level_5)
-        self.add_level(self.level_6)
+##        self.add_level(self.level_5)
+##        self.add_level(self.level_6)
 
     def create_level4(self):
         log_data = """
