@@ -1,5 +1,6 @@
 import random
 import string
+import re
 from EscapeRoom import EscapeRoom
 
 class CyberHackRoom(EscapeRoom):
@@ -9,45 +10,44 @@ class CyberHackRoom(EscapeRoom):
         self.add_level(self.level_1)
         self.add_level(self.level_2)
         self.add_level(self.level_3)
-        self.add_level(self.create_level4())
+        self.add_level(self.create_level4())  # Korrekt eingebunden!
         self.add_level(self.level_5)
         self.add_level(self.level_6)
 
-def create_level4(self):
-##    log_data = self.get_solution("level_3_output")
-log_data = """
-Secure connection established on port 443
-Unauthorized access attempt on port 8080
-Port 22 is filtered
-Connection accepted on port 8443
-Unknown activity on port 9999
-"""
-    parsed_ports = self.parse_logfile(log_data)
+    def create_level4(self):
+        log_data = """
+        Secure connection established on port 443
+        Unauthorized access attempt on port 8080
+        Port 22 is filtered
+        Connection accepted on port 8443
+        Unknown activity on port 9999
+        """
 
-    # Speichere für Level 5
-    self.set_solution("malware_ports", parsed_ports)
+        parsed_ports = self.parse_logfile(log_data)
+        self.set_solution("malware_ports", parsed_ports)
 
-task_messages = [
-    "<b>🧠 Level 4: Logfile-Analyse</b>",
-    "Du hast ein Logfile erhalten, das verdächtige Netzwerkaktivitäten enthält.",
-    "Deine Aufgabe: Extrahiere alle Ports aus dem Logfile und bestimme ihren Status.",
-    "💡 Achte auf Schlüsselwörter wie <i>secure</i>, <i>attempt</i>, <i>filtered</i>.",
-    "📚 Lernziele: Textanalyse, Reguläre Ausdrücke, Listen und Dictionaries"
-]
+        task_messages = [
+            "<b>🧠 Level 4: Logfile-Analyse</b>",
+            "Du hast ein Logfile erhalten, das verdächtige Netzwerkaktivitäten enthält.",
+            "Deine Aufgabe: Extrahiere alle Ports aus dem Logfile und bestimme ihren Status.",
+            "💡 Achte auf Schlüsselwörter wie <i>secure</i>, <i>attempt</i>, <i>filtered</i>.",
+            "📚 Lernziele: Textanalyse, Reguläre Ausdrücke, Listen und Dictionaries"
+        ]
 
-hints = [
-    "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
-    "✍️ Verwende <code>line.lower().strip()</code>, um die Zeile zu normalisieren.",
-    "💡 Prüfe mit <code>if</code>, ob bestimmte Schlüsselwörter enthalten sind."
-]
-    return {
-        "task_messages": task_messages,
-        "hints": hints,
-        "solution_function": self.check_ports_level4,
-        "data": log_data
-    }
+        hints = [
+            "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
+            "✍️ Verwende <code>line.lower().strip()</code>, um die Zeile zu normalisieren.",
+            "💡 Prüfe mit <code>if</code>, ob bestimmte Schlüsselwörter enthalten sind."
+        ]
 
-  def check_ports_level4(self, log_data):
+        return {
+            "task_messages": task_messages,
+            "hints": hints,
+            "solution_function": self.check_ports_level4,
+            "data": log_data
+        }
+
+    def check_ports_level4(self, log_data):
         return self.parse_logfile(log_data)
 
     def parse_logfile(self, log_text):
