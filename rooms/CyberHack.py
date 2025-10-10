@@ -78,7 +78,24 @@ class CyberHackRoom(EscapeRoom):
         return "Level 4 Platzhalter"
 
     def level_5(self, secret):
-        return "Level 5 Platzhalter"
+    # Hole die Portliste aus Level 4
+    port_list = self.get_solution("malware_ports")
+
+    # Spieler-Code ausführen
+    player_result = self.run_player_code(secret)
+
+    # Erwartete Lösung: alle gefährlichen offenen Ports geschlossen
+    expected_result = []
+    for entry in port_list:
+        updated = entry.copy()
+        if updated["status"] == "open" and updated["reason"] == "attempt/exposed/unauthorized":
+            updated["status"] = "closed"
+        expected_result.append(updated)
+
+    if player_result == expected_result:
+        return "✅ Alle gefährlichen Ports wurden erfolgreich geschlossen. Weiter zu Level 6!"
+    else:
+        return f"❌ Nicht alle gefährlichen Ports wurden korrekt geschlossen.\nErwartet: {expected_result}\nErhalten: {player_result}"
 
     def level_6(self, secret):
         return "Level 6 Platzhalter"
