@@ -23,7 +23,6 @@ class CyberHackRoom(EscapeRoom):
         return "Level 3 Platzhalter"
 
     def level_4(self, secret):
-def level_4(self, secret):
     # Hole das Logfile aus Level 3
     log_data = self.get_solution("level_3_output")
 
@@ -40,20 +39,40 @@ def level_4(self, secret):
         return "✅ Malware korrekt analysiert. Weiter zu Level 5."
     else:
         return f"❌ Analysefehler. Erwartet: {expected_ports}, erhalten: {player_result}"
-    def parse_logfile(log_text):
-    ports = {}
-    lines = log_text.strip().split("\n")
 
-    for line in lines:
-        match = re.search(r"port (\d+)", line)
-        if match:
-            port = int(match.group(1))
-            if "secure" in line:
-                ports[port] = "open"
-            elif "attempt" in line or "exposed" in line:
-                ports[port] = "open"
+
+    def parse_logfile(log_text):
+        ports = []
+        lines = log_text.strip().split("\n")
+
+        for line in lines:
+          line = line.lower().strip()  # Normalisierung
+
+          matches = re.findall(r"port (\d+)", line)
+        for match in matches:
+            port = int(match)
+
+            # Status-Erkennung anhand erweiterter Schlüsselwörter
+            if "secure" in line or "accepted" in line:
+                status = "open"
+                reason = "secure/accepted"
+            elif "attempt" in line or "exposed" in line or "unauthorized" in line:
+                status = "open"
+                reason = "attempt/exposed/unauthorized"
+            elif "filtered" in line:
+                status = "unbekannt"
+                reason = "filtered"
             else:
-                ports[port] = "closed"
+                status = "closed"
+                reason = "default"
+
+            results.append({
+                "port": port,
+                "status": status,
+                "reason": reason,
+                "raw_line": line  # optional: für spätere Analyse
+            })
+
 
         return ports
         return "Level 4 Platzhalter"
