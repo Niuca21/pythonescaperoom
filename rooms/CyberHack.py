@@ -9,7 +9,7 @@ class CyberHackRoom(EscapeRoom):
         self.add_level(self.level_1)
         self.add_level(self.level_2)
         self.add_level(self.level_3)
-        self.add_level(self.level_4)
+        self.add_level(self.create_level4())
         self.add_level(self.level_5)
         self.add_level(self.level_6)
 
@@ -27,20 +27,19 @@ Unknown activity on port 9999
     # Speichere für Level 5
     self.set_solution("malware_ports", parsed_ports)
 
-    task_messages = [
-        "<b>🧠 Level 4: Logfile-Analyse</b>",
-        "Du hast ein Logfile erhalten, das verdächtige Netzwerkaktivitäten enthält.",
-        "Deine Aufgabe: Extrahiere alle Ports aus dem Logfile und bestimme ihren Status.",
-        "💡 Achte auf Schlüsselwörter wie <i>secure</i>, <i>attempt</i>, <i>filtered</i>.",
-        "📚 Lernziele: Textanalyse, Reguläre Ausdrücke, Listen und Dictionaries"
-    ]
+task_messages = [
+    "<b>🧠 Level 4: Logfile-Analyse</b>",
+    "Du hast ein Logfile erhalten, das verdächtige Netzwerkaktivitäten enthält.",
+    "Deine Aufgabe: Extrahiere alle Ports aus dem Logfile und bestimme ihren Status.",
+    "💡 Achte auf Schlüsselwörter wie <i>secure</i>, <i>attempt</i>, <i>filtered</i>.",
+    "📚 Lernziele: Textanalyse, Reguläre Ausdrücke, Listen und Dictionaries"
+]
 
-    hints = [
-        "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
-        "✍️ Verwende <code>line.lower().strip()</code>, um die Zeile zu normalisieren.",
-        "💡 Prüfe mit <code>if</code>, ob bestimmte Schlüsselwörter enthalten sind."
-    ]
-
+hints = [
+    "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
+    "✍️ Verwende <code>line.lower().strip()</code>, um die Zeile zu normalisieren.",
+    "💡 Prüfe mit <code>if</code>, ob bestimmte Schlüsselwörter enthalten sind."
+]
     return {
         "task_messages": task_messages,
         "hints": hints,
