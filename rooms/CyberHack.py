@@ -14,7 +14,14 @@ class CyberHackRoom(EscapeRoom):
         self.add_level(self.level_6)
 
 def create_level4(self):
-    log_data = self.get_solution("level_3_output")
+##    log_data = self.get_solution("level_3_output")
+log_data = """
+Secure connection established on port 443
+Unauthorized access attempt on port 8080
+Port 22 is filtered
+Connection accepted on port 8443
+Unknown activity on port 9999
+"""
     parsed_ports = self.parse_logfile(log_data)
 
     # Speichere für Level 5
