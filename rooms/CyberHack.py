@@ -40,17 +40,21 @@ def level_4(self, secret):
         return "✅ Malware korrekt analysiert. Weiter zu Level 5."
     else:
         return f"❌ Analysefehler. Erwartet: {expected_ports}, erhalten: {player_result}"
-    def parse_logfile(self, log_text):
-        ports = {}
-        lines = log_text.strip().split("\n")
-        for line in lines:
-            match = re.search(r"port (\d+)", line)
-            if match:
-                port = int(match.group(1))
-                if "secure" in line or "closed" in line:
-                    ports[port] = "closed"
-                else:
-                    ports[port] = "open"
+    def parse_logfile(log_text):
+    ports = {}
+    lines = log_text.strip().split("\n")
+
+    for line in lines:
+        match = re.search(r"port (\d+)", line)
+        if match:
+            port = int(match.group(1))
+            if "secure" in line:
+                ports[port] = "open"
+            elif "attempt" in line or "exposed" in line:
+                ports[port] = "open"
+            else:
+                ports[port] = "closed"
+
         return ports
         return "Level 4 Platzhalter"
 
