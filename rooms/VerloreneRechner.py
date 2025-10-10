@@ -1,5 +1,7 @@
 import random
 import string
+import time
+import re
 from EscapeRoom import EscapeRoom
 
 
@@ -36,41 +38,51 @@ class VerloreneRechner(EscapeRoom):
             "data": cockie
         }
 
-    def create_level2(self):
-        task_messages = ["Your encrypted file wird hier benannt, finde das"
-                         ]
-        hints = ["Look carefully in the file."]
-        return {
-            "task_messages": task_messages,
-            "hints": hints,
-            "solution_function": self.solution_level2, "/static/output1.txt"
-            "data": "/static/output.txt"
-        }
-
-# Level 1. Aufgabe
+    # Level 1. Aufgabe
     def ascii_cockie(self):
         return "67 111 111 107 105 101 109 111 110 115 116 101 114"
 
     def solution_level1(self, cockie):
         return "".join(chr(int(n)) for n in cockie.split())
 
- # Level 3 (Difficult - Veronika)
+    def create_level2(self):
+        # Define file paths
+        path = "static/template.txt"
+        output_path = "static/output.txt"
 
-    placeholders = ["{key1}", "{key2}", "{key3}"]
-    utc_list = []
-    path = "/static/template.txt"
-    output_path = "/static/output_decr.txt"
-    name_of_file = "/static/name_of_file.txt"
+        # Define placeholders
+        self.placeholders = ["{key1}", "{key2}", "{key3}"]
 
-    # Level 3 solution
+        # Generate decrypted file
+        decrypted_path = self.generate_decrypted_file(path, output_path)
 
-    def solution_level2(self, path, output_path, name_of_file):
-        # Generate random UTCs
+        # Count occurrences for internal testing
+        solution = self.count_decrypted_words(output_path)
+        print("Level 2 solution:", solution)  # z. B. "343"
+
+        # Messages for the user
+        task_messages = [
+            "Your encrypted file wird hier benannt, finde das unten:",
+            f"<a href='{decrypted_path}' target='_blank'>Nachrichten ansehen</a>"
+        ]
+
+        hints = [
+            "Schreibe deine Lösung so, dass du die Endausgabe Datei liest und die UTC-Zahlen ersetzt."
+        ]
+
+        return {
+            "task_messages": task_messages,
+            "hints": hints,
+            "solution_function": self.count_decrypted_words,  # This should be your checker
+            "data": decrypted_path
+        }
+
+    def generate_decrypted_file(self, template_path, output_path):
+        # Generate UTCs and save as instance variable
         self.utc_list = [
             f"-{self.random_utc_timestamp()}" for _ in self.placeholders]
 
-    # Replace placeholders in the file
-        with open(path, "r", encoding="utf-8") as f:
+        with open(template_path, "r", encoding="utf-8") as f:
             text = f.read()
 
         for ph, utc in zip(self.placeholders, self.utc_list):
@@ -79,20 +91,25 @@ class VerloreneRechner(EscapeRoom):
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(text)
 
-        # Count occurrences and replace in output
-        counts = {utc: text.count(utc) for utc in self.utc_list}
+        return output_path
+
+    def count_decrypted_words(self, output_path):
+        # Datei lesen
+        with open(output_path, "r", encoding="utf-8") as f:
+            text = f.read()
+
+        # Alle UTCs im Text finden
+        utc_list = re.findall(r"-\d+", text)
+
+        # Vorkommen zählen
+        counts = {utc: text.count(utc) for utc in utc_list}
 
         for utc, count in counts.items():
             text = text.replace(utc, f"{count}")
 
-        with open(name_of_file, "w", encoding="utf-8") as f:
-            f.write(text)
-
         # Concatenate counts into string like "433"
-        name_exe = "".join(str(counts[utc]) for utc in self.utc_list)
+        name_exe = "".join(str(counts[utc]) for utc in utc_list)
         return name_exe
-
-        # Random UTC helper
 
     @staticmethod
     def random_utc_timestamp(start_year=2000, end_year=2025):
