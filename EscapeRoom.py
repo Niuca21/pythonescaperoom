@@ -4,7 +4,8 @@ import os
 
 class EscapeRoom:
 
-    def __init__(self):
+    def __init__(self, response):
+        self.response = response
         self.levels = []
         self.room_name = "Unknown"
         self.author = "Unknown"

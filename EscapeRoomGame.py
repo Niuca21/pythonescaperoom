@@ -1,6 +1,7 @@
 import os
 import importlib
 import sys
+import traceback
 sys.path.append('rooms')
 
 
@@ -9,7 +10,7 @@ class EscapeRoomGame:
     def __init__(self):
         self.rooms = []
 
-    def load_room(self, room_classname):
+    def load_room(self, room_classname, response):
         for room in self.rooms:
             if room.get_name() == room_classname:
                 print("Already loaded.")
@@ -17,10 +18,10 @@ class EscapeRoomGame:
         try:
             room_module = importlib.import_module(room_classname)
             class_ = getattr(room_module, room_classname)
-            room = class_()
+            room = class_(response)
             self.rooms.append(room)
         except Exception as e:
-            print("Could not load room: "+str(e))
+            print(f"Could not load room: {e}")
 
     def load_all_rooms(self):
         self.reset()
@@ -37,7 +38,7 @@ class EscapeRoomGame:
         return self.rooms
 
     def get_room(self, number):
-        if(number < len(self.rooms)):
+        if (number < len(self.rooms)):
             return self.rooms[number]
         else:
             return None

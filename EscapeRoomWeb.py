@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, render_template, request, abort
+from flask import Flask, jsonify, make_response, render_template, request, abort
 from EscapeRoomGame import EscapeRoomGame
 import os
 import string
