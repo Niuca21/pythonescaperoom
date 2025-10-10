@@ -23,6 +23,9 @@ class CyberHackRoom(EscapeRoom):
         return "Level 3 Platzhalter"
 
     def level_4(self, secret):
+        return "Level 4 Platzhalter"
+
+    def level_5(self, secret):
     # Hole das Logfile aus Level 3
     log_data = self.get_solution("level_3_output")
 
@@ -77,8 +80,8 @@ class CyberHackRoom(EscapeRoom):
         return ports
         return "Level 4 Platzhalter"
 
-    def level_5(self, secret):
-    # Hole die Portliste aus Level 4
+    def level_6(self, secret):
+    # Hole die Portliste aus Level 5
     port_list = self.get_solution("malware_ports")
 
     # Spieler-Code ausführen
