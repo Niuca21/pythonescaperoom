@@ -3,7 +3,7 @@ import string
 import re
 from EscapeRoom import EscapeRoom
 
-class CyberHackRoom(EscapeRoom):
+class CyberHack(EscapeRoom):
     def __init__(self):
         super().__init__()
         self.set_metadata("CyberHackRoom", __name__)
