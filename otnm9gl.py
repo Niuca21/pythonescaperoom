@@ -1,8 +1,10 @@
+
 import re
 
 def run(input_data):
     results = []
-    lines = input_data.strip().split("\n")
+    lines = input_data.strip().split("
+")
 
     for line in lines:
         line = line.lower().strip()
@@ -30,4 +32,3 @@ def run(input_data):
             })
 
     return results
-

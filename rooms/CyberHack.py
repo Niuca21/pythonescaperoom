@@ -4,8 +4,8 @@ import re
 from EscapeRoom import EscapeRoom
 
 class CyberHack(EscapeRoom):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, response=None):
+        super().__init__(response)
         self.set_metadata("CyberHackRoom", __name__)
 ##        self.add_level(self.level_1)
 ##       self.add_level(self.level_2)
@@ -24,7 +24,7 @@ class CyberHack(EscapeRoom):
         """
 
         parsed_ports = self.parse_logfile(log_data)
-        self.set_solution("malware_ports", parsed_ports)
+#        self.set_solution("malware_ports", parsed_ports)
 
         task_messages = [
             "<b>🧠 Level 4: Logfile-Analyse</b>",
