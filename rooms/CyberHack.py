@@ -13,92 +13,64 @@ class CyberHackRoom(EscapeRoom):
         self.add_level(self.level_5)
         self.add_level(self.level_6)
 
-    def level_1(self, secret):
-        return "Level 1 Platzhalter"
-
-    def level_2(self, secret):
-        return "Level 2 Platzhalter"
-
-    def level_3(self, secret):
-        return "Level 3 Platzhalter"
-
-    def level_4(self, secret):
-        return "Level 4 Platzhalter"
-
-    def level_5(self, secret):
-    # Hole das Logfile aus Level 3
+def create_level4(self):
     log_data = self.get_solution("level_3_output")
+    parsed_ports = self.parse_logfile(log_data)
 
-    # Berechne die Musterlösung dynamisch aus dem Logfile
-    expected_ports = self.parse_logfile(log_data)
+    # Speichere für Level 5
+    self.set_solution("malware_ports", parsed_ports)
 
-    # Speichere die erwarteten Ports für Level 5
-    self.set_solution("malware_ports", expected_ports)
+    task_messages = [
+        "<b>🧠 Level 4: Logfile-Analyse</b>",
+        "Du hast ein Logfile erhalten, das verdächtige Netzwerkaktivitäten enthält.",
+        "Deine Aufgabe: Extrahiere alle Ports aus dem Logfile und bestimme ihren Status.",
+        "💡 Achte auf Schlüsselwörter wie <i>secure</i>, <i>attempt</i>, <i>filtered</i>.",
+        "📚 Lernziele: Textanalyse, Reguläre Ausdrücke, Listen und Dictionaries"
+    ]
 
-    # Spieler soll diese Ports extrahieren
-    player_result = self.run_player_code(secret)
+    hints = [
+        "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
+        "✍️ Verwende <code>line.lower().strip()</code>, um die Zeile zu normalisieren.",
+        "💡 Prüfe mit <code>if</code>, ob bestimmte Schlüsselwörter enthalten sind."
+    ]
 
-    if player_result == expected_ports:
-        return "✅ Malware korrekt analysiert. Weiter zu Level 5."
-    else:
-        return f"❌ Analysefehler. Erwartet: {expected_ports}, erhalten: {player_result}"
+    return {
+        "task_messages": task_messages,
+        "hints": hints,
+        "solution_function": self.check_ports_level4,
+        "data": log_data
+    }
 
+  def check_ports_level4(self, log_data):
+        return self.parse_logfile(log_data)
 
-    def parse_logfile(log_text):
-        ports = []
+    def parse_logfile(self, log_text):
+        results = []
         lines = log_text.strip().split("\n")
 
         for line in lines:
-          line = line.lower().strip()  # Normalisierung
+            line = line.lower().strip()
+            matches = re.findall(r"port (\d+)", line)
+            for match in matches:
+                port = int(match)
+                if "secure" in line or "accepted" in line:
+                    status = "open"
+                    reason = "secure/accepted"
+                elif "attempt" in line or "exposed" in line or "unauthorized" in line:
+                    status = "open"
+                    reason = "attempt/exposed/unauthorized"
+                elif "filtered" in line:
+                    status = "closed"
+                    reason = "filtered"
+                else:
+                    status = "closed"
+                    reason = "default"
 
-          matches = re.findall(r"port (\d+)", line)
-        for match in matches:
-            port = int(match)
+                results.append({
+                    "port": port,
+                    "status": status,
+                    "reason": reason,
+                    "raw_line": line
+                })
 
-            # Status-Erkennung anhand erweiterter Schlüsselwörter
-            if "secure" in line or "accepted" in line:
-                status = "open"
-                reason = "secure/accepted"
-            elif "attempt" in line or "exposed" in line or "unauthorized" in line:
-                status = "open"
-                reason = "attempt/exposed/unauthorized"
-            elif "filtered" in line:
-                status = "unbekannt"
-                reason = "filtered"
-            else:
-                status = "closed"
-                reason = "default"
-
-            results.append({
-                "port": port,
-                "status": status,
-                "reason": reason,
-                "raw_line": line  # optional: für spätere Analyse
-            })
-
-
-        return ports
-        return "Level 4 Platzhalter"
-
-    def level_6(self, secret):
-    # Hole die Portliste aus Level 5
-    port_list = self.get_solution("malware_ports")
-
-    # Spieler-Code ausführen
-    player_result = self.run_player_code(secret)
-
-    # Erwartete Lösung: alle gefährlichen offenen Ports geschlossen
-    expected_result = []
-    for entry in port_list:
-        updated = entry.copy()
-        if updated["status"] == "open" and updated["reason"] == "attempt/exposed/unauthorized":
-            updated["status"] = "closed"
-        expected_result.append(updated)
-
-    if player_result == expected_result:
-        return "✅ Alle gefährlichen Ports wurden erfolgreich geschlossen. Weiter zu Level 6!"
-    else:
-        return f"❌ Nicht alle gefährlichen Ports wurden korrekt geschlossen.\nErwartet: {expected_result}\nErhalten: {player_result}"
-
-    def level_6(self, secret):
-        return "Level 6 Platzhalter"
+        return results
