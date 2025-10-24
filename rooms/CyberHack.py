@@ -11,6 +11,7 @@ class CyberHack(EscapeRoom):
 ##       self.add_level(self.level_2)
 ##        self.add_level(self.level_3)
         self.add_level(self.create_level4())  # Korrekt eingebunden!
+        self.add_level(self.create_level6())
 ##        self.add_level(self.level_5)
 ##        self.add_level(self.level_6)
 
@@ -80,3 +81,46 @@ class CyberHack(EscapeRoom):
                 })
 
         return results
+
+    def create_level6(self):
+        task_messages = [
+            "<b>🧠 Level 6: Port-Säuberung</b>",
+            "Du hast nun eine Liste von Ports mit Status und Gründen aus der vorherigen Analyse.",
+            "Deine Aufgabe: Schließe alle Ports, die als <i>open</i> markiert sind und deren Grund <b>nicht</b> 'secure/accepted' ist.",
+            "💡 Ändere den Status auf 'closed' und den Grund auf 'manually closed'.",
+            "📚 Lernziele: Listenmanipulation, Bedingte Logik, Dictionaries"
+        ]
+
+        hints = [
+            "🔍 Iteriere über die Liste mit einer Schleife.",
+            "✍️ Verwende eine Bedingung wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
+            "💡 Du kannst die Einträge direkt verändern oder eine neue Liste erstellen."
+        ]
+
+        # Beispielhafte Daten aus Level 5 (könnten auch dynamisch übergeben werden)
+        example_data = [
+            {"port": 443, "status": "open", "reason": "secure/accepted", "raw_line": "secure connection established on port 443"},
+            {"port": 8080, "status": "open", "reason": "attempt/exposed/unauthorized", "raw_line": "unauthorized access attempt on port 8080"},
+            {"port": 22, "status": "closed", "reason": "filtered", "raw_line": "port 22 is filtered"},
+            {"port": 8443, "status": "open", "reason": "secure/accepted", "raw_line": "connection accepted on port 8443"},
+            {"port": 9999, "status": "closed", "reason": "default", "raw_line": "unknown activity on port 9999"}
+        ]
+
+        return {
+            "task_messages": task_messages,
+            "hints": hints,
+            "solution_function": self.check_ports_level6,
+            "data": example_data
+        }
+
+    def check_ports_level6(self, port_list):
+        return self.clean_ports(port_list)
+
+    def clean_ports(self, port_list):
+        cleaned = []
+        for entry in port_list:
+            if entry["status"] == "open" and entry["reason"] != "secure/accepted":
+                entry["status"] = "closed"
+                entry["reason"] = "manually closed"
+            cleaned.append(entry)
+        return cleaned
