@@ -1,0 +1,40 @@
+Backup completed successfully
+Firewall rule updated: allow port 143
+Unauthorized access attempt on port 9999
+Unknown activity on port 3306
+Firewall rule updated: allow port 8443
+Connection accepted on port 22
+Exposed service detected on port 25
+Port 25 is filtered
+Firewall rule updated: allow port 25
+Unknown activity on port 8080
+Exposed service detected on port 8443
+Backup completed successfully
+Connection accepted on port 110
+Security policy updated
+Configuration file changed
+Exposed service detected on port 443
+Backup completed successfully
+Exposed service detected on port 22
+Port 21 is filtered
+User service logged out
+Unauthorized access attempt on port 9999
+Backup completed successfully
+Security policy updated
+Port 110 is filtered
+Antivirus scan started
+Unknown activity on port 25
+Unauthorized access attempt on port 22
+Firewall rule updated: allow port 3306
+Secure connection established on port 443
+Security policy updated
+Firewall rule updated: allow port 8443
+User login failed for user admin
+Secure connection established on port 443
+Unknown activity on port 3306
+Connection accepted on port 22
+Port 25 is filtered
+Configuration file changed
+Firewall rule updated: allow port 3306
+User user1 logged out
+Secure connection established on port 443

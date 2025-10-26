@@ -15,7 +15,7 @@ class CyberHack(EscapeRoom):
 ##        self.add_level(self.level_1)
 ##       self.add_level(self.level_2)
 ##        self.add_level(self.level_3)
-        self.add_level(self.create_level4())  # Korrekt eingebunden!
+        self.add_level(self.create_level5())  # Korrekt eingebunden!
         self.add_level(self.create_level6())
 ##        self.add_level(self.level_5)
 ##        self.add_level(self.level_6)
@@ -50,9 +50,11 @@ class CyberHack(EscapeRoom):
     def check_ports_level5(self, log_data):
         return self.parse_logfile_extended(log_data)
 
+    
     def parse_logfile_extended(self, log_text):
         results = []
         admin_fail_count = 0
+        firewall_rules = []
         lines = log_text.strip().split("\n")
 
         for line in lines:
@@ -61,6 +63,10 @@ class CyberHack(EscapeRoom):
         # Zusatzaufgabe: Admin-Login-Fehler zählen
             if "user login failed for user admin" in line:
                 admin_fail_count += 1
+
+        # Zusatzaufgabe: Firewall-Regeln sammeln
+            if "firewall rule updated" in line:
+                firewall_rules.append(line)
 
         # Port-Analyse
             matches = re.findall(r"port (\d+)", line)
@@ -88,8 +94,10 @@ class CyberHack(EscapeRoom):
 
         return {
             "ports": results,
-            "admin_login_failures": admin_fail_count
+            "admin_login_failures": admin_fail_count,
+            "firewall_rules": firewall_rules
         }
+
 
 
 
