@@ -138,7 +138,7 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
 #        self.set_solution("malware_ports", parsed_ports)
 
         task_messages = [
-            "<b>🧠 Level 4: Logfile-Analyse</b>",
+            "<b>🧠 Level 5: Logfile-Analyse</b>",
             "Du hast ein Logfile erhalten, das verdächtige Netzwerkaktivitäten enthält.",
             "Deine Aufgabe: Extrahiere alle Ports aus dem Logfile und bestimme ihren Status.",
             "💡 Achte auf Schlüsselwörter wie <i>secure</i>, <i>attempt</i>, <i>filtered</i>.",
@@ -154,28 +154,43 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         return {
             "task_messages": task_messages,
             "hints": hints,
-            "solution_function": self.check_ports_level4,
+            "solution_function": self.check_ports_level5,
             "data": log_data
         }
 
     # Level 6
     def create_level6(self):
         task_messages = [
-            "  <img src=" + self.bild + " alt='The Key you looking for' height='200'/> ",
-            "Hi,",
-			"das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen"
+            "<b>🧠 Level 6: Port-Säuberung</b>",
+            "Du hast nun eine Liste von Ports mit Status und Gründen aus der vorherigen Analyse.",
+            "Deine Aufgabe: Schließe alle Ports, die als <i>open</i> markiert sind und deren Grund <b>nicht</b> 'secure/accepted' ist.",
+            "💡 Ändere den Status auf 'closed' und den Grund auf 'manually closed'.",
+            "📚 Lernziele: Listenmanipulation, Bedingte Logik, Dictionaries"
         ]
-        hints = [
-            "schau mal im Bild!",
-            "suche nach dem flag= ",
-            "Eingabedaten sind der Dateiname des Bildes",
-            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
-            "speichern kann nicht schaden, Vorschlag game.key",
-            "als encoding wurde 'ISO-8859-1' verwendet",
-            "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
-        ]
-        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
 
+        hints = [
+            "🔍 Iteriere über die Liste mit einer Schleife.",
+            "✍️ Verwende eine Bedingung wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
+            "💡 Du kannst die Einträge direkt verändern oder eine neue Liste erstellen."
+        ]
+
+        # Beispielhafte Daten aus Level 5 (könnten auch dynamisch übergeben werden)
+        example_data = [
+            {"port": 443, "status": "open", "reason": "secure/accepted", "raw_line": "secure connection established on port 443"},
+            {"port": 8080, "status": "open", "reason": "attempt/exposed/unauthorized", "raw_line": "unauthorized access attempt on port 8080"},
+            {"port": 22, "status": "closed", "reason": "filtered", "raw_line": "port 22 is filtered"},
+            {"port": 8443, "status": "open", "reason": "secure/accepted", "raw_line": "connection accepted on port 8443"},
+            {"port": 9999, "status": "closed", "reason": "default", "raw_line": "unknown activity on port 9999"}
+        ]
+
+        return {
+            "task_messages": task_messages,
+            "hints": hints,
+            "solution_function": self.check_ports_level6,
+            "data": example_data
+        }
+
+	#######################
     ### Hilfsfunktionen ###
     
         # Level 1. Aufgabe
@@ -206,7 +221,59 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         end = int(time.mktime(time.strptime(f"{end_year}-10-31", "%Y-%m-%d")))
         return random.randint(start, end)
 
+		# Level 3. Aufgabe
+	# Hilfsfunktionen befinden sich unter 
+	# room/lib/stego.py
+
+		# Level 4. Aufgabe
+	# Hilfsfunktionen befinden sich unter 
+	# room/lib/crypt.py
+
 		# Level 5. Aufgabe
+
+
+		# Level 6. Aufgabe
+
+
+    ### SOLUTIONS ###
+
+        # Level 1. Lösung
+    def solution_level1(self, cockie):
+        return "".join(chr(int(n)) for n in cockie.split())
+
+        # Level 2. Lösung
+    def count_decrypted_words(self, output_path):
+        # Datei lesen
+        with open(output_path, "r", encoding="utf-8") as f:
+            text = f.read()
+
+        # Alle UTCs im Text finden
+        utc_list = re.findall(r"-\d+", text)
+
+        # Vorkommen zählen
+        counts = {utc: text.count(utc) for utc in utc_list}
+
+        for utc, count in counts.items():
+            text = text.replace(utc, f"{count}")
+
+        # Concatenate counts into string like "433"
+        name_exe = "".join(str(counts[utc]) for utc in utc_list)
+        return name_exe
+
+		# Level 3. Lösung
+	# Aufgerufene Lösungsfuktion befinden sich unter 
+	# room/lib/stego.py importiert als STEGO
+	# STEGO.im_bild_finden
+	
+		# Level 4. Lösung
+	# Aufgerufene Lösungsfuktion befinden sich unter 
+	# room/lib/crypt.py importiert als CRYPT
+	# CRYPT.entschluesseln
+
+		# Level 5. Lösung
+    def check_ports_level5(self, log_data):
+        return self.parse_logfile(log_data)
+
     def parse_logfile(self, log_text):
         results = []
         lines = log_text.strip().split("\n")
@@ -238,32 +305,15 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
 
         return results
 
-
-    ### SOLUTIONS ###
-
-        # Level 1. Lösung
-    def solution_level1(self, cockie):
-        return "".join(chr(int(n)) for n in cockie.split())
-
-        # Level 2. Lösung
-    def count_decrypted_words(self, output_path):
-        # Datei lesen
-        with open(output_path, "r", encoding="utf-8") as f:
-            text = f.read()
-
-        # Alle UTCs im Text finden
-        utc_list = re.findall(r"-\d+", text)
-
-        # Vorkommen zählen
-        counts = {utc: text.count(utc) for utc in utc_list}
-
-        for utc, count in counts.items():
-            text = text.replace(utc, f"{count}")
-
-        # Concatenate counts into string like "433"
-        name_exe = "".join(str(counts[utc]) for utc in utc_list)
-        return name_exe
-
-		# Level 5. Lösung
-    def check_ports_level4(self, log_data):
-        return self.parse_logfile(log_data)
+		# Level 6. Lösung
+    def check_ports_level6(self, port_list):
+        return self.clean_ports(port_list)
+		
+    def clean_ports(self, port_list):
+        cleaned = []
+        for entry in port_list:
+            if entry["status"] == "open" and entry["reason"] != "secure/accepted":
+                entry["status"] = "closed"
+                entry["reason"] = "manually closed"
+            cleaned.append(entry)
+        return cleaned
