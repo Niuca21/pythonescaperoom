@@ -5,8 +5,8 @@ Connection accepted on port 143
 Configuration file changed
 Unauthorized access attempt on port 443
 Unauthorized access attempt on port 993
-Eackup completed successfully
-Eackup completed successfully
+Backup completed successfully
+Backup completed successfully
 Configuration file changed
 Antivirus scan started
 Secure connection established on port 21
@@ -15,7 +15,7 @@ Unknown activity on port 80
 Exposed service detected on port 443
 Unauthorized access attempt on port 3306
 User guest logged out
-Eackup completed successfully
+Backup completed successfully
 Unknown activity on port 8443
 Secure connection established on port 443
 Connection accepted on port 3306
@@ -25,11 +25,11 @@ Firewall rule updated: allow port 80
 Unauthorized access attempt on port 8443
 Unknown activity on port 110
 Port 21 is filtered
-Eackup completed successfully
+Backup completed successfully
 Firewall rule updated: allow port 21
 Unauthorized access attempt on port 110
 User login failed for user admin
-Eackup completed successfully
+Backup completed successfully
 User service logged out
 Security policy updated
 Secure connection established on port 21
