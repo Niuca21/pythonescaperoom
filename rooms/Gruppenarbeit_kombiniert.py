@@ -6,6 +6,7 @@ import time
 import re
 import lib.stego as STEGO # Funktionssammlung Oliver Level 3
 import lib.crypt as CRYPT # Funktionssammlung Oliver Level 4
+from lib.log_generator import generate_logfile  # Funktion Lukasz für Oliver Level 4 und verwendung für Level 5 Lukasz
 
 class Gruppenarbeit_kombiniert(EscapeRoom):
 

@@ -2,10 +2,15 @@ import random
 import string
 import re
 from EscapeRoom import EscapeRoom
+from lib.log_generator import generate_logfile
 
 class CyberHack(EscapeRoom):
     def __init__(self, response=None):
         super().__init__(response)
+        self.log_data = generate_logfile(40)     # Logfile generieren 
+        # Logfile speichern für andere Levels  ( Lukasz )
+        with open("static/generated_log.txt", "w") as f:
+            f.write(self.log_data)
         self.set_metadata("CyberHackRoom", __name__)
 ##        self.add_level(self.level_1)
 ##       self.add_level(self.level_2)
