@@ -49,29 +49,33 @@ Vielleicht ist dort gar nichts Bösartiges … doch offenbar hast du keine ander
 **Aufgabe:**  
 Dekodiere die Zeitstempel, zähle die Werte und finde die neue Datei, die den nächsten Hinweis enthält.
 
-## Level 3 – Name the game
+## Level 3 – Strings in Bildern finden
 
 **Geschichte**
 
+Die gefundene Bild-Datei zeigt einen Schlüssel, das könnte eine Bedeutung haben.
+
 **Lernziele:**
 
-1. **Name**
-2. **Name**
-3. **Name**
-4. **Name**
+1. **Bild-Datei öffenen** gefundenes Bild öffen
+2. **suchen von Strings in Bildern** Vorgegebenen String suchen 
+3. **Stings nach Muster aufteilen** String in Teilstrings aufteilen
+4. **Teilstring in Datei speichern** Teilstring in separater Datei, zur späteren verwendung, speichern.
 5. **Name**
 6. **Name**
 
-## Level 4 – Name the game
+## Level 4 – Bitweise Symetrische Verschlüsselung
 
 **Geschichte**
 
+Was ist jetz mit dem gefundenen Schlüssel zu tun? Warum kann ich den Inhalt dies komische Datei nicht lesen? Könnte sie Verschlüsselt worden sein.
+
 **Lernziele:**
 
-1. **Name**
-2. **Name**
-3. **Name**
-4. **Name**
+1. **Verketten von Strings** der gefundene Verschlüsselungskey muß für eine Erfolgreiche Entschlüsselung mehrfach hintereinander gesetzt werden, da die Nachricht meist länger als der Schlüssel ist.
+2. **Strings umwandeln in Binär und zurück** Damit auf Bit-Ebene Verschlüsselt werden kann müßen die Strings imd Binärfolgen und wieder zurück gewandelt werden
+3. **XOR verknüpfung von Binär kodierten Zeichenketten** Verknüpfen der Binären ketten mittels einer "Exklusiv oder" verknüpfung.
+4. **Arbeiten mit Funktionen** Aufteilen des Codes in einzelne Funktionen, damit Code nicht Copiert werden muß
 5. **Name**
 6. **Name**
 
