@@ -26,16 +26,19 @@ class CyberHack(EscapeRoom):
 
         task_messages = [
             "<b>🧠 Level 5: Erweiterte Logfile-Analyse</b>",
-            "Du hast ein umfangreiches Logfile erhalten.",
-            "Deine Aufgabe: Extrahiere alle Ports und bestimme ihren Status.",
-            "Zusätzlich: Zähle, wie oft ein Login für <i>admin</i> fehlgeschlagen ist.",
-            "📚 Lernziele: Reguläre Ausdrücke, Bedingte Logik, Fehlerbehandlung, Kombinierte Analyse"
+            "Du hast ein umfangreiches Logfile erhalten, das verschiedene Netzwerk- und Systemereignisse enthält.",
+            "Deine Aufgabe:",
+            "1️⃣ Extrahiere alle Ports und bestimme ihren Status.",
+            "2️⃣ Zähle, wie oft ein Login für <i>admin</i> fehlgeschlagen ist.",
+            "3️⃣ Liste alle Zeilen auf, die eine <i>Firewall-Regel</i> enthalten.",
+            "📚 Lernziele: Reguläre Ausdrücke, Bedingte Logik, Fehlerbehandlung, Kombinierte Analyse, Listen und Dictionaries"
         ]
 
         hints = [
-            "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code> für Ports.",
-            "✍️ Verwende <code>if \"user login failed for user admin\" in line</code> für die Zusatzaufgabe.",
-            "💡 Kombiniere Listen und Zähler in einem Dictionary."
+            "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
+            "✍️ Verwende <code>if \"user login failed for user admin\" in line</code>, um gezielt Admin-Fehler zu zählen.",
+            "🧱 Verwende <code>if \"firewall rule updated\" in line</code>, um Firewall-Zeilen zu erfassen.",
+            "💡 Gib ein Dictionary mit <code>ports</code>, <code>admin_login_failures</code> und <code>firewall_rules</code> zurück."
         ]
 
         return {

@@ -1,40 +1,40 @@
-Backup completed successfully
-Firewall rule updated: allow port 143
-Unauthorized access attempt on port 9999
-Unknown activity on port 3306
-Firewall rule updated: allow port 8443
-Connection accepted on port 22
-Exposed service detected on port 25
-Port 25 is filtered
-Firewall rule updated: allow port 25
-Unknown activity on port 8080
-Exposed service detected on port 8443
-Backup completed successfully
-Connection accepted on port 110
-Security policy updated
-Configuration file changed
-Exposed service detected on port 443
-Backup completed successfully
-Exposed service detected on port 22
-Port 21 is filtered
-User service logged out
-Unauthorized access attempt on port 9999
-Backup completed successfully
-Security policy updated
-Port 110 is filtered
 Antivirus scan started
-Unknown activity on port 25
-Unauthorized access attempt on port 22
-Firewall rule updated: allow port 3306
-Secure connection established on port 443
-Security policy updated
-Firewall rule updated: allow port 8443
-User login failed for user admin
-Secure connection established on port 443
-Unknown activity on port 3306
-Connection accepted on port 22
-Port 25 is filtered
+Connection accepted on port 995
+Port 995 is filtered
+Secure connection established on port 995
+User login failed for user user1
+Unauthorized access attempt on port 993
+User root logged out
+Connection accepted on port 8443
 Configuration file changed
-Firewall rule updated: allow port 3306
+Firewall rule updated: allow port 80
+Exposed service detected on port 25
+Antivirus scan started
+User login failed for user user1
+Secure connection established on port 995
+Connection accepted on port 3306
+Backup completed successfully
+User service logged out
+Configuration file changed
+Unauthorized access attempt on port 110
+Unauthorized access attempt on port 3306
+Port 993 is filtered
+Firewall rule updated: allow port 443
+Unauthorized access attempt on port 8443
+Connection accepted on port 995
+Exposed service detected on port 110
+System rebooted at 12:45
+Exposed service detected on port 8080
 User user1 logged out
-Secure connection established on port 443
+User login failed for user user1
+Exposed service detected on port 110
+Port 8080 is filtered
+System rebooted at 03:33
+Exposed service detected on port 9999
+Unknown activity on port 3306
+Antivirus scan started
+Antivirus scan started
+Port 80 is filtered
+Unknown activity on port 443
+Port 9999 is filtered
+Configuration file changed
