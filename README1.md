@@ -49,4 +49,54 @@ Vielleicht ist dort gar nichts Bösartiges … doch offenbar hast du keine ander
 **Aufgabe:**  
 Dekodiere die Zeitstempel, zähle die Werte und finde die neue Datei, die den nächsten Hinweis enthält.
 
-## Level 3 – Zeitstempel-Datei
+## Level 3 – Name the game
+
+**Geschichte**
+
+**Lernziele:**
+
+1. **Name**
+2. **Name**
+3. **Name**
+4. **Name**
+5. **Name**
+6. **Name**
+
+## Level 4 – Name the game
+
+**Geschichte**
+
+**Lernziele:**
+
+1. **Name**
+2. **Name**
+3. **Name**
+4. **Name**
+5. **Name**
+6. **Name**
+
+## Level 5 – Name the game
+
+**Geschichte**
+
+**Lernziele:**
+
+1. **Name**
+2. **Name**
+3. **Name**
+4. **Name**
+5. **Name**
+6. **Name**
+
+## Level 6 – Name the game
+
+**Geschichte**
+
+**Lernziele:**
+
+1. **Name**
+2. **Name**
+3. **Name**
+4. **Name**
+5. **Name**
+6. **Name**
