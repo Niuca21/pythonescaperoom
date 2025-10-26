@@ -24,7 +24,16 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         CRYPT.schluesselanwendung_datei("static/originale/test.log" ,self.verschluesselt ,self.key )
         
         ## Fuer Level 5-6
-        
+
+        # Logfile generieren
+
+        self.log_data = generate_logfile(40)
+
+        # Logfile speichern für andere Levels  ( Lukasz )
+
+        with open("static/generated_log.txt", "w") as f:
+            f.write(self.log_data)
+
         self.add_level(self.create_level1()) # Veronika
         self.add_level(self.create_level2()) # Veronika
         self.add_level(self.create_level3()) # Oliver
@@ -125,30 +134,25 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         return {"task_messages": task_messages, "hints": hints, "solution_function": CRYPT.entschluesseln, "data": self.verschluesselt}
 
     # Level 5
-    def create_level5(self):
-        log_data = """
-        Secure connection established on port 443
-        Unauthorized access attempt on port 8080
-        Port 22 is filtered
-        Connection accepted on port 8443
-        Unknown activity on port 9999
-        """
 
-        parsed_ports = self.parse_logfile(log_data)
-#        self.set_solution("malware_ports", parsed_ports)
+    def create_level5(self):
+        log_data = self.log_data
 
         task_messages = [
-            "<b>🧠 Level 5: Logfile-Analyse</b>",
-            "Du hast ein Logfile erhalten, das verdächtige Netzwerkaktivitäten enthält.",
-            "Deine Aufgabe: Extrahiere alle Ports aus dem Logfile und bestimme ihren Status.",
-            "💡 Achte auf Schlüsselwörter wie <i>secure</i>, <i>attempt</i>, <i>filtered</i>.",
-            "📚 Lernziele: Textanalyse, Reguläre Ausdrücke, Listen und Dictionaries"
+            "<b>🧠 Level 5: Erweiterte Logfile-Analyse</b>",
+            "Du hast ein umfangreiches Logfile erhalten, das verschiedene Netzwerk- und Systemereignisse enthält.",
+            "Deine Aufgabe:",
+            "1️⃣ Extrahiere alle Ports und bestimme ihren Status.",
+            "2️⃣ Zähle, wie oft ein Login für <i>admin</i> fehlgeschlagen ist.",
+            "3️⃣ Liste alle Zeilen auf, die eine <i>Firewall-Regel</i> enthalten.",
+            "📚 Lernziele: Reguläre Ausdrücke, Bedingte Logik, Fehlerbehandlung, Kombinierte Analyse, Listen und Dictionaries"
         ]
 
         hints = [
             "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
-            "✍️ Verwende <code>line.lower().strip()</code>, um die Zeile zu normalisieren.",
-            "💡 Prüfe mit <code>if</code>, ob bestimmte Schlüsselwörter enthalten sind."
+            "✍️ Verwende <code>if \"user login failed for user admin\" in line</code>, um gezielt Admin-Fehler zu zählen.",
+            "🧱 Verwende <code>if \"firewall rule updated\" in line</code>, um Firewall-Zeilen zu erfassen.",
+            "💡 Gib ein Dictionary mit <code>ports</code>, <code>admin_login_failures</code> und <code>firewall_rules</code> zurück."
         ]
 
         return {
@@ -158,6 +162,58 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
             "data": log_data
         }
 
+
+
+    def check_ports_level5(self, log_data):
+        return self.parse_logfile_extended(log_data)
+
+    
+    def parse_logfile_extended(self, log_text):
+        results = []
+        admin_fail_count = 0
+        firewall_rules = []
+        lines = log_text.strip().split("\n")
+
+        for line in lines:
+            line = line.lower().strip()
+
+        # Zusatzaufgabe: Admin-Login-Fehler zählen
+            if "user login failed for user admin" in line:
+                admin_fail_count += 1
+
+        # Zusatzaufgabe: Firewall-Regeln sammeln
+            if "firewall rule updated" in line:
+                firewall_rules.append(line)
+
+        # Port-Analyse
+            matches = re.findall(r"port (\d+)", line)
+            for match in matches:
+                port = int(match)
+                if "secure" in line or "accepted" in line:
+                    status = "open"
+                    reason = "secure/accepted"
+                elif "attempt" in line or "exposed" in line or "unauthorized" in line:
+                    status = "open"
+                    reason = "attempt/exposed/unauthorized"
+                elif "filtered" in line:
+                    status = "closed"
+                    reason = "filtered"
+                else:
+                    status = "closed"
+                    reason = "default"
+
+                results.append({
+                    "port": port,
+                    "status": status,
+                    "reason": reason,
+                    "raw_line": line
+                })
+
+        return {
+            "ports": results,
+            "admin_login_failures": admin_fail_count,
+            "firewall_rules": firewall_rules
+        }
     # Level 6
     def create_level6(self):
         task_messages = [

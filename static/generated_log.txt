@@ -1,40 +1,40 @@
-Antivirus scan started
-Connection accepted on port 995
-Port 995 is filtered
-Secure connection established on port 995
-User login failed for user user1
-Unauthorized access attempt on port 993
-User root logged out
-Connection accepted on port 8443
-Configuration file changed
-Firewall rule updated: allow port 80
-Exposed service detected on port 25
-Antivirus scan started
-User login failed for user user1
-Secure connection established on port 995
-Connection accepted on port 3306
-Backup completed successfully
-User service logged out
-Configuration file changed
+Firewall rule updated: allow port 3306
+Firewall rule updated: allow port 993
+User login failed for user admin
+User login failed for user admin
+User login failed for user admin
+User guest logged out
+Port 143 is filtered
+Unknown activity on port 995
+Secure connection established on port 80
+Secure connection established on port 80
+System rebooted at 23:59
+Security policy updated
 Unauthorized access attempt on port 110
-Unauthorized access attempt on port 3306
+Unauthorized access attempt on port 80
+Exposed service detected on port 3306
+Unknown activity on port 143
+Port 3306 is filtered
+Secure connection established on port 8443
 Port 993 is filtered
-Firewall rule updated: allow port 443
-Unauthorized access attempt on port 8443
-Connection accepted on port 995
-Exposed service detected on port 110
-System rebooted at 12:45
-Exposed service detected on port 8080
-User user1 logged out
-User login failed for user user1
-Exposed service detected on port 110
-Port 8080 is filtered
-System rebooted at 03:33
+Antivirus scan started
+Secure connection established on port 3306
+Unauthorized access attempt on port 995
+User login failed for user admin
+Exposed service detected on port 21
+Unauthorized access attempt on port 9999
+Unauthorized access attempt on port 3306
+Connection accepted on port 110
 Exposed service detected on port 9999
-Unknown activity on port 3306
+Unknown activity on port 80
+User user1 logged out
 Antivirus scan started
-Antivirus scan started
-Port 80 is filtered
-Unknown activity on port 443
-Port 9999 is filtered
-Configuration file changed
+Secure connection established on port 8080
+Exposed service detected on port 993
+Security policy updated
+Security policy updated
+Firewall rule updated: allow port 110
+Connection accepted on port 3306
+Secure connection established on port 3306
+Unknown activity on port 993
+Backup completed successfully
