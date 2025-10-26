@@ -8,7 +8,7 @@ Plötzlich startet ein merkwürdiges Spiel, das dir Hinweise gibt, wie du dein A
 
 ## Level 1 – Diese Cookies sind nicht lecker :)
 
-** Geschichte
+** Geschichte **
 
 Du schaltest deinen Computer ein doch etwas stimmt nicht.
 Anstatt des gewohnten Desktops erscheint nur ein fremdes Anmeldefenster: „Gastkonto aktiv.“
@@ -30,7 +30,7 @@ Finde die versteckte Nachricht(Admin Password) in der ASCII-Zeichenkette.
 
 ## Level 2 – Textdatei mit Nebenwirkungen
 
-** Geschichte
+** Geschichte **
 
 Endlich, du hast dein Admin-Konto zurückerobert.
 Doch kaum ist der Triumph da, fällt dein Blick auf eine seltsame Textdatei auf dem Desktop.
