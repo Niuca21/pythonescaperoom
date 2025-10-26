@@ -20,48 +20,49 @@ class CyberHack(EscapeRoom):
 ##        self.add_level(self.level_5)
 ##        self.add_level(self.level_6)
 
-    def create_level4(self):
-        log_data = """
-        Secure connection established on port 443
-        Unauthorized access attempt on port 8080
-        Port 22 is filtered
-        Connection accepted on port 8443
-        Unknown activity on port 9999
-        """
 
-        parsed_ports = self.parse_logfile(log_data)
-#        self.set_solution("malware_ports", parsed_ports)
+    def create_level5(self):
+        log_data = self.log_data
 
         task_messages = [
-            "<b>🧠 Level 4: Logfile-Analyse</b>",
-            "Du hast ein Logfile erhalten, das verdächtige Netzwerkaktivitäten enthält.",
-            "Deine Aufgabe: Extrahiere alle Ports aus dem Logfile und bestimme ihren Status.",
-            "💡 Achte auf Schlüsselwörter wie <i>secure</i>, <i>attempt</i>, <i>filtered</i>.",
-            "📚 Lernziele: Textanalyse, Reguläre Ausdrücke, Listen und Dictionaries"
+            "<b>🧠 Level 5: Erweiterte Logfile-Analyse</b>",
+            "Du hast ein umfangreiches Logfile erhalten.",
+            "Deine Aufgabe: Extrahiere alle Ports und bestimme ihren Status.",
+            "Zusätzlich: Zähle, wie oft ein Login für <i>admin</i> fehlgeschlagen ist.",
+            "📚 Lernziele: Reguläre Ausdrücke, Bedingte Logik, Fehlerbehandlung, Kombinierte Analyse"
         ]
 
         hints = [
-            "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
-            "✍️ Verwende <code>line.lower().strip()</code>, um die Zeile zu normalisieren.",
-            "💡 Prüfe mit <code>if</code>, ob bestimmte Schlüsselwörter enthalten sind."
+            "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code> für Ports.",
+            "✍️ Verwende <code>if \"user login failed for user admin\" in line</code> für die Zusatzaufgabe.",
+            "💡 Kombiniere Listen und Zähler in einem Dictionary."
         ]
 
         return {
             "task_messages": task_messages,
             "hints": hints,
-            "solution_function": self.check_ports_level4,
+            "solution_function": self.check_ports_level5,
             "data": log_data
         }
 
-    def check_ports_level4(self, log_data):
-        return self.parse_logfile(log_data)
 
-    def parse_logfile(self, log_text):
+
+    def check_ports_level5(self, log_data):
+        return self.parse_logfile_extended(log_data)
+
+    def parse_logfile_extended(self, log_text):
         results = []
+        admin_fail_count = 0
         lines = log_text.strip().split("\n")
 
         for line in lines:
             line = line.lower().strip()
+
+        # Zusatzaufgabe: Admin-Login-Fehler zählen
+            if "user login failed for user admin" in line:
+                admin_fail_count += 1
+
+        # Port-Analyse
             matches = re.findall(r"port (\d+)", line)
             for match in matches:
                 port = int(match)
@@ -85,7 +86,12 @@ class CyberHack(EscapeRoom):
                     "raw_line": line
                 })
 
-        return results
+        return {
+            "ports": results,
+            "admin_login_failures": admin_fail_count
+        }
+
+
 
     def create_level6(self):
         task_messages = [
