@@ -13,7 +13,16 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
     def __init__(self, response=None):
         super().__init__(response)
         
-        self.set_metadata("Veronika, Lucasz & Oliver", __name__)
+        self.set_metadata("Veronika, Lukasz & Oliver", __name__)
+
+        # Logfile generieren   ( Lukasz )
+
+        self.log_data = generate_logfile(40)
+
+        # Logfile speichern für andere Levels  ( Lukasz )
+
+        with open("static/generated_log.txt", "w") as f:
+            f.write(self.log_data)
         
         ## Fuer Level 3-4
         self.key = CRYPT.schluessel_erstellen(30) #schluessel erstellen
@@ -25,14 +34,6 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         
         ## Fuer Level 5-6
 
-        # Logfile generieren
-
-        self.log_data = generate_logfile(40)
-
-        # Logfile speichern für andere Levels  ( Lukasz )
-
-        with open("static/generated_log.txt", "w") as f:
-            f.write(self.log_data)
 
         self.add_level(self.create_level1()) # Veronika
         self.add_level(self.create_level2()) # Veronika
