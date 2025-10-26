@@ -44,7 +44,7 @@ Vielleicht ist dort gar nichts Bösartiges … doch offenbar hast du keine ander
 2. **String-Manipulation:** Platzhalter werden durch zufällig generierte Zeitstempel ersetzt.  
 3. **Arbeiten mit Zeitstempeln:** Spieler muss die Zeitstempel in normale UTC-Werte übersetzen.  
 4. **Reguläre Ausdrücke (Regex):** Zeitstempel im Skript gezielt finden und verarbeiten.  
-5. **Datenanalyse & Zähloperationen:** Vorkommen der Zeitstempel zählen, um eine neue Datei als Hinweis zu erzeugen.
+5. **Datenanalyse & Zähloperationen:** Vorkommen der Zeitstempel zählen, um eine neue Dateiname als Hinweis zu erzeugen.
 
 **Aufgabe:**  
 Dekodiere die Zeitstempel, zähle die Werte und finde die neue Datei, die den nächsten Hinweis enthält.
