@@ -60,7 +60,7 @@ def get_level(room_nr, level_nr):
     levels = room.get_levels()
     if level_nr < len(levels):
         level = room.get_levels()[level_nr]
-        return jsonify({"tasks": level["task_messages"], "hints": level["hints"]})
+        return jsonify({"gamename": level["gamename"], "tasks": level["task_messages"], "hints": level["hints"]})
     else:
         # print("Invalid level.")
         abort(404)

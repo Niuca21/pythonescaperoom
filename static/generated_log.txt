@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 8443
-Firewall rule updated: allow port 25
+Firewall rule updated: allow port 995
+Firewall rule updated: allow port 22
 User login failed for user admin
 User login failed for user admin
-Unknown activity on port 9999
-Unknown activity on port 3306
-Backup completed successfully
-Backup completed successfully
-Antivirus scan started
-Backup completed successfully
-System rebooted at 03:33
-Unknown activity on port 9999
-Antivirus scan started
-Antivirus scan started
-Unknown activity on port 3306
-Security policy updated
-Firewall rule updated: allow port 443
-Security policy updated
-Backup completed successfully
-Antivirus scan started
-Secure connection established on port 8080
-Antivirus scan started
-User login failed for user user1
-System rebooted at 23:59
-User user1 logged out
-Configuration file changed
-System rebooted at 00:01
-Unknown activity on port 25
-Connection accepted on port 22
-Antivirus scan started
-Unknown activity on port 22
-User user1 logged out
-Exposed service detected on port 443
-Secure connection established on port 3306
-User service logged out
-User admin logged out
-Port 993 is filtered
-Connection accepted on port 22
-Security policy updated
+Exposed service detected on port 25
+Unauthorized access attempt on port 3306
 Connection accepted on port 3306
+User admin logged out
+Configuration file changed
+Exposed service detected on port 80
+Security policy updated
+Security policy updated
+Connection accepted on port 8080
+Firewall rule updated: allow port 110
+Firewall rule updated: allow port 143
+Exposed service detected on port 8443
+Backup completed successfully
+Backup completed successfully
+Exposed service detected on port 80
+Firewall rule updated: allow port 25
+Unauthorized access attempt on port 3306
+Exposed service detected on port 25
+Secure connection established on port 3306
+Unknown activity on port 22
+Antivirus scan started
+System rebooted at 00:01
+Exposed service detected on port 22
+Port 3306 is filtered
+Firewall rule updated: allow port 21
+User login failed for user guest
+Unknown activity on port 9999
+User login failed for user user1
+User root logged out
+Backup completed successfully
+Security policy updated
+Exposed service detected on port 443
+User service logged out
+Backup completed successfully
+Connection accepted on port 993
+User admin logged out
