@@ -1,18 +1,10 @@
-# Beispielloesung Level 2
+# Beispielloesung Level 6
 
-def run(wo, was="flag="):
-    bild = open(wo, encoding="ISO-8859-1", mode="r")
-    search = was
-    try:
-        txt = ""
-        byte = bild.read(1)
-        while byte != "":
-            txt = txt + byte
-            byte = bild.read(1)
-        pos = txt.find(search)
-        pos = pos + len(search)
-        with open("tmp.txt", 'w') as tmp: # gefundenen Schluessel zwischenspeichern
-            tmp.writelines(txt[pos:])
-        return txt[pos:]
-    except:
-        bild.close()
+def run(port_list):
+    cleaned = []
+    for entry in port_list:
+        if entry["status"] == "open" and entry["reason"] != "secure/accepted":
+            entry["status"] = "closed"
+            entry["reason"] = "manually closed"
+        cleaned.append(entry)
+    return cleaned
