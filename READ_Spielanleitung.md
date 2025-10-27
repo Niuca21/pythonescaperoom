@@ -60,13 +60,13 @@ Die gefundene Bild-Datei zeigt ein Schlüsselsymbol, was könnte daß für eine 
 2. **durchsuchen von Dateiinhalten** Vorgegebenen Suchstring in der Bild-Datei ausfindig machen.
 3. **Sting nach Muster aufteilen** gefundenen String in separate Teilstrings aufteilen und den relevanten in einer Text-Datei zwischenspeichern.
 
-**Aufgabe:**
-
+**Aufgabe:**  
 Finden und zwischenspeichern (wird in Level4 benötigt) eines in der Bild-Datei versteckten ver./enschlüsselungsschlüssel.
 
 ## Level 4 – Bitweise Symetrische Verschlüsselung
 
 **Geschichte**
+
 Warum kann ich den Inhalt dieser komische Datei nicht lesen? 
 Könnte sie Verschlüsselt worden sein? 
 Was hat daß jetzt mit dem gefundenen Schlüssel zu tun?
@@ -77,8 +77,7 @@ Was hat daß jetzt mit dem gefundenen Schlüssel zu tun?
 3. **Bitweise XOR verknüpfung** Verknüpfen der Binären ketten mittels einer "Exklusiv oder" verknüpfung, zur Symetrischen ver./entschlüsselung mittels eines Schlüssel/Password/Zeichenketten.
 4. **Arbeiten mit Funktionen** Aufteilen des Codes in einzelne Funktionen, damit Code nicht Kopiert werden muß, wenn dieser mehrfach verwendet wird. Bsp. bei der Umwandlung von Strings in Binärfolgen für die Nachricht und den ver./entschlüsselungsschlüssel.
 
-**Aufgabe:**
-
+**Aufgabe:**  
 Entschlüsseln (Einfache Symetrische Verschlüsselung) des Datei-Inhaltes mit dem in Level3 gefundenen Schlüssel. Die Verschlüsselung ist mittels XOR Verknüpfung auf Bit-Ebene realisiert.
 
 ## Level 5 – Name the game
