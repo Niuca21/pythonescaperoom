@@ -78,6 +78,7 @@ Was hat daß jetzt mit dem gefundenen Schlüssel zu tun?
 4. **Arbeiten mit Funktionen** Aufteilen des Codes in einzelne Funktionen, damit Code nicht Kopiert werden muß, wenn dieser mehrfach verwendet wird. Bsp. bei der Umwandlung von Strings in Binärfolgen für die Nachricht und den ver./entschlüsselungsschlüssel.
 
 **Aufgabe:**
+
 Entschlüsseln (Einfache Symetrische Verschlüsselung) des Datei-Inhaltes mit dem in Level3 gefundenen Schlüssel. Die Verschlüsselung ist mittels XOR Verknüpfung auf Bit-Ebene realisiert.
 
 ## Level 5 – Name the game
