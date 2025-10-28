@@ -1,11 +1,20 @@
 import re
 
-def run(input_data):
+def run(log_text):
     results = []
-    lines = input_data.strip().split("\n")
+    admin_fail_count = 0
+    firewall_rules = []
+    lines = log_text.strip().split("\n")
 
     for line in lines:
         line = line.lower().strip()
+
+        if "user login failed for user admin" in line:
+            admin_fail_count += 1
+
+        if "firewall rule updated" in line:
+            firewall_rules.append(line)
+
         matches = re.findall(r"port (\d+)", line)
         for match in matches:
             port = int(match)
@@ -29,5 +38,8 @@ def run(input_data):
                 "raw_line": line
             })
 
-    return results
-
+    return {
+        "ports": results,
+        "admin_login_failures": admin_fail_count,
+        "firewall_rules": firewall_rules
+    }

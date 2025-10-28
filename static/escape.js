@@ -118,7 +118,9 @@ function show_room_data(data) {
 }
 
 function show_level(data) {
+console.log(data)
     $("#level").text(level + 1);
+    $("#gamename").text(data.gamename);
     $("#task").empty();
     $("#hints").empty().hide();
 

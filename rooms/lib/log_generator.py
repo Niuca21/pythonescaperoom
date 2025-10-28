@@ -3,7 +3,7 @@
 
 import random
 
-def generate_logfile(num_lines=30):
+def generate_logfile(num_lines=40):
     port_events = [
         "Secure connection established on port {}",
         "Unauthorized access attempt on port {}",
@@ -29,14 +29,28 @@ def generate_logfile(num_lines=30):
     times = ["00:01", "12:45", "03:33", "18:22", "23:59"]
 
     log_lines = []
-    for _ in range(num_lines):
+
+    # 1. Mindestens 2 Firewall-Regeln
+    for _ in range(2):
+        port = random.choice(ports)
+        log_lines.append(f"Firewall rule updated: allow port {port}")
+
+    # 2. Zufällig 2 oder 3 Admin-Login-Fehler
+    for _ in range(random.randint(2, 3)):
+        log_lines.append("User login failed for user admin")
+
+    # 3. Restliche Zeilen auffüllen
+    while len(log_lines) < num_lines:
         if random.random() < 0.6:
             template = random.choice(port_events)
             port = random.choice(ports)
             log_lines.append(template.format(port))
         else:
             template = random.choice(system_events)
-            value = random.choice(times if "at" in template else users) if "{}" in template else ""
-            log_lines.append(template.format(value) if value else template)
+            if "{}" in template:
+                value = random.choice(times if "at" in template else users)
+                log_lines.append(template.format(value))
+            else:
+                log_lines.append(template)
 
     return "\n".join(log_lines)
