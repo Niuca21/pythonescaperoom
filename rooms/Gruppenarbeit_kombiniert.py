@@ -97,6 +97,11 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
 
     # Level 3
     def create_level3(self):
+<<<<<<< ours
+=======
+        gamename = f"Finde den Schlüssel"
+        print("Schlüssel: ", self.key)
+>>>>>>> theirs
         task_messages = [
             "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
             "Hi,",
