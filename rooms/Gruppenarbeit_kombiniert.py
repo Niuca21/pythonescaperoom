@@ -9,73 +9,34 @@ import lib.crypt as CRYPT  # Funktionssammlung Oliver Level 4
 # Funktion Lukasz für Oliver Level 4 und verwendung für Level 5 Lukasz
 from lib.log_generator import generate_logfile
 
-
 class Gruppenarbeit_kombiniert(EscapeRoom):
 
     def __init__(self, response=None):
         super().__init__(response)
-<<<<<<< HEAD
-        self.set_metadata("Veronika, Lucasz & Oliver", __name__)
-        
-        self.log_data = generate_logfile(40)     # Logfile generieren 
-        # Logfile speichern für andere Levels  ( Lukasz )
-        with open("static/generated_log.txt", "w") as f:
-            f.write(self.log_data)
-        
-        
-        ## Fuer Level 3-4
-        self.key = CRYPT.schluessel_erstellen(30) #schluessel erstellen
-=======
-
         self.set_metadata("Veronika, Lucasz & Oliver", __name__)
 
-        # Fuer Level 3-4
-        self.key = CRYPT.schluessel_erstellen(30)  # schluessel erstellen
-
-        self.set_metadata("Veronika, Lukasz & Oliver", __name__)
-
-        # Logfile generieren   ( Lukasz )
-
+        # Logfile generieren für Level 5-6   ( Lukasz )
         self.log_data = generate_logfile(40)
-
         # Logfile speichern für andere Levels  ( Lukasz )
-
         with open("static/generated_log.txt", "w") as f:
             f.write(self.log_data)
 
         # Fuer Level 3-4
         self.key = CRYPT.schluessel_erstellen(30)  # schluessel erstellen
->>>>>>> origin
         self.bild = "static/KEY.jpg"
         # zufaelliges Bild ermitteln und umkopieren
         STEGO.random_bild(self.bild)
         STEGO.im_bild_verstecken(self.bild, self.key)
         self.verschluesselt = "static/text.crypt"
-<<<<<<< HEAD
+        # Log-Datei verschlüsseln
         CRYPT.schluesselanwendung_datei("static/generated_log.txt" ,self.verschluesselt ,self.key )
-#        CRYPT.schluesselanwendung_datei("static/originale/test.log" ,self.verschluesselt ,self.key )
-        
-        ## Fuer Level 5-6
-        
+
         self.add_level(self.create_level1()) # Veronika
         self.add_level(self.create_level2()) # Veronika
         self.add_level(self.create_level3()) # Oliver
         self.add_level(self.create_level4()) # Oliver
         self.add_level(self.create_level5()) # Lucasz
         self.add_level(self.create_level6()) # Lucasz
-=======
-        CRYPT.schluesselanwendung_datei(
-            "static/originale/test.log", self.verschluesselt, self.key)
-
-        # Fuer Level 5-6
-
-        self.add_level(self.create_level1())  # Veronika
-        self.add_level(self.create_level2())  # Veronika
-        self.add_level(self.create_level3())  # Oliver
-        self.add_level(self.create_level4())  # Oliver
-        self.add_level(self.create_level5())  # Lucasz
-        self.add_level(self.create_level6())  # Lucasz
->>>>>>> origin
 
     ### LEVELS ###
     # Level 1
@@ -141,11 +102,10 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
 
     # Level 3
     def create_level3(self):
-<<<<<<< ours
-=======
+
         gamename = f"Finde den Schlüssel"
         print("Schlüssel: ", self.key)
->>>>>>> theirs
+
         task_messages = [
             "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
             "Hi,",
@@ -160,13 +120,20 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
             "als encoding wurde 'ISO-8859-1' verwendet",
             "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
         ]
-        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
+        return {
+            "gamename": gamename,
+            "task_messages": task_messages, 
+            "hints": hints, 
+            "solution_function": STEGO.im_bild_finden, 
+            "data": self.bild
+        }
 
     # Level 4
     def create_level4(self):
+        gamename = f"Entschlüssel den Dateiinhalt"
         task_messages = [
             "Du hast jetzt einen Dateinamen " +
-            self.verschluesselt + ", schon mar reingeschaut?",
+            self.verschluesselt + ", schon mal reingeschaut?",
             "zur kontrolle, zeig mir die Zeichen 20 - 70"
         ]
         hints = [
@@ -178,11 +145,18 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
             "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist",
             "trotzdem solltest du die komplette Datei bearbeiten und auch wieder speichern. Bsp. ausgabe_encrypt.txt"
         ]
-        return {"task_messages": task_messages, "hints": hints, "solution_function": CRYPT.entschluesseln, "data": self.verschluesselt}
+        return {
+            "gamename": gamename,
+            "task_messages": task_messages, 
+            "hints": hints, 
+            "solution_function": CRYPT.entschluesseln, 
+            "data": self.verschluesselt
+        }
 
     # Level 5
 
     def create_level5(self):
+        gamename = f"Erweiterte Logfile-Analyse"
         log_data = self.log_data
 
         task_messages = [
@@ -203,6 +177,7 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         ]
 
         return {
+            "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
             "solution_function": self.check_ports_level5,
@@ -261,6 +236,7 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
     # Level 6
 
     def create_level6(self):
+        gamename = f"Port-Säuberung"
         task_messages = [
             "<b>🧠 Level 6: Port-Säuberung</b>",
             "Du hast nun eine Liste von Ports mit Status und Gründen aus der vorherigen Analyse.",
@@ -290,6 +266,7 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         ]
 
         return {
+            "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
             "solution_function": self.check_ports_level6,

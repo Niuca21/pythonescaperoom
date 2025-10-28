@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 995
-Firewall rule updated: allow port 22
-User login failed for user admin
-User login failed for user admin
-Exposed service detected on port 25
-Unauthorized access attempt on port 3306
-Connection accepted on port 3306
-User admin logged out
-Configuration file changed
-Exposed service detected on port 80
-Security policy updated
-Security policy updated
-Connection accepted on port 8080
+Firewall rule updated: allow port 993
 Firewall rule updated: allow port 110
-Firewall rule updated: allow port 143
-Exposed service detected on port 8443
-Backup completed successfully
-Backup completed successfully
-Exposed service detected on port 80
-Firewall rule updated: allow port 25
-Unauthorized access attempt on port 3306
-Exposed service detected on port 25
-Secure connection established on port 3306
-Unknown activity on port 22
-Antivirus scan started
-System rebooted at 00:01
-Exposed service detected on port 22
-Port 3306 is filtered
-Firewall rule updated: allow port 21
-User login failed for user guest
-Unknown activity on port 9999
-User login failed for user user1
-User root logged out
-Backup completed successfully
+User login failed for user admin
+User login failed for user admin
 Security policy updated
-Exposed service detected on port 443
+Security policy updated
+Configuration file changed
+Secure connection established on port 8080
+Exposed service detected on port 143
+Configuration file changed
+System rebooted at 12:45
+Security policy updated
+User user1 logged out
+Configuration file changed
+Port 8443 is filtered
+Security policy updated
+Port 21 is filtered
+Security policy updated
+System rebooted at 00:01
+User guest logged out
+Firewall rule updated: allow port 8443
+Connection accepted on port 995
+User guest logged out
+Security policy updated
+Unauthorized access attempt on port 80
+User login failed for user service
+System rebooted at 00:01
+Unknown activity on port 443
+Antivirus scan started
+Firewall rule updated: allow port 143
+Antivirus scan started
+Secure connection established on port 21
+Firewall rule updated: allow port 143
+Security policy updated
 User service logged out
-Backup completed successfully
-Connection accepted on port 993
-User admin logged out
+Connection accepted on port 25
+Connection accepted on port 443
+Security policy updated
+Port 993 is filtered
+Connection accepted on port 9999
