@@ -130,11 +130,11 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
 
     # Level 4
     def create_level4(self):
-        gamename = f"Entschlüssel den Dateiinhalt"
+        gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
             "Du hast jetzt einen Dateinamen " +
             self.verschluesselt + ", schon mal reingeschaut?",
-            "zur kontrolle, zeig mir die Zeichen 20 - 70"
+            "zeig mir mal den Inhalt"
         ]
         hints = [
             "kannst du den Inhalt lesen?",
@@ -154,7 +154,6 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         }
 
     # Level 5
-
     def create_level5(self):
         gamename = f"Erweiterte Logfile-Analyse"
         log_data = self.log_data
@@ -353,39 +352,7 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         # CRYPT.entschluesseln
 
         # Level 5. Lösung
-    def check_ports_level5(self, log_data):
-        return self.parse_logfile(log_data)
-
-    def parse_logfile(self, log_text):
-        results = []
-        lines = log_text.strip().split("\n")
-
-        for line in lines:
-            line = line.lower().strip()
-            matches = re.findall(r"port (\d+)", line)
-            for match in matches:
-                port = int(match)
-                if "secure" in line or "accepted" in line:
-                    status = "open"
-                    reason = "secure/accepted"
-                elif "attempt" in line or "exposed" in line or "unauthorized" in line:
-                    status = "open"
-                    reason = "attempt/exposed/unauthorized"
-                elif "filtered" in line:
-                    status = "closed"
-                    reason = "filtered"
-                else:
-                    status = "closed"
-                    reason = "default"
-
-                results.append({
-                    "port": port,
-                    "status": status,
-                    "reason": reason,
-                    "raw_line": line
-                })
-
-        return results
+		# Funktion befindet sich in der Level5-Funktion
 
         # Level 6. Lösung
     def check_ports_level6(self, port_list):

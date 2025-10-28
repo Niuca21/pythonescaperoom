@@ -1,40 +1,40 @@
 Firewall rule updated: allow port 993
-Firewall rule updated: allow port 110
+Firewall rule updated: allow port 22
 User login failed for user admin
 User login failed for user admin
-Security policy updated
-Security policy updated
+User login failed for user admin
+Unauthorized access attempt on port 443
+User login failed for user guest
+Firewall rule updated: allow port 8080
+Secure connection established on port 80
+User login failed for user guest
 Configuration file changed
-Secure connection established on port 8080
-Exposed service detected on port 143
-Configuration file changed
-System rebooted at 12:45
-Security policy updated
-User user1 logged out
-Configuration file changed
-Port 8443 is filtered
-Security policy updated
-Port 21 is filtered
-Security policy updated
+User admin logged out
+Unauthorized access attempt on port 8080
+Exposed service detected on port 8443
 System rebooted at 00:01
-User guest logged out
-Firewall rule updated: allow port 8443
-Connection accepted on port 995
-User guest logged out
-Security policy updated
-Unauthorized access attempt on port 80
+Backup completed successfully
+Backup completed successfully
+User login failed for user user1
+User root logged out
+Configuration file changed
+Exposed service detected on port 21
+Connection accepted on port 8080
+System rebooted at 03:33
+Port 80 is filtered
+Secure connection established on port 143
 User login failed for user service
-System rebooted at 00:01
-Unknown activity on port 443
-Antivirus scan started
-Firewall rule updated: allow port 143
-Antivirus scan started
-Secure connection established on port 21
-Firewall rule updated: allow port 143
+Firewall rule updated: allow port 443
+User guest logged out
+Unknown activity on port 8080
 Security policy updated
-User service logged out
-Connection accepted on port 25
-Connection accepted on port 443
+Port 8080 is filtered
+Unknown activity on port 22
+User login failed for user admin
+Firewall rule updated: allow port 143
+Secure connection established on port 80
+Backup completed successfully
+Firewall rule updated: allow port 110
+Secure connection established on port 80
 Security policy updated
-Port 993 is filtered
-Connection accepted on port 9999
+User login failed for user root
