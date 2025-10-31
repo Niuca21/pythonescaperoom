@@ -9,15 +9,25 @@ import lib.crypt as CRYPT  # Funktionssammlung Oliver Level 4
 # Funktion Lukasz für Oliver Level 4 und verwendung für Level 5 Lukasz
 from lib.log_generator import generate_logfile
 
+
 class Gruppenarbeit_kombiniert(EscapeRoom):
 
     def __init__(self, response=None):
         super().__init__(response)
+
+        self.set_metadata("Veronika, Lucasz & Oliver", __name__)
+
+        # Fuer Level 3-4
+        self.key = CRYPT.schluessel_erstellen(30)  # schluessel erstellen
+
         self.set_metadata("Veronika, Lukasz & Oliver", __name__)
 
-        # Logfile generieren für Level 5-6   ( Lukasz )
+        # Logfile generieren   ( Lukasz )
+
         self.log_data = generate_logfile(40)
+
         # Logfile speichern für andere Levels  ( Lukasz )
+
         with open("static/generated_log.txt", "w") as f:
             f.write(self.log_data)
 
@@ -28,18 +38,17 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         STEGO.random_bild(self.bild)
         STEGO.im_bild_verstecken(self.bild, self.key)
         self.verschluesselt = "static/text.crypt"
-        # Log-Datei verschlüsseln
-        CRYPT.schluesselanwendung_datei("static/generated_log.txt" ,self.verschluesselt ,self.key )
+        CRYPT.schluesselanwendung_datei(
+            "static/originale/test.log", self.verschluesselt, self.key)
 
-        # Die entschlüsselte Datei befindet sich nach Level 4 unter:
-        # tmp/ausgabe_encrypt.txt
+        # Fuer Level 5-6
 
-        self.add_level(self.create_level1()) # Veronika
-        self.add_level(self.create_level2()) # Veronika
-        self.add_level(self.create_level3()) # Oliver
-        self.add_level(self.create_level4()) # Oliver
-        self.add_level(self.create_level5()) # Lukasz
-        self.add_level(self.create_level6()) # Lukasz
+        self.add_level(self.create_level1())  # Veronika
+        self.add_level(self.create_level2())  # Veronika
+        self.add_level(self.create_level3())  # Oliver
+        self.add_level(self.create_level4())  # Oliver
+        self.add_level(self.create_level5())  # Lucasz
+        self.add_level(self.create_level6())  # Lucasz
 
     ### LEVELS ###
     # Level 1
@@ -105,10 +114,6 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
 
     # Level 3
     def create_level3(self):
-
-        gamename = f"Finde den Schlüssel"
-        print("Schlüssel: ", self.key)
-
         task_messages = [
             "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
             "Hi,",
@@ -123,46 +128,30 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
             "als encoding wurde 'ISO-8859-1' verwendet",
             "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
         ]
-        return {
-            "gamename": gamename,
-            "task_messages": task_messages, 
-            "hints": hints, 
-            "solution_function": STEGO.im_bild_finden, 
-            "data": self.bild
-        }
+        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
 
     # Level 4
     def create_level4(self):
-        gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
             "Du hast jetzt einen Dateinamen " +
-            self.verschluesselt + ", schon mal reingeschaut?",
-            "zeig mir mal den Inhalt"
+            self.verschluesselt + ", schon mar reingeschaut?",
+            "zur kontrolle, zeig mir die Zeichen 20 - 70"
         ]
         hints = [
             "kannst du den Inhalt lesen?",
             "Hattest du die flag gespeichert? Bsp. game.key?",
             "Bitweises XOR schon mal gesehen?",
+            "als Rückgabewert die Zeichen 20 - 70 als String zum alsolvieren dieses Level sollten erstmal reichen",
             "Denke drann den Inhalt des Key.File zu nutzen, nicht den Dateinamen",
             "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist",
             "trotzdem solltest du die komplette Datei bearbeiten und auch wieder speichern. Bsp. ausgabe_encrypt.txt"
         ]
-        return {
-            "gamename": gamename,
-            "task_messages": task_messages, 
-            "hints": hints, 
-            "solution_function": CRYPT.entschluesseln, 
-            "data": self.verschluesselt
-        }
+        return {"task_messages": task_messages, "hints": hints, "solution_function": CRYPT.entschluesseln, "data": self.verschluesselt}
 
-    # Level 5 Lukasz
+    # Level 5
+
     def create_level5(self):
-        gamename = f"Erweiterte Logfile-Analyse"
         log_data = self.log_data
-        # log_data = "tmp/ausgabe_encrypt.txt"
-        # Wenn mit der ver und wieder Entschlüsselten Datei gearbeitet werden soll.
-        # Müßte in Beispiellösung mit der Datei "ausgabe_encrypt.txt" (aus Beispiellösung für Level4)
-        # und in der kontrolle mit der Datei "tmp/ausgabe_encrypt.txt" gearbeitet werden
 
         task_messages = [
             "<b>🧠 Level 5: Erweiterte Logfile-Analyse</b>",
@@ -182,7 +171,6 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         ]
 
         return {
-            "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
             "solution_function": self.check_ports_level5,
@@ -190,9 +178,7 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         }
 
     def check_ports_level5(self, log_data):
-        result = self.parse_logfile_extended(log_data)
-        self.level5_result = result  # Speichere für Level 6
-        return result
+        return self.parse_logfile_extended(log_data)
 
     def parse_logfile_extended(self, log_text):
         results = []
@@ -240,78 +226,46 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
             "admin_login_failures": admin_fail_count,
             "firewall_rules": firewall_rules
         }
-    # Level 6  Lukasz
-
+    # Level 6
 
     def create_level6(self):
-        gamename = "Port-Säuberung & Firewall-Wiederherstellung"
-
         task_messages = [
-            "<b>🧠 Level 6: Port-Säuberung & Firewall-Wiederherstellung</b>",
-            "Du hast die Analyse aus Level 5 abgeschlossen. Jetzt musst du aktiv werden:",
-            "1️⃣ Schließe alle Ports, die als <i>open</i> markiert sind und deren Grund nicht 'secure/accepted' ist.",
-            "2️⃣ Stelle die Firewall-Regeln aus Level 5 wieder auf ihren ursprünglichen Wert zurück (z. B. entferne 'allow').",
-            "3️⃣ Wenn mehr als 2 fehlgeschlagene Admin-Logins erkannt wurden, entsperre den Admin-Account und füge eine Warnung hinzu.",
-            "📚 Lernziele: Listenmanipulation, Bedingte Logik, Dictionaries, Kombinierte Auswertung"
+            "<b>🧠 Level 6: Port-Säuberung</b>",
+            "Du hast nun eine Liste von Ports mit Status und Gründen aus der vorherigen Analyse.",
+            "Deine Aufgabe: Schließe alle Ports, die als <i>open</i> markiert sind und deren Grund <b>nicht</b> 'secure/accepted' ist.",
+            "💡 Ändere den Status auf 'closed' und den Grund auf 'manually closed'.",
+            "📚 Lernziele: Listenmanipulation, Bedingte Logik, Dictionaries"
         ]
 
         hints = [
-            "🔍 Nutze die Daten aus Level 5: ports, firewall_rules, admin_login_failures.",
-            "✍️ Verwende Bedingungen wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
-            "🧱 Gib ein Dictionary zurück mit den Schlüsseln <code>ports</code>, <code>firewall_rules</code>, <code>alert</code> und <code>admin_account</code>."
+            "🔍 Iteriere über die Liste mit einer Schleife.",
+            "✍️ Verwende eine Bedingung wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
+            "💡 Du kannst die Einträge direkt verändern oder eine neue Liste erstellen."
         ]
 
-    # Nutze die echte Lösung aus Level 5
-        data_from_level5 = getattr(self, "level5_result", None)
-        if not data_from_level5:
-            data_from_level5 = {
-                "ports": [],
-                "admin_login_failures": 0,
-                "firewall_rules": []
-            }
+        # Beispielhafte Daten aus Level 5 (könnten auch dynamisch übergeben werden)
+        example_data = [
+            {"port": 443, "status": "open", "reason": "secure/accepted",
+                "raw_line": "secure connection established on port 443"},
+            {"port": 8080, "status": "open", "reason": "attempt/exposed/unauthorized",
+                "raw_line": "unauthorized access attempt on port 8080"},
+            {"port": 22, "status": "closed", "reason": "filtered",
+                "raw_line": "port 22 is filtered"},
+            {"port": 8443, "status": "open", "reason": "secure/accepted",
+                "raw_line": "connection accepted on port 8443"},
+            {"port": 9999, "status": "closed", "reason": "default",
+                "raw_line": "unknown activity on port 9999"}
+        ]
 
         return {
-            "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
-            "solution_function": self.check_level6_solution,
-            "data": data_from_level5
+            "solution_function": self.check_ports_level6,
+            "data": example_data
         }
 
-    def check_level6_solution(self, data):
-        ports = data["ports"]
-        firewall_rules = data["firewall_rules"]
-        admin_failures = data["admin_login_failures"]
-
-    # 1. Ports schließen
-        for entry in ports:
-            if entry["status"] == "open" and entry["reason"] != "secure/accepted":
-                entry["status"] = "closed"
-                entry["reason"] = "manually closed"
-
-    # 2. Firewall-Regeln wiederherstellen (z. B. 'allow' entfernen)
-        restored_firewall_rules = []
-        for rule in firewall_rules:
-        # Beispiel: "Firewall rule updated: allow port 80" -> "Firewall rule restored: port 80"
-            restored_rule = rule.replace("updated: allow", "restored:")
-            restored_firewall_rules.append(restored_rule)
-
-    # 3. Admin-Account entsperren + Warnung
-        alert = None
-        admin_account = None
-        if admin_failures > 2:
-            alert = "ALERT: Too many admin login failures"
-            admin_account = "unlocked"
-
-        return {
-            "ports": ports,
-            "firewall_rules_restored": restored_firewall_rules,
-            "alert": alert,
-            "admin_account": admin_account
-        }
-
-#######################
-### Hilfsfunktionen ###
+        #######################
+    ### Hilfsfunktionen ###
 
         # Level 1. Aufgabe
     def ascii_cockie(self):
@@ -390,7 +344,39 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         # CRYPT.entschluesseln
 
         # Level 5. Lösung
-		# Funktion befindet sich in der Level5-Funktion
+    def check_ports_level5(self, log_data):
+        return self.parse_logfile(log_data)
+
+    def parse_logfile(self, log_text):
+        results = []
+        lines = log_text.strip().split("\n")
+
+        for line in lines:
+            line = line.lower().strip()
+            matches = re.findall(r"port (\d+)", line)
+            for match in matches:
+                port = int(match)
+                if "secure" in line or "accepted" in line:
+                    status = "open"
+                    reason = "secure/accepted"
+                elif "attempt" in line or "exposed" in line or "unauthorized" in line:
+                    status = "open"
+                    reason = "attempt/exposed/unauthorized"
+                elif "filtered" in line:
+                    status = "closed"
+                    reason = "filtered"
+                else:
+                    status = "closed"
+                    reason = "default"
+
+                results.append({
+                    "port": port,
+                    "status": status,
+                    "reason": reason,
+                    "raw_line": line
+                })
+
+        return results
 
         # Level 6. Lösung
     def check_ports_level6(self, port_list):

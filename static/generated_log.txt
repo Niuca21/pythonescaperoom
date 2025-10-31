@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 8080
-Firewall rule updated: allow port 9999
+Firewall rule updated: allow port 25
+Firewall rule updated: allow port 110
 User login failed for user admin
 User login failed for user admin
-Firewall rule updated: allow port 80
-Security policy updated
-User login failed for user root
-Unknown activity on port 8443
-Firewall rule updated: allow port 8443
-Connection accepted on port 995
-User login failed for user user1
-User login failed for user service
-Connection accepted on port 993
-Unknown activity on port 80
-Security policy updated
-Unknown activity on port 443
-Secure connection established on port 993
-Security policy updated
-Port 143 is filtered
-Configuration file changed
-Configuration file changed
-Connection accepted on port 443
-Port 9999 is filtered
-Secure connection established on port 443
-Secure connection established on port 22
-Connection accepted on port 110
+User login failed for user admin
 Unauthorized access attempt on port 993
-Secure connection established on port 21
-User login failed for user guest
-User guest logged out
-Firewall rule updated: allow port 9999
+Connection accepted on port 3306
+Secure connection established on port 80
+Exposed service detected on port 995
+Exposed service detected on port 995
+Backup completed successfully
+User root logged out
+Port 993 is filtered
+Unauthorized access attempt on port 80
 Configuration file changed
+Exposed service detected on port 110
 Security policy updated
-Unknown activity on port 9999
-Unauthorized access attempt on port 8443
+Security policy updated
+Backup completed successfully
+Firewall rule updated: allow port 993
+Connection accepted on port 25
+Configuration file changed
+Exposed service detected on port 993
+Secure connection established on port 8080
 Exposed service detected on port 22
+Port 21 is filtered
+Exposed service detected on port 9999
 Antivirus scan started
-Unknown activity on port 443
+User admin logged out
 Security policy updated
-Firewall rule updated: allow port 80
+Configuration file changed
+Port 443 is filtered
+Firewall rule updated: allow port 22
+Exposed service detected on port 8080
+User login failed for user service
+Unauthorized access attempt on port 9999
+Secure connection established on port 993
+Exposed service detected on port 993
+Unknown activity on port 25
+Configuration file changed

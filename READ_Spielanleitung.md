@@ -49,36 +49,35 @@ Vielleicht ist dort gar nichts Bösartiges … doch offenbar hast du keine ander
 **Aufgabe:**  
 Dekodiere die Zeitstempel, zähle die Werte und finde die neue Datei, die den nächsten Hinweis enthält.
 
-## Level 3 – Strings in Bildern finden (Einfache Steganographie)
+## Level 3 – Strings in Bildern finden
 
 **Geschichte**
 
-Die gefundene Bild-Datei zeigt ein Schlüsselsymbol, was könnte daß für eine Bedeutung haben.
+Die gefundene Bild-Datei zeigt einen Schlüssel, das könnte eine Bedeutung haben.
 
 **Lernziele:**
-1. **Dateien lesen & schreiben** einlesen einer Bild-Datei und schreiben einer Text-Datei als zwischenspeicher für einen Endschlüsselungs-Schlüssel
-2. **durchsuchen von Dateiinhalten** Vorgegebenen Suchstring in der Bild-Datei ausfindig machen.
-3. **Sting nach Muster aufteilen** gefundenen String in separate Teilstrings aufteilen und den relevanten in einer Text-Datei zwischenspeichern.
 
-**Aufgabe:**  
-Finden und zwischenspeichern (wird in Level4 benötigt) eines in der Bild-Datei versteckten ver./enschlüsselungsschlüssel.
+1. **Bild-Datei öffenen** gefundenes Bild öffen
+2. **suchen von Strings in Bildern** Vorgegebenen String suchen 
+3. **Stings nach Muster aufteilen** String in Teilstrings aufteilen
+4. **Teilstring in Datei speichern** Teilstring in separater Datei, zur späteren verwendung, speichern.
+5. **Name**
+6. **Name**
 
 ## Level 4 – Bitweise Symetrische Verschlüsselung
 
 **Geschichte**
 
-Warum kann ich den Inhalt dieser komische Datei nicht lesen? 
-Könnte sie Verschlüsselt worden sein? 
-Was hat daß jetzt mit dem gefundenen Schlüssel zu tun?
+Was ist jetz mit dem gefundenen Schlüssel zu tun? Warum kann ich den Inhalt dies komische Datei nicht lesen? Könnte sie Verschlüsselt worden sein.
 
 **Lernziele:**
-1. **Verketten von Strings** der gefundene Verschlüsselungskey muß für eine Erfolgreiche Entschlüsselung mehrfach hintereinander gesetzt werden, da die Nachricht meist länger als der Schlüssel ist.
-2. **wandlung in Binär-Format** Damit ein String auf Bit-Ebene Entschlüsselt werden kann, müßen die Strings ins Binärformat und wieder zurück gewandelt werden.
-3. **Bitweise XOR verknüpfung** Verknüpfen der Binären ketten mittels einer "Exklusiv oder" verknüpfung, zur Symetrischen ver./entschlüsselung mittels eines Schlüssel/Password/Zeichenketten.
-4. **Arbeiten mit Funktionen** Aufteilen des Codes in einzelne Funktionen, damit Code nicht Kopiert werden muß, wenn dieser mehrfach verwendet wird. Bsp. bei der Umwandlung von Strings in Binärfolgen für die Nachricht und den ver./entschlüsselungsschlüssel.
 
-**Aufgabe:**  
-Entschlüsseln (Einfache Symetrische Verschlüsselung) des Datei-Inhaltes mit dem in Level3 gefundenen Schlüssel. Die Verschlüsselung ist mittels XOR Verknüpfung auf Bit-Ebene realisiert.
+1. **Verketten von Strings** der gefundene Verschlüsselungskey muß für eine Erfolgreiche Entschlüsselung mehrfach hintereinander gesetzt werden, da die Nachricht meist länger als der Schlüssel ist.
+2. **Strings umwandeln in Binär und zurück** Damit auf Bit-Ebene Verschlüsselt werden kann müßen die Strings imd Binärfolgen und wieder zurück gewandelt werden
+3. **XOR verknüpfung von Binär kodierten Zeichenketten** Verknüpfen der Binären ketten mittels einer "Exklusiv oder" verknüpfung.
+4. **Arbeiten mit Funktionen** Aufteilen des Codes in einzelne Funktionen, damit Code nicht Copiert werden muß
+5. **Name**
+6. **Name**
 
 ## Level 5 – Name the game
 
@@ -93,8 +92,6 @@ Entschlüsseln (Einfache Symetrische Verschlüsselung) des Datei-Inhaltes mit de
 5. **Name**
 6. **Name**
 
-**Aufgabe:**
-
 ## Level 6 – Name the game
 
 **Geschichte**
@@ -107,5 +104,3 @@ Entschlüsseln (Einfache Symetrische Verschlüsselung) des Datei-Inhaltes mit de
 4. **Name**
 5. **Name**
 6. **Name**
-
-**Aufgabe:**
