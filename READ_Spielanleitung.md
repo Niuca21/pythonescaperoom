@@ -128,18 +128,6 @@ viele Fehlversuche erkannt wurden.
 2. **Name**
 3. **Name**
 4. **Name**
-5. **Name** Lukasz
-6. **Name** Lukasz
+5. **Erweiterte Logfile-Analyse** Lukasz
+6. **Port-Säuberung & Firewall-Wiederherstellung** Lukasz
 
-## Level 6 – Name the game
-
-**Geschichte**
-
-**Lernziele:**
-
-1. **Name**
-2. **Name**
-3. **Name**
-4. **Name**
-5. **Name**
-6. **Name**
