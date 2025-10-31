@@ -72,7 +72,7 @@ class VerloreneRechner(EscapeRoom):
         task_messages = [
             "In dieser Nachricht versteckt sich der Schlüssel zu deinem Bild:",
             f"<a href='{decrypted_path}' target='_blank'>Geheimtext öffnen</a>",
-            "Zähle sorgfältig, wie oft jede UTC-Zahl vorkommt, und kombiniere sie zu einer Dateiendung."
+            "Zähle sorgfältig, wie oft jede UTC-Zahl vorkommt, und kombiniere sie zu einer Dateiendung. Do not count the list below."
         ]
 
         # Hinweise für Schüler
