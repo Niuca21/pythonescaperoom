@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 8080
-Firewall rule updated: allow port 9999
+Firewall rule updated: allow port 3306
+Firewall rule updated: allow port 22
 User login failed for user admin
 User login failed for user admin
-Firewall rule updated: allow port 80
-Security policy updated
-User login failed for user root
-Unknown activity on port 8443
-Firewall rule updated: allow port 8443
-Connection accepted on port 995
-User login failed for user user1
-User login failed for user service
-Connection accepted on port 993
-Unknown activity on port 80
-Security policy updated
-Unknown activity on port 443
-Secure connection established on port 993
-Security policy updated
-Port 143 is filtered
-Configuration file changed
-Configuration file changed
-Connection accepted on port 443
-Port 9999 is filtered
-Secure connection established on port 443
-Secure connection established on port 22
-Connection accepted on port 110
-Unauthorized access attempt on port 993
-Secure connection established on port 21
-User login failed for user guest
-User guest logged out
-Firewall rule updated: allow port 9999
-Configuration file changed
-Security policy updated
-Unknown activity on port 9999
-Unauthorized access attempt on port 8443
-Exposed service detected on port 22
 Antivirus scan started
-Unknown activity on port 443
+Unauthorized access attempt on port 9999
 Security policy updated
-Firewall rule updated: allow port 80
+Connection accepted on port 21
+User service logged out
+Unknown activity on port 143
+User root logged out
+Security policy updated
+Security policy updated
+Connection accepted on port 9999
+Antivirus scan started
+Exposed service detected on port 8080
+Security policy updated
+Port 21 is filtered
+Backup completed successfully
+System rebooted at 00:01
+Security policy updated
+Backup completed successfully
+Exposed service detected on port 143
+Secure connection established on port 80
+Security policy updated
+Exposed service detected on port 80
+System rebooted at 00:01
+Secure connection established on port 8080
+Security policy updated
+Antivirus scan started
+Unknown activity on port 21
+Unknown activity on port 22
+Backup completed successfully
+Connection accepted on port 25
+Unknown activity on port 3306
+Firewall rule updated: allow port 21
+Firewall rule updated: allow port 995
+Exposed service detected on port 9999
+User guest logged out
+Configuration file changed

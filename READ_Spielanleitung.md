@@ -80,18 +80,57 @@ Was hat daß jetzt mit dem gefundenen Schlüssel zu tun?
 **Aufgabe:**  
 Entschlüsseln (Einfache Symetrische Verschlüsselung) des Datei-Inhaltes mit dem in Level3 gefundenen Schlüssel. Die Verschlüsselung ist mittels XOR Verknüpfung auf Bit-Ebene realisiert.
 
-## Level 5 – Name the game
+## Level 5 – Erweiterte Logfile-Analyse
 
 **Geschichte**
 
+Ein umfangreiches Logfile wurde dir zugespielt – es enthält Hinweise auf verdächtige Aktivitäten im
+Netzwerk. Du vermutest, dass jemand versucht hat, sich Zugang zu einem Admin-Account zu verschaffen
+und möglicherweise Firewall-Regeln manipuliert hat. Deine Aufgabe ist es, die Spuren zu analysieren.
+
 **Lernziele:**
+
+1. **Arbeiten mit regulären Ausdrücken**  Extrahieren von Portnummern aus Logzeilen.
+2. **Bedingte Logik anwenden**  Erkennen von sicherem oder unsicherem Port-Zugriff anhand von Schlüsselwörtern.
+3. **Fehleranalyse**  Zählen von fehlgeschlagenen Admin-Logins.
+4. **Listen und Dictionaries verwenden**  Strukturierte Rückgabe der Analyseergebnisse für weitere Verarbeitung.
+
+**Aufgaben**
+
+1. Alle Portnummern mit Status und Grund.
+2. Die Anzahl der fehlgeschlagenen Admin-Logins.
+3. Alle Zeilen, die eine Änderung an Firewall-Regeln enthalten.
+
+
+## Level 6 - Port-Säuberung & Firewall-Wiederherstellung
+
+**Geschichte**
+
+Nach der Analyse im vorherigen Level ist klar: Einige Ports sind offen und stellen ein Sicherheitsrisiko dar. Du
+musst nun eingreifen und die gefährlichen Ports schließen, um das System zu sichern. Außerdem sollen
+manipulierte Firewall-Regeln wiederhergestellt und der Admin-Account entsperrt werden – aber nur, wenn zu
+viele Fehlversuche erkannt wurden.
+
+**Lernziele:**
+
+1. **Listenmanipulation**  Ändern von Einträgen in einer Liste basierend auf Bedingungen.
+2. **Bedingte Logik**  Entscheidung, ob ein Port geschlossen werden muss oder ob eine Warnung ausgegeben wird.
+3. **String-Manipulation**  Wiederherstellung von Firewall-Regeln durch Ersetzen von Textteilen.
+4. **Strukturierte Rückgabe**  Zusammenführen aller Ergebnisse in einem Dictionary zur weiteren Verwendung.
+
+**Aufgaben**
+
+1. Schließe alle Ports, die als „open“ markiert sind und deren Grund nicht „secure/accepted“ ist.
+2. Stelle manipulierte Firewall-Regeln wieder her.
+3. Entsperre den Admin-Account, wenn mehr als zwei Fehlversuche erkannt wurden.
+
 
 1. **Name**
 2. **Name**
 3. **Name**
 4. **Name**
-5. **Name**
-6. **Name**
+5. **Name** Lukasz
+6. **Name** Lukasz
 
 **Aufgabe:**
 

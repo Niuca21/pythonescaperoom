@@ -1,6 +1,6 @@
 # Beispielloesung Level 6
 
-def run(data):
+    def run(data):
         ports = data["ports"]
         firewall_rules = data["firewall_rules"]
         admin_failures = data["admin_login_failures"]

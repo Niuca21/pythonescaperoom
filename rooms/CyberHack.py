@@ -21,8 +21,14 @@ class CyberHack(EscapeRoom):
 ##        self.add_level(self.level_6)
 
 
+    # Level 5 Lukasz
     def create_level5(self):
+        gamename = f"Erweiterte Logfile-Analyse"
         log_data = self.log_data
+        # log_data = "tmp/ausgabe_encrypt.txt"
+        # Wenn mit der ver und wieder Entschlüsselten Datei gearbeitet werden soll.
+        # Müßte in Beispiellösung mit der Datei "ausgabe_encrypt.txt" (aus Beispiellösung für Level4)
+        # und in der kontrolle mit der Datei "tmp/ausgabe_encrypt.txt" gearbeitet werden
 
         task_messages = [
             "<b>🧠 Level 5: Erweiterte Logfile-Analyse</b>",
@@ -42,18 +48,18 @@ class CyberHack(EscapeRoom):
         ]
 
         return {
+            "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
             "solution_function": self.check_ports_level5,
             "data": log_data
         }
 
-
-
     def check_ports_level5(self, log_data):
-        return self.parse_logfile_extended(log_data)
+        result = self.parse_logfile_extended(log_data)
+        self.level5_result = result  # Speichere für Level 6
+        return result
 
-    
     def parse_logfile_extended(self, log_text):
         results = []
         admin_fail_count = 0
@@ -100,49 +106,74 @@ class CyberHack(EscapeRoom):
             "admin_login_failures": admin_fail_count,
             "firewall_rules": firewall_rules
         }
-
-
+    # Level 6  Lukasz
 
 
     def create_level6(self):
+        gamename = "Port-Säuberung & Firewall-Wiederherstellung"
+
         task_messages = [
-            "<b>🧠 Level 6: Port-Säuberung</b>",
-            "Du hast nun eine Liste von Ports mit Status und Gründen aus der vorherigen Analyse.",
-            "Deine Aufgabe: Schließe alle Ports, die als <i>open</i> markiert sind und deren Grund <b>nicht</b> 'secure/accepted' ist.",
-            "💡 Ändere den Status auf 'closed' und den Grund auf 'manually closed'.",
-            "📚 Lernziele: Listenmanipulation, Bedingte Logik, Dictionaries"
+            "<b>🧠 Level 6: Port-Säuberung & Firewall-Wiederherstellung</b>",
+            "Du hast die Analyse aus Level 5 abgeschlossen. Jetzt musst du aktiv werden:",
+            "1️⃣ Schließe alle Ports, die als <i>open</i> markiert sind und deren Grund nicht 'secure/accepted' ist.",
+            "2️⃣ Stelle die Firewall-Regeln aus Level 5 wieder auf ihren ursprünglichen Wert zurück (z. B. entferne 'allow').",
+            "3️⃣ Wenn mehr als 2 fehlgeschlagene Admin-Logins erkannt wurden, entsperre den Admin-Account und füge eine Warnung hinzu.",
+            "📚 Lernziele: Listenmanipulation, Bedingte Logik, Dictionaries, Kombinierte Auswertung"
         ]
 
         hints = [
-            "🔍 Iteriere über die Liste mit einer Schleife.",
-            "✍️ Verwende eine Bedingung wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
-            "💡 Du kannst die Einträge direkt verändern oder eine neue Liste erstellen."
+            "🔍 Nutze die Daten aus Level 5: ports, firewall_rules, admin_login_failures.",
+            "✍️ Verwende Bedingungen wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
+            "🧱 Gib ein Dictionary zurück mit den Schlüsseln <code>ports</code>, <code>firewall_rules</code>, <code>alert</code> und <code>admin_account</code>."
         ]
 
-        # Beispielhafte Daten aus Level 5 (könnten auch dynamisch übergeben werden)
-        example_data = [
-            {"port": 443, "status": "open", "reason": "secure/accepted", "raw_line": "secure connection established on port 443"},
-            {"port": 8080, "status": "open", "reason": "attempt/exposed/unauthorized", "raw_line": "unauthorized access attempt on port 8080"},
-            {"port": 22, "status": "closed", "reason": "filtered", "raw_line": "port 22 is filtered"},
-            {"port": 8443, "status": "open", "reason": "secure/accepted", "raw_line": "connection accepted on port 8443"},
-            {"port": 9999, "status": "closed", "reason": "default", "raw_line": "unknown activity on port 9999"}
-        ]
+    # Nutze die echte Lösung aus Level 5
+        data_from_level5 = getattr(self, "level5_result", None)
+        if not data_from_level5:
+            data_from_level5 = {
+                "ports": [],
+                "admin_login_failures": 0,
+                "firewall_rules": []
+            }
 
         return {
+            "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
-            "solution_function": self.check_ports_level6,
-            "data": example_data
+            "solution_function": self.check_level6_solution,
+            "data": data_from_level5
         }
 
-    def check_ports_level6(self, port_list):
-        return self.clean_ports(port_list)
+    def check_level6_solution(self, data):
+        ports = data["ports"]
+        firewall_rules = data["firewall_rules"]
+        admin_failures = data["admin_login_failures"]
 
-    def clean_ports(self, port_list):
-        cleaned = []
-        for entry in port_list:
+    # 1. Ports schließen
+        for entry in ports:
             if entry["status"] == "open" and entry["reason"] != "secure/accepted":
                 entry["status"] = "closed"
                 entry["reason"] = "manually closed"
-            cleaned.append(entry)
-        return cleaned
+
+    # 2. Firewall-Regeln wiederherstellen (z. B. 'allow' entfernen)
+        restored_firewall_rules = []
+        for rule in firewall_rules:
+        # Beispiel: "Firewall rule updated: allow port 80" -> "Firewall rule restored: port 80"
+            restored_rule = rule.replace("updated: allow", "restored:")
+            restored_firewall_rules.append(restored_rule)
+
+    # 3. Admin-Account entsperren + Warnung
+        alert = None
+        admin_account = None
+        if admin_failures > 2:
+            alert = "ALERT: Too many admin login failures"
+            admin_account = "unlocked"
+
+        return {
+            "ports": ports,
+            "firewall_rules_restored": restored_firewall_rules,
+            "alert": alert,
+            "admin_account": admin_account
+        }
+
+
