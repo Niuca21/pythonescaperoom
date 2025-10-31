@@ -258,4 +258,92 @@ class Gruppe_HH_05(EscapeRoom):
             text = f.read()
         return "443.jpg"
 
+    # Level 5
+
+    def check_ports_level5(self, log_data):
+        result = self.parse_logfile_extended(log_data)
+        self.level5_result = result  # Speichere für Level 6
+        return result
+
+    def parse_logfile_extended(self, log_text):
+        results = []
+        admin_fail_count = 0
+        firewall_rules = []
+        lines = log_text.strip().split("\n")
+
+        for line in lines:
+            line = line.lower().strip()
+
+        # Zusatzaufgabe: Admin-Login-Fehler zählen
+            if "user login failed for user admin" in line:
+                admin_fail_count += 1
+
+        # Zusatzaufgabe: Firewall-Regeln sammeln
+            if "firewall rule updated" in line:
+                firewall_rules.append(line)
+
+        # Port-Analyse
+            matches = re.findall(r"port (\d+)", line)
+            for match in matches:
+                port = int(match)
+                if "secure" in line or "accepted" in line:
+                    status = "open"
+                    reason = "secure/accepted"
+                elif "attempt" in line or "exposed" in line or "unauthorized" in line:
+                    status = "open"
+                    reason = "attempt/exposed/unauthorized"
+                elif "filtered" in line:
+                    status = "closed"
+                    reason = "filtered"
+                else:
+                    status = "closed"
+                    reason = "default"
+
+                results.append({
+                    "port": port,
+                    "status": status,
+                    "reason": reason,
+                    "raw_line": line
+                })
+
+        return {
+            "ports": results,
+            "admin_login_failures": admin_fail_count,
+            "firewall_rules": firewall_rules
+        }
+
+    # Level 6
+
+    def check_level6_solution(self, data):
+        ports = data["ports"]
+        firewall_rules = data["firewall_rules"]
+        admin_failures = data["admin_login_failures"]
+
+    # 1. Ports schließen
+        for entry in ports:
+            if entry["status"] == "open" and entry["reason"] != "secure/accepted":
+                entry["status"] = "closed"
+                entry["reason"] = "manually closed"
+
+    # 2. Firewall-Regeln wiederherstellen (z. B. 'allow' entfernen)
+        restored_firewall_rules = []
+        for rule in firewall_rules:
+        # Beispiel: "Firewall rule updated: allow port 80" -> "Firewall rule restored: port 80"
+            restored_rule = rule.replace("updated: allow", "restored:")
+            restored_firewall_rules.append(restored_rule)
+
+    # 3. Admin-Account entsperren + Warnung
+        alert = None
+        admin_account = None
+        if admin_failures > 2:
+            alert = "ALERT: Too many admin login failures"
+            admin_account = "unlocked"
+
+        return {
+            "ports": ports,
+            "firewall_rules_restored": restored_firewall_rules,
+            "alert": alert,
+            "admin_account": admin_account
+        }
+
     ### SOLUTIONS ###
