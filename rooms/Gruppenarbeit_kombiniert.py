@@ -39,8 +39,8 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         self.add_level(self.create_level2()) # Veronika
         self.add_level(self.create_level3()) # Oliver
         self.add_level(self.create_level4()) # Oliver
-        self.add_level(self.create_level5()) # Lucasz
-        self.add_level(self.create_level6()) # Lucasz
+        self.add_level(self.create_level5()) # Lukasz
+        self.add_level(self.create_level6()) # Lukasz
 
     ### LEVELS ###
     # Level 1
