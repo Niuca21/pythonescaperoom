@@ -30,14 +30,14 @@ def schluesselanwendung_datei(eingabe_datei, ausgabe_datei, schluessel):
 	key = ""
 	with open(schluessel, "r") as f:
 		key = f.readline()
-	counter = 0
+#	counter = 0
 	ergebnis = ""
 	with open(eingabe_datei, 'r') as in_file:
 		with open(ausgabe_datei, 'w') as out_file:
 			for line in in_file.read():
-				counter += 1
+#				counter += 1
 				tmp = schluesselanwendung(line, key)
 				out_file.write(tmp)
-				if (counter >= 20 and counter >= 70):
-					ergebnis += tmp
+#				if (counter >= 20 and counter >= 70):
+				ergebnis += tmp
 	return ergebnis

@@ -1,6 +1,5 @@
 # Beispielloesung Level 6
 
-#<<<<<<< HEAD
 def run(data):
         ports = data["ports"]
         firewall_rules = data["firewall_rules"]
@@ -31,13 +30,4 @@ def run(data):
             "alert": alert,
             "admin_account": admin_account
         }
-#=======
-#def run(port_list):
-#    cleaned = []
-#    for entry in port_list:
-#        if entry["status"] == "open" and entry["reason"] != "secure/accepted":
-#            entry["status"] = "closed"
-#            entry["reason"] = "manually closed"
-#        cleaned.append(entry)
-#    return cleaned
-#>>>>>>> 79700d30aebc1b2b6354c3cd4d0664734979dcfa
+

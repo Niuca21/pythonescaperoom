@@ -44,16 +44,16 @@ def schluesselanwendung(was, womit):
 
 # erweiterung, damit auch Dateien ver und entschluesselt werden koennen
 def schluesselanwendung_datei(eingabe_datei, ausgabe_datei, schluessel):
-	counter = 0  # nur zur kontrolle
+#	counter = 0  # nur zur kontrolle
 	ergebnis = ""  # nur zur kontrolle
 	with open(eingabe_datei, 'r') as in_file:
 		with open(ausgabe_datei, 'w') as out_file:
 			for line in in_file.read():
-				counter += 1  # nur zur kontrolle
+#				counter += 1  # nur zur kontrolle
 				tmp = schluesselanwendung(line, schluessel)
 				out_file.write(tmp)
-				if (counter >= 20 and counter >= 70): # nur zur kontrolle
-					ergebnis += tmp # nur zur kontrolle
+#				if (counter >= 20 and counter >= 70): # nur zur kontrolle
+				ergebnis += tmp # nur zur kontrolle
 	return ergebnis # nur zur kontrolle im EscapeRoom Spiel
 
 # Angepasste Funktion, damit zum entschluesseln der Schluessel aus einer Daten genutzt werden kann

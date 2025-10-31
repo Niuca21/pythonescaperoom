@@ -104,7 +104,7 @@ class Gruppe_HH_05(EscapeRoom):
     def create_level3(self):
         gamename = f"Finde den Schlüssel"
         task_messages = [
-            "  <img src=" + self.bild + " alt='The Key you looking for' height='400'/> ",
+            "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
             "Hi,",
             "das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen",
         ]
@@ -130,14 +130,12 @@ class Gruppe_HH_05(EscapeRoom):
         gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
             "Du hast jetzt einen Dateinamen " +
-            self.verschluesselt + ", schon mar reingeschaut?",
-            "zur kontrolle, zeig mir die Zeichen 20 - 70"
+            self.verschluesselt + ", schon mar reingeschaut?"
         ]
         hints = [
             "kannst du den Inhalt lesen?",
             "Hattest du die flag gespeichert? Bsp. game.key?",
             "Bitweises XOR schon mal gesehen?",
-            "als Rückgabewert die Zeichen 20 - 70 als String zum alsolvieren dieses Level sollten erstmal reichen",
             "Denke drann den Inhalt des Key.File zu nutzen, nicht den Dateinamen",
             "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist",
             "trotzdem solltest du die komplette Datei bearbeiten und auch wieder speichern. Bsp. ausgabe_encrypt.txt"
