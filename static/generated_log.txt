@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 995
-Firewall rule updated: allow port 9999
-User login failed for user admin
-User login failed for user admin
-Exposed service detected on port 80
-Firewall rule updated: allow port 8443
-Secure connection established on port 25
-Secure connection established on port 25
-System rebooted at 18:22
-Exposed service detected on port 8443
-Firewall rule updated: allow port 80
-Configuration file changed
-Unauthorized access attempt on port 8443
-Unknown activity on port 143
-Secure connection established on port 9999
+Firewall rule updated: allow port 22
 Firewall rule updated: allow port 993
+User login failed for user admin
+User login failed for user admin
+User admin logged out
+Antivirus scan started
+Exposed service detected on port 25
 Configuration file changed
 Antivirus scan started
-Firewall rule updated: allow port 995
-Secure connection established on port 25
 Security policy updated
+System rebooted at 00:01
+Exposed service detected on port 21
 Port 3306 is filtered
-Exposed service detected on port 80
-Backup completed successfully
-Firewall rule updated: allow port 21
-System rebooted at 23:59
+Firewall rule updated: allow port 993
+User login failed for user root
+User user1 logged out
+Antivirus scan started
+Secure connection established on port 25
+Unknown activity on port 25
 Security policy updated
-User admin logged out
-Exposed service detected on port 9999
-User login failed for user user1
-Unknown activity on port 8080
-Secure connection established on port 110
-Secure connection established on port 21
-Unknown activity on port 993
-Unauthorized access attempt on port 9999
-Connection accepted on port 143
-Connection accepted on port 8080
-Secure connection established on port 993
-Unknown activity on port 8443
-Unauthorized access attempt on port 21
+Antivirus scan started
+Connection accepted on port 8443
+Security policy updated
+Port 143 is filtered
+Unknown activity on port 9999
+Firewall rule updated: allow port 3306
+Unknown activity on port 3306
+Antivirus scan started
+Unknown activity on port 80
+Secure connection established on port 3306
+Backup completed successfully
+Unknown activity on port 143
+User root logged out
+Port 8080 is filtered
+Secure connection established on port 25
+System rebooted at 00:01
+Firewall rule updated: allow port 3306
+Unauthorized access attempt on port 443
+Secure connection established on port 8443
+Port 443 is filtered

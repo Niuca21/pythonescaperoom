@@ -49,35 +49,38 @@ Vielleicht ist dort gar nichts Bösartiges … doch offenbar hast du keine ander
 **Aufgabe:**  
 Dekodiere die Zeitstempel, zähle die Werte und finde die neue Datei, die den nächsten Hinweis enthält.
 
-## Level 3 – Strings in Bildern finden
+## Level 3 – Strings in Bildern finden (Einfache Steganographie)
 
 **Geschichte**
 
-Die gefundene Bild-Datei zeigt einen Schlüssel, das könnte eine Bedeutung haben.
+Die gefundene Bild-Datei zeigt ein Schlüsselsymbol, was könnte daß für eine Bedeutung haben.
+
 
 **Lernziele:**
+1. **Dateien lesen & schreiben** einlesen einer Bild-Datei und schreiben einer Text-Datei als zwischenspeicher für einen Endschlüsselungs-Schlüssel
+2. **durchsuchen von Dateien** Vorgegebenen Suchstring in der Bild-Datei ausfindig machen.
+3. **Sting nach Muster aufteilen** gefundenen String in separate Teilstrings aufteilen und den relevanten in einer Text-Datei zwischenspeichern.
 
-1. **Bild-Datei öffenen** gefundenes Bild öffen
-2. **suchen von Strings in Bildern** Vorgegebenen String suchen 
-3. **Stings nach Muster aufteilen** String in Teilstrings aufteilen
-4. **Teilstring in Datei speichern** Teilstring in separater Datei, zur späteren verwendung, speichern.
-5. **Name**
-6. **Name**
+**Aufgabe:**  
+Finden und zwischenspeichern (wird in Level4 benötigt) eines in der Bild-Datei versteckten ver./enschlüsselungsschlüssel.
 
 ## Level 4 – Bitweise Symetrische Verschlüsselung
 
 **Geschichte**
 
-Was ist jetz mit dem gefundenen Schlüssel zu tun? Warum kann ich den Inhalt dies komische Datei nicht lesen? Könnte sie Verschlüsselt worden sein.
+Warum kann ich den Inhalt dieser komische Datei nicht lesen? 
+Könnte sie Verschlüsselt worden sein? 
+Was hat daß jetzt mit dem gefundenen Schlüssel zu tun?
+
 
 **Lernziele:**
-
 1. **Verketten von Strings** der gefundene Verschlüsselungskey muß für eine Erfolgreiche Entschlüsselung mehrfach hintereinander gesetzt werden, da die Nachricht meist länger als der Schlüssel ist.
-2. **Strings umwandeln in Binär und zurück** Damit auf Bit-Ebene Verschlüsselt werden kann müßen die Strings imd Binärfolgen und wieder zurück gewandelt werden
-3. **XOR verknüpfung von Binär kodierten Zeichenketten** Verknüpfen der Binären ketten mittels einer "Exklusiv oder" verknüpfung.
-4. **Arbeiten mit Funktionen** Aufteilen des Codes in einzelne Funktionen, damit Code nicht Copiert werden muß
-5. **Name**
-6. **Name**
+2. **wandlung in Binär-Format** Damit ein String auf Bit-Ebene Entschlüsselt werden kann, müßen die Strings ins Binärformat und wieder zurück gewandelt werden.
+3. **Bitweise XOR verknüpfung** Verknüpfen der Binären ketten mittels einer "Exklusiv oder" verknüpfung, zur Symetrischen ver./entschlüsselung mittels eines Schlüssel/Password/Zeichenketten.
+4. **Arbeiten mit Funktionen** Aufteilen des Codes in einzelne Funktionen, damit Code nicht Kopiert werden muß, wenn dieser mehrfach verwendet wird. Bsp. bei der Umwandlung von Strings in Binärfolgen für die Nachricht und den ver./entschlüsselungsschlüssel.
+
+**Aufgabe:**  
+Entschlüsseln (Einfache Symetrische Verschlüsselung) des Datei-Inhaltes mit dem in Level3 gefundenen Schlüssel. Die Verschlüsselung ist mittels XOR Verknüpfung auf Bit-Ebene realisiert.
 
 ## Level 5 – Erweiterte Logfile-Analyse
 
@@ -87,15 +90,14 @@ Ein umfangreiches Logfile wurde dir zugespielt – es enthält Hinweise auf verd
 Netzwerk. Du vermutest, dass jemand versucht hat, sich Zugang zu einem Admin-Account zu verschaffen
 und möglicherweise Firewall-Regeln manipuliert hat. Deine Aufgabe ist es, die Spuren zu analysieren.
 
-**Lernziele:**
 
+**Lernziele:**
 1. **Arbeiten mit regulären Ausdrücken**  Extrahieren von Portnummern aus Logzeilen.
 2. **Bedingte Logik anwenden**  Erkennen von sicherem oder unsicherem Port-Zugriff anhand von Schlüsselwörtern.
 3. **Fehleranalyse**  Zählen von fehlgeschlagenen Admin-Logins.
 4. **Listen und Dictionaries verwenden**  Strukturierte Rückgabe der Analyseergebnisse für weitere Verarbeitung.
 
-**Aufgaben**
-
+**Aufgaben**  
 1. Alle Portnummern mit Status und Grund.
 2. Die Anzahl der fehlgeschlagenen Admin-Logins.
 3. Alle Zeilen, die eine Änderung an Firewall-Regeln enthalten.
@@ -110,26 +112,15 @@ musst nun eingreifen und die gefährlichen Ports schließen, um das System zu si
 manipulierte Firewall-Regeln wiederhergestellt und der Admin-Account entsperrt werden – aber nur, wenn zu
 viele Fehlversuche erkannt wurden.
 
-**Lernziele:**
 
+**Lernziele:**
 1. **Listenmanipulation**  Ändern von Einträgen in einer Liste basierend auf Bedingungen.
 2. **Bedingte Logik**  Entscheidung, ob ein Port geschlossen werden muss oder ob eine Warnung ausgegeben wird.
 3. **String-Manipulation**  Wiederherstellung von Firewall-Regeln durch Ersetzen von Textteilen.
 4. **Strukturierte Rückgabe**  Zusammenführen aller Ergebnisse in einem Dictionary zur weiteren Verwendung.
 
-**Aufgaben**
-
+**Aufgaben**  
 1. Schließe alle Ports, die als „open“ markiert sind und deren Grund nicht „secure/accepted“ ist.
 2. Stelle manipulierte Firewall-Regeln wieder her.
 3. Entsperre den Admin-Account, wenn mehr als zwei Fehlversuche erkannt wurden.
-
-
-## 
-
-1. **Name**
-2. **Name**
-3. **Name**
-4. **Name**
-5. **Erweiterte Logfile-Analyse** Lukasz
-6. **Port-Säuberung & Firewall-Wiederherstellung** Lukasz
 
