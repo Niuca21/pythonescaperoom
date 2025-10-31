@@ -52,30 +52,24 @@ class VerloreneRechner(EscapeRoom):
     def create_level2(self):
         gamename = "Textdatei mit Nebenwirkungen"
 
-        # Dateipfade
         template_path = "static/template.txt"
         output_path = "static/output.txt"
 
-        # Platzhalter definieren
         self.placeholders = ["{key1}", "{key2}", "{key3}"]
 
-        # Datei erzeugen (Platzhalter durch UTCs ersetzen + zusätzliche Zeilen für Lösung 443)
         decrypted_path = self.generate_decrypted_file(
             template_path, output_path)
 
-        # Lösung intern testen
         solution = self.count_decrypted_words(
-            output_path)  # Intern für Escape Room
+            output_path)
         print("Level 2 Lösung (intern):", solution)
 
-        # Nachrichten für Schüler
         task_messages = [
             "In dieser Nachricht versteckt sich der Schlüssel zu deinem Bild:",
             f"<a href='{decrypted_path}' target='_blank'>Geheimtext öffnen</a>",
             "Zähle sorgfältig, wie oft jede UTC-Zahl vorkommt, und kombiniere sie zu einer Dateiendung. Do not count the list below."
         ]
 
-        # Hinweise für Schüler
         hints = [
             "Jede Zahl (z. B. -1338780358 UTC) zählt. Finde heraus, wie oft sie erscheint.",
             "Setze die Anzahl der Vorkommen in der Reihenfolge ihres ersten Auftretens zusammen.",
@@ -93,21 +87,17 @@ class VerloreneRechner(EscapeRoom):
     # ---------------------------
     # Level 2. Datei erzeugen
     # ---------------------------
-    def generate_decrypted_file(self, template_path, output_path):
-        # Zufällige UTCs erzeugen
+    def generate_decrypted_file(self, path, output_path):
         self.utc_list = [
             f"-{self.random_utc_timestamp()}" for _ in self.placeholders]
 
-        # Template einlesen
-        with open(template_path, "r", encoding="utf-8") as f:
+        with open(path, "r", encoding="utf-8") as f:
             text = f.read()
 
-        # Platzhalter ersetzen
         for ph, utc in zip(self.placeholders, self.utc_list):
             text = text.replace(ph, utc)
 
-        # Zusätzliche Zeilen erzeugen, damit die Lösung 443 ergibt
-        desired_counts = [4, 4, 3]  # key1, key2, key3
+        desired_counts = [4, 4, 3]
         additional_lines = []
         for utc, count in zip(self.utc_list, desired_counts):
             additional_lines.extend(
@@ -115,7 +105,6 @@ class VerloreneRechner(EscapeRoom):
         random.shuffle(additional_lines)
         text += "\n\n" + "\n".join(additional_lines)
 
-        # Datei speichern
         with open(output_path, "w", encoding="utf-8") as f:
             f.write(text)
 
@@ -129,9 +118,7 @@ class VerloreneRechner(EscapeRoom):
         return random.randint(start, end)
 
     def count_decrypted_words(self, output_path):
-        # Datei lesen
         with open(output_path, "r", encoding="utf-8") as f:
             text = f.read()
 
-        # Lösung für dieses Level immer 443.jpg
         return "443.jpg"
