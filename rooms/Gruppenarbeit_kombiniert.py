@@ -13,7 +13,7 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
 
     def __init__(self, response=None):
         super().__init__(response)
-        self.set_metadata("Veronika, Lucasz & Oliver", __name__)
+        self.set_metadata("Veronika, Lukasz & Oliver", __name__)
 
         # Logfile generieren für Level 5-6   ( Lukasz )
         self.log_data = generate_logfile(40)
@@ -244,74 +244,74 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
 
 
     def create_level6(self):
-    gamename = "Port-Säuberung & Firewall-Wiederherstellung"
+        gamename = "Port-Säuberung & Firewall-Wiederherstellung"
 
-    task_messages = [
-        "<b>🧠 Level 6: Port-Säuberung & Firewall-Wiederherstellung</b>",
-        "Du hast die Analyse aus Level 5 abgeschlossen. Jetzt musst du aktiv werden:",
-        "1️⃣ Schließe alle Ports, die als <i>open</i> markiert sind und deren Grund nicht 'secure/accepted' ist.",
-        "2️⃣ Stelle die Firewall-Regeln aus Level 5 wieder auf ihren ursprünglichen Wert zurück (z. B. entferne 'allow').",
-        "3️⃣ Wenn mehr als 2 fehlgeschlagene Admin-Logins erkannt wurden, entsperre den Admin-Account und füge eine Warnung hinzu.",
-        "📚 Lernziele: Listenmanipulation, Bedingte Logik, Dictionaries, Kombinierte Auswertung"
-    ]
+        task_messages = [
+            "<b>🧠 Level 6: Port-Säuberung & Firewall-Wiederherstellung</b>",
+            "Du hast die Analyse aus Level 5 abgeschlossen. Jetzt musst du aktiv werden:",
+            "1️⃣ Schließe alle Ports, die als <i>open</i> markiert sind und deren Grund nicht 'secure/accepted' ist.",
+            "2️⃣ Stelle die Firewall-Regeln aus Level 5 wieder auf ihren ursprünglichen Wert zurück (z. B. entferne 'allow').",
+            "3️⃣ Wenn mehr als 2 fehlgeschlagene Admin-Logins erkannt wurden, entsperre den Admin-Account und füge eine Warnung hinzu.",
+            "📚 Lernziele: Listenmanipulation, Bedingte Logik, Dictionaries, Kombinierte Auswertung"
+        ]
 
-    hints = [
-        "🔍 Nutze die Daten aus Level 5: ports, firewall_rules, admin_login_failures.",
-        "✍️ Verwende Bedingungen wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
-        "🧱 Gib ein Dictionary zurück mit den Schlüsseln <code>ports</code>, <code>firewall_rules</code>, <code>alert</code> und <code>admin_account</code>."
-    ]
+        hints = [
+            "🔍 Nutze die Daten aus Level 5: ports, firewall_rules, admin_login_failures.",
+            "✍️ Verwende Bedingungen wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
+            "🧱 Gib ein Dictionary zurück mit den Schlüsseln <code>ports</code>, <code>firewall_rules</code>, <code>alert</code> und <code>admin_account</code>."
+        ]
 
     # Nutze die echte Lösung aus Level 5
-    data_from_level5 = getattr(self, "level5_result", None)
-    if not data_from_level5:
-        data_from_level5 = {
-            "ports": [],
-            "admin_login_failures": 0,
-            "firewall_rules": []
+        data_from_level5 = getattr(self, "level5_result", None)
+        if not data_from_level5:
+            data_from_level5 = {
+                "ports": [],
+                "admin_login_failures": 0,
+                "firewall_rules": []
+            }
+
+        return {
+            "gamename": gamename,
+            "task_messages": task_messages,
+            "hints": hints,
+            "solution_function": self.check_level6_solution,
+            "data": data_from_level5
         }
 
-    return {
-        "gamename": gamename,
-        "task_messages": task_messages,
-        "hints": hints,
-        "solution_function": self.check_level6_solution,
-        "data": data_from_level5
-    }
-
     def check_level6_solution(self, data):
-    ports = data["ports"]
-    firewall_rules = data["firewall_rules"]
-    admin_failures = data["admin_login_failures"]
+        ports = data["ports"]
+        firewall_rules = data["firewall_rules"]
+        admin_failures = data["admin_login_failures"]
 
     # 1. Ports schließen
-    for entry in ports:
-        if entry["status"] == "open" and entry["reason"] != "secure/accepted":
-            entry["status"] = "closed"
-            entry["reason"] = "manually closed"
+        for entry in ports:
+            if entry["status"] == "open" and entry["reason"] != "secure/accepted":
+                entry["status"] = "closed"
+                entry["reason"] = "manually closed"
 
     # 2. Firewall-Regeln wiederherstellen (z. B. 'allow' entfernen)
-    restored_firewall_rules = []
-    for rule in firewall_rules:
+        restored_firewall_rules = []
+        for rule in firewall_rules:
         # Beispiel: "Firewall rule updated: allow port 80" -> "Firewall rule restored: port 80"
-        restored_rule = rule.replace("updated: allow", "restored:")
-        restored_firewall_rules.append(restored_rule)
+            restored_rule = rule.replace("updated: allow", "restored:")
+            restored_firewall_rules.append(restored_rule)
 
     # 3. Admin-Account entsperren + Warnung
-    alert = None
-    admin_account = None
-    if admin_failures > 2:
-        alert = "ALERT: Too many admin login failures"
-        admin_account = "unlocked"
+        alert = None
+        admin_account = None
+        if admin_failures > 2:
+            alert = "ALERT: Too many admin login failures"
+            admin_account = "unlocked"
 
-    return {
-        "ports": ports,
-        "firewall_rules_restored": restored_firewall_rules,
-        "alert": alert,
-        "admin_account": admin_account
-    }
+        return {
+            "ports": ports,
+            "firewall_rules_restored": restored_firewall_rules,
+            "alert": alert,
+            "admin_account": admin_account
+        }
 
-        #######################
-    ### Hilfsfunktionen ###
+#######################
+### Hilfsfunktionen ###
 
         # Level 1. Aufgabe
     def ascii_cockie(self):
