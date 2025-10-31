@@ -9,4 +9,4 @@ Und Ich mit ein guter Kaffee am Morgen, {key3} UTC, zusammen mit meinem Key, hä
 
 Finde die richtige Reihenfolge. Wie öfter sind die Wörter dabei und gebe die Dateinahme als String "diezahlen.dateiformat" aus.
 Und wie OFT soll ich dir eigentlich die Hinweise streuen?
-{key1}{key2}{key3}.exe ist das was du suchst!
+{key1}{key2}{key3}.jpg ist das was du suchst!
