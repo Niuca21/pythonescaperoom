@@ -24,7 +24,7 @@ class Gruppe_HH_05(EscapeRoom):
         STEGO.im_bild_verstecken(self.bild, self.key)
         self.verschluesselt = "static/text.crypt"
         CRYPT.schluesselanwendung_datei(
-            "static/originale/test.log", self.verschluesselt, self.key)
+            "static/generated_log.txt", self.verschluesselt, self.key)
 
         self.add_level(self.create_level1())  # Veronika
         self.add_level(self.create_level2())  # Veronika
@@ -102,6 +102,7 @@ class Gruppe_HH_05(EscapeRoom):
     # Level 3
 
     def create_level3(self):
+        gamename = f"Finde den Schlüssel"
         task_messages = [
             "  <img src=" + self.bild + " alt='The Key you looking for' height='400'/> ",
             "Hi,",
@@ -116,10 +117,17 @@ class Gruppe_HH_05(EscapeRoom):
             "als encoding wurde 'ISO-8859-1' verwendet",
             "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
         ]
-        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
+        return {
+            "gamename": gamename, 
+            "task_messages": task_messages, 
+            "hints": hints, 
+            "solution_function": STEGO.im_bild_finden, 
+            "data": self.bild
+        }
 
     # Level 4
     def create_level4(self):
+        gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
             "Du hast jetzt einen Dateinamen " +
             self.verschluesselt + ", schon mar reingeschaut?",
@@ -134,7 +142,13 @@ class Gruppe_HH_05(EscapeRoom):
             "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist",
             "trotzdem solltest du die komplette Datei bearbeiten und auch wieder speichern. Bsp. ausgabe_encrypt.txt"
         ]
-        return {"task_messages": task_messages, "hints": hints, "solution_function": CRYPT.entschluesseln, "data": self.verschluesselt}
+        return {
+            "gamename": gamename, 
+            "task_messages": task_messages, 
+            "hints": hints, 
+            "solution_function": CRYPT.entschluesseln, 
+            "data": self.verschluesselt
+        }
 
     # Level 5
         
