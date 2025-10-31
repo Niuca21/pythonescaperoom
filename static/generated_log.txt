@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 22
-Firewall rule updated: allow port 993
+Firewall rule updated: allow port 995
+Firewall rule updated: allow port 443
+User login failed for user admin
 User login failed for user admin
 User login failed for user admin
 User admin logged out
-Antivirus scan started
-Exposed service detected on port 25
-Configuration file changed
-Antivirus scan started
-Security policy updated
-System rebooted at 00:01
-Exposed service detected on port 21
-Port 3306 is filtered
-Firewall rule updated: allow port 993
-User login failed for user root
-User user1 logged out
-Antivirus scan started
-Secure connection established on port 25
-Unknown activity on port 25
-Security policy updated
-Antivirus scan started
-Connection accepted on port 8443
-Security policy updated
-Port 143 is filtered
-Unknown activity on port 9999
-Firewall rule updated: allow port 3306
-Unknown activity on port 3306
-Antivirus scan started
-Unknown activity on port 80
-Secure connection established on port 3306
-Backup completed successfully
-Unknown activity on port 143
-User root logged out
-Port 8080 is filtered
-Secure connection established on port 25
-System rebooted at 00:01
-Firewall rule updated: allow port 3306
-Unauthorized access attempt on port 443
-Secure connection established on port 8443
 Port 443 is filtered
+Firewall rule updated: allow port 8080
+Firewall rule updated: allow port 143
+Firewall rule updated: allow port 80
+Port 143 is filtered
+Unknown activity on port 22
+Security policy updated
+User login failed for user guest
+Security policy updated
+Exposed service detected on port 143
+Connection accepted on port 9999
+Firewall rule updated: allow port 443
+Backup completed successfully
+Exposed service detected on port 25
+Exposed service detected on port 3306
+Exposed service detected on port 443
+Backup completed successfully
+Unauthorized access attempt on port 993
+Port 143 is filtered
+Unknown activity on port 25
+Exposed service detected on port 443
+User login failed for user admin
+Connection accepted on port 22
+Unknown activity on port 110
+Configuration file changed
+Unknown activity on port 22
+System rebooted at 18:22
+Security policy updated
+Connection accepted on port 25
+Antivirus scan started
+Security policy updated
+Unknown activity on port 110
+Port 143 is filtered
+Port 110 is filtered

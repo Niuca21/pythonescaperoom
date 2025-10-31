@@ -12,16 +12,23 @@ class Gruppe_HH_05(EscapeRoom):
 
     def __init__(self, response=None):
         super().__init__(response)
+        self.set_metadata("Veronika, Lukasz & Oliver", __name__)
+        
         self.log_data = generate_logfile(40)     # Logfile generieren Lukasz 
         # Logfile speichern für andere Levels  ( Lukasz )
         with open("static/generated_log.txt", "w") as f:
             f.write(self.log_data)
-        self.set_metadata("Veronika, Lukasz & Oliver", __name__)
+        
+        self.output_path = "static/output.txt" ## aus Raum 2 umkopiert
+        self.solution = self.count_decrypted_words( ## aus Raum 2 umkopiert
+            self.output_path)  ## aus Raum 2 umkopiert
+        
         self.key = CRYPT.schluessel_erstellen(30)  # schluessel erstellen
-        self.bild = "static/KEY.jpg"
-        # zufälliges Bild ermitteln und umkopieren
-        STEGO.random_bild(self.bild)
+        self.bild = (f"static/" + self.solution) ## war "static/KEY.jpg"
+
+        STEGO.random_bild(self.bild) # zufälliges Bild ermitteln und umkopieren
         STEGO.im_bild_verstecken(self.bild, self.key)
+
         self.verschluesselt = "static/text.crypt"
         CRYPT.schluesselanwendung_datei(
             "static/generated_log.txt", self.verschluesselt, self.key)
@@ -68,16 +75,16 @@ class Gruppe_HH_05(EscapeRoom):
         gamename = "Textdatei mit Nebenwirkungen"
 
         path = "static/template.txt"
-        output_path = "static/output.txt"
+##        output_path = "static/output.txt"
 
         self.placeholders = ["{key1}", "{key2}", "{key3}"]
 
         decrypted_path = self.generate_decrypted_file(
-            path, output_path)
+            path, self.output_path) ## self.output_path
 
-        solution = self.count_decrypted_words(
-            output_path)
-        print("Level 2 Lösung (intern):", solution)
+##        solution = self.count_decrypted_words(
+##            output_path)
+        print("Level 2 Lösung (intern):", self.solution) ## self.solution
 
         task_messages = [
             "In dieser Nachricht versteckt sich der Schlüssel zu deinem Bild:",
@@ -106,7 +113,8 @@ class Gruppe_HH_05(EscapeRoom):
         task_messages = [
             "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
             "Hi,",
-            "das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen",
+            "Jetzt hast du eine Datei " + self.bild + ", schon eine Idee?",
+            "dies ist zwar kein CTF, aber ein flag ist trotzdem zu suchen!",
         ]
         hints = [
             "schau mal im Bild!",
@@ -130,7 +138,8 @@ class Gruppe_HH_05(EscapeRoom):
         gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
             "Du hast jetzt einen Dateinamen " +
-            self.verschluesselt + ", schon mar reingeschaut?"
+            self.verschluesselt + ", schon mar reingeschaut?",
+            f"<a href='{self.verschluesselt}' target='_blank'>" + self.verschluesselt + " öffnen</a>",
         ]
         hints = [
             "kannst du den Inhalt lesen?",
