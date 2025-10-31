@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 25
-Firewall rule updated: allow port 110
-User login failed for user admin
-User login failed for user admin
-User login failed for user admin
-Unauthorized access attempt on port 993
-Connection accepted on port 3306
-Secure connection established on port 80
-Exposed service detected on port 995
-Exposed service detected on port 995
-Backup completed successfully
-User root logged out
-Port 993 is filtered
-Unauthorized access attempt on port 80
-Configuration file changed
-Exposed service detected on port 110
-Security policy updated
-Security policy updated
-Backup completed successfully
-Firewall rule updated: allow port 993
-Connection accepted on port 25
-Configuration file changed
-Exposed service detected on port 993
-Secure connection established on port 8080
-Exposed service detected on port 22
-Port 21 is filtered
-Exposed service detected on port 9999
-Antivirus scan started
-User admin logged out
-Security policy updated
-Configuration file changed
-Port 443 is filtered
 Firewall rule updated: allow port 22
-Exposed service detected on port 8080
-User login failed for user service
-Unauthorized access attempt on port 9999
-Secure connection established on port 993
-Exposed service detected on port 993
-Unknown activity on port 25
+Firewall rule updated: allow port 3306
+User login failed for user admin
+User login failed for user admin
+Backup completed successfully
+Unauthorized access attempt on port 143
+Secure connection established on port 143
+Port 80 is filtered
+Unknown activity on port 3306
+Connection accepted on port 443
+Secure connection established on port 25
+Connection accepted on port 143
 Configuration file changed
+Backup completed successfully
+Connection accepted on port 110
+Firewall rule updated: allow port 25
+Port 8443 is filtered
+Unknown activity on port 22
+Exposed service detected on port 3306
+Connection accepted on port 21
+Security policy updated
+Connection accepted on port 110
+Port 9999 is filtered
+Antivirus scan started
+Configuration file changed
+Firewall rule updated: allow port 8080
+User root logged out
+User login failed for user user1
+Connection accepted on port 143
+Unknown activity on port 21
+Secure connection established on port 110
+Unauthorized access attempt on port 143
+Port 993 is filtered
+Backup completed successfully
+Secure connection established on port 143
+User root logged out
+Exposed service detected on port 110
+Connection accepted on port 80
+Backup completed successfully
+Firewall rule updated: allow port 110

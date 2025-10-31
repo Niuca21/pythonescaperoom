@@ -1,7 +1,0 @@
-0000000000000000000000000000000000000000 3f5708c4238f93813dd11fbd04ab0679cd1d6383 veroabc <veronika.veronika.tyshenko@gmail.com> 1761495208 +0100	clone: from github.com:Niuca21/pythonescaperoom.git
-3f5708c4238f93813dd11fbd04ab0679cd1d6383 92e3073236cfe780c8a6c0d78b8dce2e66f90692 veroabc <veronika.veronika.tyshenko@gmail.com> 1761497025 +0100	commit: last commits
-92e3073236cfe780c8a6c0d78b8dce2e66f90692 b33a0a7c7e130004a4a8c49605902243f4591dd9 veroabc <veronika.veronika.tyshenko@gmail.com> 1761501846 +0100	commit: Changes in JS, HTML, CSS
-b33a0a7c7e130004a4a8c49605902243f4591dd9 b0fc067e83ff099a1136b7da6e877939fbdb3b6c veroabc <veronika.veronika.tyshenko@gmail.com> 1761502147 +0100	pull (start): checkout b0fc067e83ff099a1136b7da6e877939fbdb3b6c
-b0fc067e83ff099a1136b7da6e877939fbdb3b6c 76e94ecd138251cc51dadff458a87b8cd2124eb4 veroabc <veronika.veronika.tyshenko@gmail.com> 1761502336 +0100	rebase (continue): last commits
-76e94ecd138251cc51dadff458a87b8cd2124eb4 f3b7c45811b9c0c62ae64af2ee6e832324c3a990 veroabc <veronika.veronika.tyshenko@gmail.com> 1761502675 +0100	rebase (continue): Changes in JS, HTML, CSS
-f3b7c45811b9c0c62ae64af2ee6e832324c3a990 f3b7c45811b9c0c62ae64af2ee6e832324c3a990 veroabc <veronika.veronika.tyshenko@gmail.com> 1761502675 +0100	rebase (finish): returning to refs/heads/master
