@@ -20,8 +20,6 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         # Fuer Level 3-4
         self.key = CRYPT.schluessel_erstellen(30)  # schluessel erstellen
 
-        self.set_metadata("Veronika, Lukasz & Oliver", __name__)
-
         # Logfile generieren   ( Lukasz )
 
         self.log_data = generate_logfile(40)
@@ -39,7 +37,7 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         STEGO.im_bild_verstecken(self.bild, self.key)
         self.verschluesselt = "static/text.crypt"
         CRYPT.schluesselanwendung_datei(
-            "static/originale/test.log", self.verschluesselt, self.key)
+            "static/generated_log.txt", self.verschluesselt, self.key)
 
         # Fuer Level 5-6
 
