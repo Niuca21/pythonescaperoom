@@ -1,34 +1,21 @@
-
 import re
 
 
-def run(secret):
-    """
-    secret: str
-        Der Text aus der Datei output.txt, der die UTCs enthält.
-    """
+def run(eingabe):
+	with open(eingabe, "r", encoding="utf-8") as f:
+		text = f.read()
 
-    matches = re.findall(r"-\d+ UTC", secret)
+	# Alle UTCs im Text finden
+	utc_list = re.findall(r"-\d+", text)
 
-    counts = {}
-    for m in matches:
-        if m in counts:
-            counts[m] += 1
-        else:
-            counts[m] = 1
+	# Vorkommen zaehlen
+	counts = {utc: text.count(utc) for utc in utc_list}
 
-    unique_keys = list(dict.fromkeys(matches))[:3]
+	for utc, count in counts.items():
+		text = text.replace(utc, f"{count}")
 
-    solution_numbers = [str(counts[k]) for k in unique_keys]
-    solution = "".join(solution_numbers) + ".jpg"
-
-    solution = "443.jpg"
-
-    return solution
+	# Concatenate counts into string like "433"
+	name_exe = "".join(str(counts[utc]) for utc in utc_list)
+	return name_exe
 
 
-if __name__ == "__main__":
-    with open("output.txt", "r", encoding="utf-8") as f:
-        secret_text = f.read()
-
-    print(run(secret_text))
