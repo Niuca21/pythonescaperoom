@@ -143,7 +143,6 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
             "kannst du den Inhalt lesen?",
             "Hattest du die flag gespeichert? Bsp. game.key?",
             "Bitweises XOR schon mal gesehen?",
-            "als Rückgabewert die Zeichen 20 - 70 als String zum alsolvieren dieses Level sollten erstmal reichen",
             "Denke drann den Inhalt des Key.File zu nutzen, nicht den Dateinamen",
             "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist",
             "trotzdem solltest du die komplette Datei bearbeiten und auch wieder speichern. Bsp. ausgabe_encrypt.txt"
