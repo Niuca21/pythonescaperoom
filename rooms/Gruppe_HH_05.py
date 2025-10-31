@@ -3,7 +3,7 @@ import string
 import time
 import re
 from EscapeRoom import EscapeRoom
-
+from lib.log_generator import generate_logfile  # Lukasz
 import lib.stego as STEGO  # Funktionssammlung Oliver Level 3
 import lib.crypt as CRYPT  # Funktionssammlung Oliver Level 4
 
@@ -12,8 +12,11 @@ class Gruppe_HH_05(EscapeRoom):
 
     def __init__(self, response=None):
         super().__init__(response)
-
-        self.set_metadata("Veronika, Lucasz & Oliver", __name__)
+        self.log_data = generate_logfile(40)     # Logfile generieren Lukasz 
+        # Logfile speichern für andere Levels  ( Lukasz )
+        with open("static/generated_log.txt", "w") as f:
+            f.write(self.log_data)
+        self.set_metadata("Veronika, Lukasz & Oliver", __name__)
         self.key = CRYPT.schluessel_erstellen(30)  # schluessel erstellen
         self.bild = "static/KEY.jpg"
         # zufälliges Bild ermitteln und umkopieren
@@ -27,8 +30,8 @@ class Gruppe_HH_05(EscapeRoom):
         self.add_level(self.create_level2())  # Veronika
         self.add_level(self.create_level3())  # Oliver
         self.add_level(self.create_level4())  # Oliver
-        self.add_level(self.create_level5())  # Lucasz
-        self.add_level(self.create_level6())  # Lucasz
+        self.add_level(self.create_level5())  # Lukasz
+        self.add_level(self.create_level6())  # Lukasz
 
     ### LEVELS ###
     # ---------------------------
@@ -134,40 +137,75 @@ class Gruppe_HH_05(EscapeRoom):
         return {"task_messages": task_messages, "hints": hints, "solution_function": CRYPT.entschluesseln, "data": self.verschluesselt}
 
     # Level 5
+        
     def create_level5(self):
-        task_messages = [
-            "  <img src=" + self.bild + " alt='The Key you looking for' height='200'/> ",
-            "Hi,",
-            "das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen"
-        ]
-        hints = [
-            "schau mal im Bild!",
-            "suche nach dem flag= ",
-            "Eingabedaten sind der Dateiname des Bildes",
-            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
-            "speichern kann nicht schaden, Vorschlag game.key",
-            "als encoding wurde 'ISO-8859-1' verwendet",
-            "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
-        ]
-        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
+        gamename = f"Erweiterte Logfile-Analyse"
+        log_data = self.log_data
+        # log_data = "tmp/ausgabe_encrypt.txt"
+        # Wenn mit der ver und wieder Entschlüsselten Datei gearbeitet werden soll.
+        # Müßte in Beispiellösung mit der Datei "ausgabe_encrypt.txt" (aus Beispiellösung für Level4)
+        # und in der kontrolle mit der Datei "tmp/ausgabe_encrypt.txt" gearbeitet werden
 
-    # Level 6
-    def create_level6(self):
         task_messages = [
-            "  <img src=" + self.bild + " alt='The Key you looking for' height='200'/> ",
-            "Hi,",
-            "das ist zwar kein CTF, aber ein flag ist trotzdem zu suchen"
+            "<b>🧠 Level 5: Erweiterte Logfile-Analyse</b>",
+            "Du hast ein umfangreiches Logfile erhalten, das verschiedene Netzwerk- und Systemereignisse enthält.",
+            "Deine Aufgabe:",
+            "1️⃣ Extrahiere alle Ports und bestimme ihren Status.",
+            "2️⃣ Zähle, wie oft ein Login für <i>admin</i> fehlgeschlagen ist.",
+            "3️⃣ Liste alle Zeilen auf, die eine <i>Firewall-Regel</i> enthalten.",
+            "📚 Lernziele: Reguläre Ausdrücke, Bedingte Logik, Fehlerbehandlung, Kombinierte Analyse, Listen und Dictionaries"
         ]
+
         hints = [
-            "schau mal im Bild!",
-            "suche nach dem flag= ",
-            "Eingabedaten sind der Dateiname des Bildes",
-            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
-            "speichern kann nicht schaden, Vorschlag game.key",
-            "als encoding wurde 'ISO-8859-1' verwendet",
-            "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
+            "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
+            "✍️ Verwende <code>if \"user login failed for user admin\" in line</code>, um gezielt Admin-Fehler zu zählen.",
+            "🧱 Verwende <code>if \"firewall rule updated\" in line</code>, um Firewall-Zeilen zu erfassen.",
+            "💡 Gib ein Dictionary mit <code>ports</code>, <code>admin_login_failures</code> und <code>firewall_rules</code> zurück."
         ]
-        return {"task_messages": task_messages, "hints": hints, "solution_function": STEGO.im_bild_finden, "data": self.bild}
+
+        return {
+            "gamename": gamename,
+            "task_messages": task_messages,
+            "hints": hints,
+            "solution_function": self.check_ports_level5,
+            "data": log_data
+        }
+    # Level 6
+
+    def create_level6(self):
+        gamename = "Port-Säuberung & Firewall-Wiederherstellung"
+
+        task_messages = [
+            "<b>🧠 Level 6: Port-Säuberung & Firewall-Wiederherstellung</b>",
+            "Du hast die Analyse aus Level 5 abgeschlossen. Jetzt musst du aktiv werden:",
+            "1️⃣ Schließe alle Ports, die als <i>open</i> markiert sind und deren Grund nicht 'secure/accepted' ist.",
+            "2️⃣ Stelle die Firewall-Regeln aus Level 5 wieder auf ihren ursprünglichen Wert zurück (z. B. entferne 'allow').",
+            "3️⃣ Wenn mehr als 2 fehlgeschlagene Admin-Logins erkannt wurden, entsperre den Admin-Account und füge eine Warnung hinzu.",
+            "📚 Lernziele: Listenmanipulation, Bedingte Logik, Dictionaries, Kombinierte Auswertung"
+        ]
+
+        hints = [
+            "🔍 Nutze die Daten aus Level 5: ports, firewall_rules, admin_login_failures.",
+            "✍️ Verwende Bedingungen wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
+            "🧱 Gib ein Dictionary zurück mit den Schlüsseln <code>ports</code>, <code>firewall_rules</code>, <code>alert</code> und <code>admin_account</code>."
+        ]
+
+    # Nutze die echte Lösung aus Level 5
+        data_from_level5 = getattr(self, "level5_result", None)
+        if not data_from_level5:
+            data_from_level5 = {
+                "ports": [],
+                "admin_login_failures": 0,
+                "firewall_rules": []
+            }
+
+        return {
+            "gamename": gamename,
+            "task_messages": task_messages,
+            "hints": hints,
+            "solution_function": self.check_level6_solution,
+            "data": data_from_level5
+        }
 
     ### Hilfsfunktionen ###
 
