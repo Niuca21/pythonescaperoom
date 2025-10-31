@@ -177,55 +177,6 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
             "data": log_data
         }
 
-    def check_ports_level5(self, log_data):
-        return self.parse_logfile_extended(log_data)
-
-    def parse_logfile_extended(self, log_text):
-        results = []
-        admin_fail_count = 0
-        firewall_rules = []
-        lines = log_text.strip().split("\n")
-
-        for line in lines:
-            line = line.lower().strip()
-
-        # Zusatzaufgabe: Admin-Login-Fehler zählen
-            if "user login failed for user admin" in line:
-                admin_fail_count += 1
-
-        # Zusatzaufgabe: Firewall-Regeln sammeln
-            if "firewall rule updated" in line:
-                firewall_rules.append(line)
-
-        # Port-Analyse
-            matches = re.findall(r"port (\d+)", line)
-            for match in matches:
-                port = int(match)
-                if "secure" in line or "accepted" in line:
-                    status = "open"
-                    reason = "secure/accepted"
-                elif "attempt" in line or "exposed" in line or "unauthorized" in line:
-                    status = "open"
-                    reason = "attempt/exposed/unauthorized"
-                elif "filtered" in line:
-                    status = "closed"
-                    reason = "filtered"
-                else:
-                    status = "closed"
-                    reason = "default"
-
-                results.append({
-                    "port": port,
-                    "status": status,
-                    "reason": reason,
-                    "raw_line": line
-                })
-
-        return {
-            "ports": results,
-            "admin_login_failures": admin_fail_count,
-            "firewall_rules": firewall_rules
-        }
     # Level 6
 
     def create_level6(self):
@@ -344,15 +295,28 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         # CRYPT.entschluesseln
 
         # Level 5. Lösung
-    def check_ports_level5(self, log_data):
-        return self.parse_logfile(log_data)
 
-    def parse_logfile(self, log_text):
+    def check_ports_level5(self, log_data):
+        return self.parse_logfile_extended(log_data)
+
+    def parse_logfile_extended(self, log_text):
         results = []
+        admin_fail_count = 0
+        firewall_rules = []
         lines = log_text.strip().split("\n")
 
         for line in lines:
             line = line.lower().strip()
+
+        # Zusatzaufgabe: Admin-Login-Fehler zählen
+            if "user login failed for user admin" in line:
+                admin_fail_count += 1
+
+        # Zusatzaufgabe: Firewall-Regeln sammeln
+            if "firewall rule updated" in line:
+                firewall_rules.append(line)
+
+        # Port-Analyse
             matches = re.findall(r"port (\d+)", line)
             for match in matches:
                 port = int(match)
@@ -376,17 +340,12 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
                     "raw_line": line
                 })
 
-        return results
+        return {
+            "ports": results,
+            "admin_login_failures": admin_fail_count,
+            "firewall_rules": firewall_rules
+        }
+
+
 
         # Level 6. Lösung
-    def check_ports_level6(self, port_list):
-        return self.clean_ports(port_list)
-
-    def clean_ports(self, port_list):
-        cleaned = []
-        for entry in port_list:
-            if entry["status"] == "open" and entry["reason"] != "secure/accepted":
-                entry["status"] = "closed"
-                entry["reason"] = "manually closed"
-            cleaned.append(entry)
-        return cleaned
