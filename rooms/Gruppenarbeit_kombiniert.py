@@ -31,6 +31,9 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
         # Log-Datei verschlüsseln
         CRYPT.schluesselanwendung_datei("static/generated_log.txt" ,self.verschluesselt ,self.key )
 
+        # Die entschlüsselte Datei befindet sich nach Level 4 unter:
+        # tmp/ausgabe_encrypt.txt
+
         self.add_level(self.create_level1()) # Veronika
         self.add_level(self.create_level2()) # Veronika
         self.add_level(self.create_level3()) # Oliver
@@ -157,6 +160,10 @@ class Gruppenarbeit_kombiniert(EscapeRoom):
     def create_level5(self):
         gamename = f"Erweiterte Logfile-Analyse"
         log_data = self.log_data
+        # log_data = "tmp/ausgabe_encrypt.txt"
+        # Wenn mit der ver und wieder Entschlüsselten Datei gearbeitet werden soll.
+        # Müßte in Beispiellösung mit der Datei "ausgabe_encrypt.txt" (aus Beispiellösung für Level4)
+        # und in der kontrolle mit der Datei "tmp/ausgabe_encrypt.txt" gearbeitet werden
 
         task_messages = [
             "<b>🧠 Level 5: Erweiterte Logfile-Analyse</b>",
