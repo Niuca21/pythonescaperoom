@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 995
-Firewall rule updated: allow port 443
+Firewall rule updated: allow port 8443
+Firewall rule updated: allow port 21
 User login failed for user admin
 User login failed for user admin
-User login failed for user admin
-User admin logged out
-Port 443 is filtered
-Firewall rule updated: allow port 8080
-Firewall rule updated: allow port 143
-Firewall rule updated: allow port 80
-Port 143 is filtered
-Unknown activity on port 22
-Security policy updated
-User login failed for user guest
-Security policy updated
-Exposed service detected on port 143
+Connection accepted on port 8443
+Secure connection established on port 80
+User guest logged out
+Backup completed successfully
+Firewall rule updated: allow port 8443
+User login failed for user service
 Connection accepted on port 9999
-Firewall rule updated: allow port 443
-Backup completed successfully
-Exposed service detected on port 25
-Exposed service detected on port 3306
-Exposed service detected on port 443
-Backup completed successfully
-Unauthorized access attempt on port 993
-Port 143 is filtered
-Unknown activity on port 25
-Exposed service detected on port 443
-User login failed for user admin
-Connection accepted on port 22
-Unknown activity on port 110
+Secure connection established on port 80
+User user1 logged out
+User service logged out
+Connection accepted on port 443
+Security policy updated
+Firewall rule updated: allow port 995
+Unauthorized access attempt on port 8080
+Unknown activity on port 9999
+System rebooted at 00:01
+System rebooted at 03:33
+Secure connection established on port 80
 Configuration file changed
-Unknown activity on port 22
-System rebooted at 18:22
+Secure connection established on port 110
+Unauthorized access attempt on port 143
 Security policy updated
-Connection accepted on port 25
-Antivirus scan started
-Security policy updated
+Exposed service detected on port 9999
+Unauthorized access attempt on port 3306
+Secure connection established on port 21
 Unknown activity on port 110
-Port 143 is filtered
-Port 110 is filtered
+Unknown activity on port 8080
+Connection accepted on port 25
+Unauthorized access attempt on port 995
+Secure connection established on port 22
+Connection accepted on port 443
+Connection accepted on port 21
+System rebooted at 18:22
+Unauthorized access attempt on port 9999
+Unauthorized access attempt on port 443
+Security policy updated
