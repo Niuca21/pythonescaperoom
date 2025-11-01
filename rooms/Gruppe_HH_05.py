@@ -75,15 +75,15 @@ class Gruppe_HH_05(EscapeRoom):
         gamename = "Textdatei mit Nebenwirkungen"
 
         path = "static/template.txt"
-##        output_path = "static/output.txt"
+##        output_path = "static/output.txt" # nach Zeile 22 verschoben
 
         self.placeholders = ["{key1}", "{key2}", "{key3}"]
 
         decrypted_path = self.generate_decrypted_file(
             path, self.output_path) ## self.output_path
 
-##        solution = self.count_decrypted_words(
-##            output_path)
+##        solution = self.count_decrypted_words(   # nach Zeile 23 verschoben
+##            output_path)  # nach Zeile 24 verschoben
         print("Level 2 Lösung (intern):", self.solution) ## self.solution
 
         task_messages = [
