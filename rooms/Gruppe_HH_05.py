@@ -134,6 +134,7 @@ class Gruppe_HH_05(EscapeRoom):
         }
 
     # Level 4
+
     def create_level4(self):
         gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
