@@ -1,8 +1,6 @@
 __pycache__/
 .venv/
 *.pyc
-tmp/game.key
-tmp/ausgabe_encript.txt
 ausgabe_encrypt.txt
 tmp.txt
 
