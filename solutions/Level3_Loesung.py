@@ -1,4 +1,9 @@
 # Beispiellösung Level 3: Oliver
+#------------------------
+#  Lernziele:
+#    Dateien lesen & schreiben: einlesen einer Bild-Datei und schreiben einer Text-Datei als zwischenspeicher für einen Endschlüsselungs-Schlüssel
+#    durchsuchen von Dateien: Vorgegebenen Suchstring in der Bild-Datei ausfindig machen.
+#    Sting nach Muster aufteilen: gefundenen String in separate Teilstrings aufteilen und den relevanten in einer Text-Datei zwischenspeichern.
 
 def run(wo, was="flag="):
     bild = open(wo, encoding="ISO-8859-1", mode="r")

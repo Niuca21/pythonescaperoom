@@ -1,4 +1,10 @@
 # Beispiellösung Level 4: Oliver
+#------------------------
+#  Lernziele:
+#    Verketten von Strings: der gefundene Verschlüsselungskey muß für eine Erfolgreiche Entschlüsselung mehrfach hintereinander gesetzt werden, da die Nachricht meist länger als der Schlüssel ist.
+#    wandlung in Binär-Format: Damit ein String auf Bit-Ebene Entschlüsselt werden kann, müßen die Strings ins Binärformat und wieder zurück gewandelt werden.
+#    Bitweise XOR verknüpfung: Verknüpfen der Binären ketten mittels einer "Exklusiv oder" verknüpfung, zur Symetrischen ver./entschlüsselung mittels eines Schlüssel/Password/Zeichenketten.
+#    Arbeiten mit Funktionen: Aufteilen des Codes in einzelne Funktionen, damit Code nicht Kopiert werden muß, wenn dieser mehrfach verwendet wird. Bsp. bei der Umwandlung von Strings in Binärfolgen für die Nachricht und den ver./entschlüsselungsschlüssel.
 
 def run(eingabe):
 	return schluesselanwendung_datei(eingabe, "ausgabe_encrypt.txt", "tmp.txt")
