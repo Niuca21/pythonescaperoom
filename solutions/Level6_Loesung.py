@@ -1,4 +1,4 @@
-# Beispielloesung Level 6
+# Beispiellösung Level 6: Lucasz
 
 def run(data):
         ports = data["ports"]

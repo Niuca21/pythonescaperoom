@@ -1,3 +1,5 @@
+# Beispiellösung Level 5: Lucasz
+
 import re
 
 def run(log_text):

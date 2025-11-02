@@ -1,40 +1,40 @@
+Firewall rule updated: allow port 25
 Firewall rule updated: allow port 443
-Firewall rule updated: allow port 80
 User login failed for user admin
 User login failed for user admin
-Port 993 is filtered
-Antivirus scan started
-Connection accepted on port 25
-Security policy updated
-Unknown activity on port 993
-Port 21 is filtered
-System rebooted at 12:45
+Configuration file changed
 User login failed for user guest
-Security policy updated
-Firewall rule updated: allow port 80
-Secure connection established on port 25
-Backup completed successfully
-Firewall rule updated: allow port 9999
-Connection accepted on port 8080
-Connection accepted on port 21
-Port 8443 is filtered
-Security policy updated
+Port 25 is filtered
 Unknown activity on port 110
-Firewall rule updated: allow port 9999
-User login failed for user admin
-Firewall rule updated: allow port 80
-Unknown activity on port 995
-User login failed for user guest
-Unauthorized access attempt on port 110
-System rebooted at 12:45
+Port 21 is filtered
+Unauthorized access attempt on port 25
+Firewall rule updated: allow port 110
+Exposed service detected on port 110
+Configuration file changed
 Backup completed successfully
-Firewall rule updated: allow port 3306
-Backup completed successfully
-Unauthorized access attempt on port 143
 Secure connection established on port 143
-Unauthorized access attempt on port 9999
-Security policy updated
-Connection accepted on port 995
+Secure connection established on port 8080
+Unknown activity on port 22
+Secure connection established on port 80
+Antivirus scan started
+Unauthorized access attempt on port 21
+System rebooted at 00:01
+Unknown activity on port 993
+Configuration file changed
+Configuration file changed
+Backup completed successfully
+Firewall rule updated: allow port 8443
+System rebooted at 03:33
 Antivirus scan started
 Backup completed successfully
-Exposed service detected on port 21
+Secure connection established on port 80
+Secure connection established on port 80
+Firewall rule updated: allow port 995
+Port 8443 is filtered
+Configuration file changed
+Unknown activity on port 110
+Port 80 is filtered
+Unknown activity on port 25
+Unknown activity on port 21
+Unknown activity on port 25
+Exposed service detected on port 995

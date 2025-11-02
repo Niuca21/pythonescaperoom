@@ -1,4 +1,4 @@
-# Beispielloesung Level 4
+# Beispiellösung Level 4: Oliver
 
 def run(eingabe):
 	return schluesselanwendung_datei(eingabe, "ausgabe_encrypt.txt", "tmp.txt")

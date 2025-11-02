@@ -1,4 +1,4 @@
-# Beispiellösung Level 3
+# Beispiellösung Level 3: Oliver
 
 def run(wo, was="flag="):
     bild = open(wo, encoding="ISO-8859-1", mode="r")
