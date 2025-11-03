@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 22
-Firewall rule updated: allow port 21
+Firewall rule updated: allow port 995
+Firewall rule updated: allow port 8080
 User login failed for user admin
 User login failed for user admin
-User login failed for user service
-Unknown activity on port 80
-Unauthorized access attempt on port 80
-System rebooted at 23:59
-Port 9999 is filtered
-Firewall rule updated: allow port 80
-Exposed service detected on port 8443
-Firewall rule updated: allow port 80
-Firewall rule updated: allow port 21
-Secure connection established on port 3306
-Unauthorized access attempt on port 443
-User login failed for user root
-System rebooted at 00:01
-Port 443 is filtered
-Antivirus scan started
-Antivirus scan started
-Unknown activity on port 3306
-Port 995 is filtered
-Connection accepted on port 9999
-Firewall rule updated: allow port 443
-Port 80 is filtered
-Antivirus scan started
+Port 8080 is filtered
+User login failed for user admin
+User service logged out
+Unauthorized access attempt on port 995
+Connection accepted on port 110
 Connection accepted on port 443
-Security policy updated
-Exposed service detected on port 21
-Port 22 is filtered
-Firewall rule updated: allow port 22
-Port 80 is filtered
-System rebooted at 00:01
-System rebooted at 18:22
-Firewall rule updated: allow port 3306
+Unknown activity on port 993
 Configuration file changed
-Unknown activity on port 110
-Firewall rule updated: allow port 9999
+System rebooted at 00:01
+Unknown activity on port 22
+Secure connection established on port 8080
+Connection accepted on port 80
+Connection accepted on port 143
+Exposed service detected on port 8080
+Security policy updated
+Firewall rule updated: allow port 22
+Security policy updated
+Exposed service detected on port 9999
+User login failed for user user1
+Configuration file changed
+Unauthorized access attempt on port 3306
+Secure connection established on port 21
+Unauthorized access attempt on port 8443
+Security policy updated
+Firewall rule updated: allow port 143
+Port 3306 is filtered
+Port 3306 is filtered
 User admin logged out
-User login failed for user guest
+Connection accepted on port 995
+Firewall rule updated: allow port 8080
+User service logged out
+Firewall rule updated: allow port 80
+Exposed service detected on port 3306
+System rebooted at 23:59
+Backup completed successfully
+Configuration file changed
