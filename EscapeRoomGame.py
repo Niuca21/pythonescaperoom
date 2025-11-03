@@ -21,6 +21,7 @@ class EscapeRoomGame:
             room = class_(response)
             self.rooms.append(room)
         except Exception as e:
+            traceback.print_exc()
             print(f"Could not load room: {e}")
 
     def load_all_rooms(self):

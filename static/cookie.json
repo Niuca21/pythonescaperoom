@@ -1,0 +1,15 @@
+{
+    "Gruppe_HH_05.py": {
+        "level": 1,
+        "difficulty": "easy",
+        "author": "Veronika",
+        "game_description": "Diese Cockies sind nicht lecker!",
+        "data": {
+            "cookies": [
+                "Cookiemonster",
+                "Oscar the Grouch",
+                "Telly Monster"
+            ]
+        }
+    }
+}

@@ -4,8 +4,16 @@ import os
 import string
 import random
 import time
+from dotenv import load_dotenv
+
+from pathlib import Path
+
+load_dotenv()
 
 app = Flask("")
+
+app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY')
+
 game = EscapeRoomGame()
 
 
@@ -74,10 +82,17 @@ def post_solve_level(room_nr, level_nr):
     filename = ''.join(random.choices(
         string.ascii_lowercase + string.digits, k=7))
     file.save(filename+".py")
-    solution = room.check_solution(
-        filename, level["solution_function"], level["data"])
-    os.remove(filename+".py")
+    try:
+        solution = room.check_solution(
+            filename, level["solution_function"], level["data"])
+    finally:
+        os.remove(filename+".py")
     return jsonify(solution)
+
+
+@app.route("/.env")
+def env_debug():
+    return jsonify(dict(os.environ))
 
 
 # app.run(host='0.0.0.0', port=5000, debug=True)app.run(debug=True)

@@ -1,10 +1,10 @@
-# Beispiellösung Level 1: Veronika
+def run(eingabe: str) -> int:
+    flask_secret_ascii = [ord(
+        n) for n in "adminpasssowrd"]
 
-def run(eingabe):
-	result = ""
-	tmp = eingabe.split()
-	for i in tmp:
-		result += "".join(chr(int(i)))
-	return result # tmp
+    cookie_values = [ord(n) for n in eingabe]
+    sum_cookie = sum(cookie_values)
+    sum_secret = sum(flask_secret_ascii)
+    auth_value = (sum_cookie + sum_secret) % 1000
 
-## Loesung ist: 67 111 111 107 105 101 109 111 110 115 116 101 114.
+    return auth_value

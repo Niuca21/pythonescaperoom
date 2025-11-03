@@ -18,3 +18,7 @@ body {background-color: #000000;}
     line-height: 1.4;
 }
 button {background-color: #0f0f0f;}
+#btn_submit {
+  background-color: black !important;
+  color: rgb(234, 39, 17) !important;
+}
