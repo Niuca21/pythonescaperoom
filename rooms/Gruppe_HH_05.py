@@ -75,15 +75,15 @@ class Gruppe_HH_05(EscapeRoom):
         gamename = "Textdatei mit Nebenwirkungen"
 
         path = "static/template.txt"
-##        output_path = "static/output.txt"
+##        output_path = "static/output.txt" # nach Zeile 22 verschoben
 
         self.placeholders = ["{key1}", "{key2}", "{key3}"]
 
         decrypted_path = self.generate_decrypted_file(
             path, self.output_path) ## self.output_path
 
-##        solution = self.count_decrypted_words(
-##            output_path)
+##        solution = self.count_decrypted_words(   # nach Zeile 23 verschoben
+##            output_path)  # nach Zeile 24 verschoben
         print("Level 2 Lösung (intern):", self.solution) ## self.solution
 
         task_messages = [
@@ -106,8 +106,9 @@ class Gruppe_HH_05(EscapeRoom):
             "data": decrypted_path
         }
 
-    # Level 3
-
+    # ---------------------------
+    # Level 3 (Oliver)
+    # ---------------------------
     def create_level3(self):
         gamename = f"Finde den Schlüssel"
         task_messages = [
@@ -133,7 +134,9 @@ class Gruppe_HH_05(EscapeRoom):
             "data": self.bild
         }
 
-    # Level 4
+    # ---------------------------
+    # Level 4 (Oliver)
+    # ---------------------------
     def create_level4(self):
         gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
@@ -157,12 +160,13 @@ class Gruppe_HH_05(EscapeRoom):
             "data": self.verschluesselt
         }
 
-    # Level 5
-        
+    # ---------------------------
+    # Level 5 (Lucasz)
+    # ---------------------------
     def create_level5(self):
         gamename = f"Erweiterte Logfile-Analyse"
-        log_data = self.log_data
-        # log_data = "tmp/ausgabe_encrypt.txt"
+##        log_data = self.log_data
+        log_data = "tmp/ausgabe_encrypt.txt"
         # Wenn mit der ver und wieder Entschlüsselten Datei gearbeitet werden soll.
         # Müßte in Beispiellösung mit der Datei "ausgabe_encrypt.txt" (aus Beispiellösung für Level4)
         # und in der kontrolle mit der Datei "tmp/ausgabe_encrypt.txt" gearbeitet werden
@@ -191,8 +195,10 @@ class Gruppe_HH_05(EscapeRoom):
             "solution_function": self.check_ports_level5,
             "data": log_data
         }
-    # Level 6
 
+    # ---------------------------
+    # Level 6 (Lucasz)
+    # ---------------------------
     def create_level6(self):
         gamename = "Port-Säuberung & Firewall-Wiederherstellung"
 
@@ -242,7 +248,6 @@ class Gruppe_HH_05(EscapeRoom):
     # ---------------------------
     # Level 2 (Schwierig - Veronika)
     # ---------------------------
-
     def generate_decrypted_file(self, path, output_path):
         self.utc_list = [
             f"-{self.random_utc_timestamp()}" for _ in self.placeholders]
@@ -279,8 +284,21 @@ class Gruppe_HH_05(EscapeRoom):
             text = f.read()
         return "443.jpg"
 
-    # Level 5
+    # ---------------------------
+    # Level 3 (Oliver)
+    # Die Hilfsfunktionen für Level 3 befinden sich in der Datei rooms/lib/stego.py
+    # Importiert mit: import lib.stego as STEGO
+    # ---------------------------
+    
+    # ---------------------------
+    # Level 4 (Oliver)
+    # Die Hilfsfunktionen für Level 4 befinden sich in der Datei rooms/lib/crypt.py
+    # Importiert mit: import lib.stego as CRYPT
+    # ---------------------------
 
+    # ---------------------------
+    # Level 5 (Lucasz)
+    # ---------------------------
     def check_ports_level5(self, log_data):
         result = self.parse_logfile_extended(log_data)
         self.level5_result = result  # Speichere für Level 6
@@ -333,8 +351,9 @@ class Gruppe_HH_05(EscapeRoom):
             "firewall_rules": firewall_rules
         }
 
-    # Level 6
-
+    # ---------------------------
+    # Level 6 (Lucasz)
+    # ---------------------------
     def check_level6_solution(self, data):
         ports = data["ports"]
         firewall_rules = data["firewall_rules"]

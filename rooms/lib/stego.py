@@ -6,7 +6,7 @@ import os
 # """ Steganographie
 # verstecken und auslesen von Nachrichten in einem Bild.
 #
-# Oliver Oberdick Matrikel:548933
+# Oliver Oberdick
 # """
 
 # Hilfsfunktion nur fuer den EscapeRoom, damit unterschiedliche Bilder genutzt werden

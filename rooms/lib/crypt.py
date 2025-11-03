@@ -2,19 +2,19 @@
 
 import random
 
-# """ Verschluesselung 
-# Symetrische Verschluesselung mittels XOR auf Bit-Basis
+# """ Verschlüsselung 
+# Symetrische Verschlüsselung mittels XOR auf Bit-Basis
 #
-# Oliver Oberdick Matrikel:548933
+# Oliver Oberdick
 # """
 
-# Hilfsfunktion zum erstellen eines Verschluesselungs key in beliebiger laenge
+# Hilfsfunktion zum erstellen eines Verschlüsselungs key in beliebiger länge
 def schluessel_erstellen(laenge):
         ergebnis = ""
         while len(ergebnis) < laenge:
             zahl = random.randint(48, 122)
             if ((zahl >= 48 and zahl <= 57) or (zahl >= 65 and zahl <= 90) or (zahl >= 97 and zahl <= 122)):
-				#  Damit der Schluessel nur aus Zahlen, Grossbuchstaben und Kleinbuchstaben besteht
+				#  Damit der Schlüssel nur aus Zahlen, Großbuchstaben und Kleinbuchstaben besteht
                 ergebnis += chr(zahl)
         return ergebnis
 
@@ -30,7 +30,7 @@ def binaer_to_string(nachricht):
 		ergebnis += chr(int(nachricht[i: i+8], 2))
 	return ergebnis
 
-# Ver oder Entschluesseln eines String mittels XOR (Symetrisch)
+# verschlüsseln oder entschlüsseln eines String mittels XOR (Symetrisch)
 def schluesselanwendung(was, womit):
 	ergebnis = ""
 	schluessel = ""
@@ -42,21 +42,18 @@ def schluesselanwendung(was, womit):
 		ergebnis += str(int(binaer_nachricht[i]) ^ int(binaer_schluessel[i]))
 	return binaer_to_string(ergebnis)
 
-# erweiterung, damit auch Dateien ver und entschluesselt werden koennen
+# erweiterung, damit auch der Inhalt von Dateien verschlüsselt und entschluesselt werden kann
 def schluesselanwendung_datei(eingabe_datei, ausgabe_datei, schluessel):
-#	counter = 0  # nur zur kontrolle
 	ergebnis = ""  # nur zur kontrolle
 	with open(eingabe_datei, 'r') as in_file:
 		with open(ausgabe_datei, 'w') as out_file:
 			for line in in_file.read():
-#				counter += 1  # nur zur kontrolle
 				tmp = schluesselanwendung(line, schluessel)
 				out_file.write(tmp)
-#				if (counter >= 20 and counter >= 70): # nur zur kontrolle
 				ergebnis += tmp # nur zur kontrolle
 	return ergebnis # nur zur kontrolle im EscapeRoom Spiel
 
-# Angepasste Funktion, damit zum entschluesseln der Schluessel aus einer Daten genutzt werden kann
+# Angepasste Funktion, damit zum entschlüsseln der Schlüssel aus einer Daten genutzt werden kann
 def entschluesseln(eingabe, ausgabe="tmp/ausgabe_encrypt.txt", schluessel="tmp/game.key"):
 	key = ""
 	with open(schluessel, "r") as f:
