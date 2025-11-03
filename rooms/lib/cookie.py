@@ -1,5 +1,10 @@
+# ---------------------------
+# Level 1 (Mittel - Solution)
+# ---------------------------
+
 import random
 import json
+import hashlib
 from pathlib import Path
 
 
@@ -26,7 +31,8 @@ def combine_cookie_and_secret(cookie_str: str, flask_secret: list[int]) -> int:
 
     sum_cookie = sum(cookie_values)
     sum_secret = sum(flask_secret_ascii)
-    total = sum_cookie + sum_secret
-    auth_number = total % 1000
+    payload = f"{sum_cookie}:{sum_secret}"
+    auth_hash = hashlib.sha256(payload.encode()).hexdigest()
+    auth_number = auth_hash[:12]
 
     return auth_number

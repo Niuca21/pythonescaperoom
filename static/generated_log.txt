@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 8443
+Firewall rule updated: allow port 22
 Firewall rule updated: allow port 21
 User login failed for user admin
 User login failed for user admin
-Unknown activity on port 995
-Firewall rule updated: allow port 80
-Antivirus scan started
-Connection accepted on port 25
-Backup completed successfully
-Backup completed successfully
-Secure connection established on port 3306
-Antivirus scan started
-User service logged out
-Antivirus scan started
-User root logged out
-Port 21 is filtered
-Connection accepted on port 110
-Unauthorized access attempt on port 993
-Backup completed successfully
-Unauthorized access attempt on port 143
-Security policy updated
-Port 443 is filtered
+User login failed for user service
+Unknown activity on port 80
+Unauthorized access attempt on port 80
 System rebooted at 23:59
-Secure connection established on port 9999
-Port 143 is filtered
-Port 25 is filtered
-Port 110 is filtered
-Unknown activity on port 9999
-Exposed service detected on port 110
-Exposed service detected on port 80
+Port 9999 is filtered
+Firewall rule updated: allow port 80
+Exposed service detected on port 8443
+Firewall rule updated: allow port 80
+Firewall rule updated: allow port 21
+Secure connection established on port 3306
+Unauthorized access attempt on port 443
+User login failed for user root
+System rebooted at 00:01
+Port 443 is filtered
 Antivirus scan started
-Exposed service detected on port 9999
 Antivirus scan started
-Unknown activity on port 25
-Unauthorized access attempt on port 995
+Unknown activity on port 3306
+Port 995 is filtered
+Connection accepted on port 9999
+Firewall rule updated: allow port 443
+Port 80 is filtered
+Antivirus scan started
+Connection accepted on port 443
 Security policy updated
-Exposed service detected on port 443
+Exposed service detected on port 21
+Port 22 is filtered
+Firewall rule updated: allow port 22
+Port 80 is filtered
+System rebooted at 00:01
+System rebooted at 18:22
+Firewall rule updated: allow port 3306
 Configuration file changed
-Backup completed successfully
+Unknown activity on port 110
+Firewall rule updated: allow port 9999
+User admin logged out
 User login failed for user guest

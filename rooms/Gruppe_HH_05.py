@@ -1,6 +1,4 @@
 import os
-import random
-import time
 import re
 from lib import cookie as COOKIE
 from lib import text as TEXT
@@ -21,10 +19,11 @@ class Gruppe_HH_05(EscapeRoom):
         # Logfile speichern für andere Levels  ( Lukasz )
         with open("static/generated_log.txt", "w") as f:
             f.write(self.log_data)
-
-        self.output_path = "static/output.txt"  # aus Raum 2 umkopiert
+        # Level 2
+        self.output_path = TEXT.generate_decrypted_file("static/template.txt", "static/output.txt",
+                                                        ["{key1}", "{key2}", "{key3}"])  # aus Raum 2 umkopiert
         self.solution = TEXT.count_decrypted_words(
-            self.output_path)  # aus Raum 2 umkopiert
+            self.output_path)
 
         self.key = CRYPT.schluessel_erstellen(30)  # schluessel erstellen
         self.bild = (f"static/" + self.solution)  # war "static/KEY.jpg"
@@ -46,7 +45,7 @@ class Gruppe_HH_05(EscapeRoom):
 
     ### LEVELS ###
     # ---------------------------
-    # Level 1 (Easy - Veronika)
+    # Level 1 (Mittel - Veronika)
     # ---------------------------
     def create_level1(self):
         cookie_data = COOKIE.read_cookie("static/cookie.json")
@@ -61,7 +60,9 @@ class Gruppe_HH_05(EscapeRoom):
             "Hey Buddy, ich habe jetzt die Kontrolle. ",
             "Deine Dateien sind verschluesselt. :)",
             "Finde zwei Werte: den Session-Token (Cookie) und die Schwachstelle in der Datei /.env",
-            "Manipuliere deine Strings so das du alle gefundene ASCII-Werte (z. B. '67 111 107' und '45 54') summierst und nachdem Modulo 1000 rechnest.",
+            "Manipuliere deine Strings so das du alle gefundene ASCII-Werte (z. B. '67 111 107' und '45 54') summierst.",
+            "Verbinde beide Summen durch einen Doppelpunkt (sum_cookie:sum_secret) und berechne daraus den SHA-256-Hash.",
+            "Die letzten 12 Zeichen dieses Hash-Werts bilden deinen Authentifizierungscode."
         ]
 
         hints = [
@@ -78,11 +79,6 @@ class Gruppe_HH_05(EscapeRoom):
             "data": cookie_str
         }
 
-    # ---------------------------
-    # Level 1 (Easy - Solution)
-    # ---------------------------
-    # def solution_level1(self, actual_solution) -> str:
-    #    return actual_solution
     # ---------------------------
     # Level 2 (Schwierig - Veronika)
     # ---------------------------
@@ -252,13 +248,6 @@ class Gruppe_HH_05(EscapeRoom):
         }
 
     ### Hilfsfunktionen ###
-
-    # ---------------------------
-    # Level 1 (Easy - Veronika)
-    # ---------------------------
-    # def solution_level1(self, auth_number) -> str:
-    #    return auth_number
-    #    return "".join(chr(int(n)) for n in cookie.split())
 
     # ---------------------------
     # Level 3 (Oliver)

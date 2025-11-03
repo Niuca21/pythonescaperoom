@@ -1,3 +1,8 @@
+# ---------------------------
+# Level 2 (Schwierig - Veronika)
+# ---------------------------
+
+import re
 import random
 import time
 
@@ -33,9 +38,21 @@ def random_utc_timestamp(start_year=2000, end_year=2025):
     return random.randint(start, end)
 
 
-def count_decrypted_words(output_path):
-
+def count_decrypted_words(output_path: str) -> str:
     with open(output_path, "r", encoding="utf-8") as f:
         text = f.read()
 
-    return "443.jpg"
+    matches = re.findall(r"-\d+\sUTC", text)
+
+    clean_matches = [m.replace(" UTC", "") for m in matches]
+
+    counts = {}
+    for key in clean_matches:
+        counts[key] = counts.get(key, 0) + 1
+    unique_keys = list(dict.fromkeys(clean_matches))[:3]
+    solution_numbers = [str(counts[k]) for k in unique_keys]
+
+    solution = "".join(solution_numbers) + ".jpg"
+    print("Decrypted file analysis result:", solution)
+
+    return solution
