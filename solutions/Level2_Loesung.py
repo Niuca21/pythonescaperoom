@@ -1,4 +1,31 @@
 # Beispiellösung Level 2: Veronika
+# Lernziele:
+# 1. Dateien lesen
+#    - Öffnen von Dateien mit open()
+#    - Lesen des gesamten Inhalts (read())
+#    - Umgang mit Encoding (UTF-8)
+#
+# 2. Reguläre Ausdrücke (Regex) verwenden
+#    - re.findall() kennenlernen
+#    - Muster definieren, z. B. "-\d+ UTC" oder "-\d+ UTC."
+#    - Optionale Zeichen erkennen (".?")
+#
+# 3. String-Manipulation
+#    - Entfernen unerwünschter Teile (replace())
+#    - Sauberes Aufbereiten der gefundenen Werte
+#
+# 4. Dictionaries für Zählungen
+#    - Zählen von Vorkommen einzelner Elemente
+#    - Zugriff auf Dictionary-Werte und Standardwerte (dict.get)
+#
+# 5. Listenoperationen
+#    - Entfernen von Duplikaten unter Beibehaltung der Reihenfolge (dict.fromkeys())
+#    - Indexierung und Slicing [:3]
+#
+# 6. String-Formatierung und Zusammenführung
+#    - Umwandeln von Zahlen in Strings (str())
+#    - Zusammenfügen mit join()
+#    - Erzeugen eines Dateinamens wie z.B. "566.jpg"
 import re
 
 
