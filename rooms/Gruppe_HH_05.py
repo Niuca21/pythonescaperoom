@@ -1,7 +1,7 @@
 import os
 import re
-from lib import cookie as COOKIE
-from lib import text as TEXT
+from lib import cookie as COOKIE  # Funktionssammlung Veronika Level 1
+from lib import text as TEXT  # Funktionssammlung Veronika Level 2
 
 from EscapeRoom import EscapeRoom
 from lib.log_generator import generate_logfile  # Lukasz
@@ -87,16 +87,11 @@ class Gruppe_HH_05(EscapeRoom):
         gamename = "Textdatei mit Nebenwirkungen"
 
         path = "static/template.txt"
-# output_path = "static/output.txt" # nach Zeile 22 verschoben
 
         placeholders = ["{key1}", "{key2}", "{key3}"]
 
         decrypted_path = TEXT.generate_decrypted_file(
-            path, self.output_path, placeholders)  # self.output_path
-
-# solution = self.count_decrypted_words(   # nach Zeile 23 verschoben
-# output_path)  # nach Zeile 24 verschoben
-        # print("Level 2 Lösung (intern):", self.solution)  # self.solution
+            path, self.output_path, placeholders)
 
         task_messages = [
             "In dieser Nachricht versteckt sich der Schlüssel zu deinem Bild:",
