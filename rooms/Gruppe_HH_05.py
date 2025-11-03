@@ -62,7 +62,7 @@ class Gruppe_HH_05(EscapeRoom):
             "Finde zwei Werte: den Session-Token (Cookie) und die Schwachstelle in der Datei /.env",
             "Manipuliere deine Strings so das du alle gefundene ASCII-Werte (z. B. '67 111 107' und '45 54') summierst.",
             "Verbinde beide Summen durch einen Doppelpunkt (sum_cookie:sum_secret) und berechne daraus den SHA-256-Hash.",
-            "Die letzten 12 Zeichen dieses Hash-Werts bilden deinen Authentifizierungscode."
+            "Die ersten 12 Zeichen dieses Hash-Werts bilden deinen Authentifizierungscode."
         ]
 
         hints = [
