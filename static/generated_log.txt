@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 8080
-Firewall rule updated: allow port 3306
+Firewall rule updated: allow port 993
+Firewall rule updated: allow port 9999
 User login failed for user admin
 User login failed for user admin
 User login failed for user admin
-Unknown activity on port 3306
-Firewall rule updated: allow port 22
-Connection accepted on port 21
-Connection accepted on port 9999
-Unknown activity on port 143
+Configuration file changed
+User login failed for user user1
+Port 443 is filtered
 Port 8080 is filtered
-Configuration file changed
-System rebooted at 03:33
+System rebooted at 23:59
+Firewall rule updated: allow port 143
 User login failed for user user1
-Exposed service detected on port 25
-Port 110 is filtered
-User service logged out
-User service logged out
-Port 9999 is filtered
-Connection accepted on port 25
+Security policy updated
 Backup completed successfully
-User login failed for user user1
 Firewall rule updated: allow port 443
-Security policy updated
-User login failed for user guest
-Unauthorized access attempt on port 995
-Unauthorized access attempt on port 8080
-Unknown activity on port 8080
-Unauthorized access attempt on port 110
-Secure connection established on port 80
+User login failed for user user1
+Connection accepted on port 993
+Firewall rule updated: allow port 443
+Secure connection established on port 8080
+Exposed service detected on port 443
+Backup completed successfully
 Configuration file changed
-Unknown activity on port 110
+User login failed for user admin
 Security policy updated
-Firewall rule updated: allow port 22
-Unknown activity on port 110
-Configuration file changed
+User login failed for user admin
+Connection accepted on port 21
+Unknown activity on port 21
+Unknown activity on port 22
+Unknown activity on port 9999
+Exposed service detected on port 22
+Backup completed successfully
+Secure connection established on port 995
+User login failed for user admin
 Exposed service detected on port 9999
-Port 9999 is filtered
-Secure connection established on port 110
-Exposed service detected on port 3306
+Unknown activity on port 443
+Port 22 is filtered
+System rebooted at 03:33
+Unknown activity on port 9999
+Port 993 is filtered
+User login failed for user guest
