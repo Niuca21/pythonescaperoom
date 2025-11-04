@@ -117,18 +117,17 @@ class Gruppe_HH_05(EscapeRoom):
     def create_level3(self):
         gamename = f"Finde den Schlüssel"
         task_messages = [
-            "Du hast eine Dateinamen bekommen " + self.bild + ",",
+            "Du hast eine Dateinamen bekommen " + self.bild ,
             "(Eingabe für das Rätsel), schon eine Idee?",
             "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
             "dies ist zwar kein CTF, aber ein \"flag=\" gilt es trotzdem zu finden!",
         ]
         hints = [
             "schau mal im Bild!",
-            "suche nach dem flag= ",
-            "Eingabedaten sind der Dateiname des Bildes",
-            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
-            "speichern kann nicht schaden, Bsp. game.key",
+            "suche nach dem \"flag=\" ",
             "als encoding wurde 'ISO-8859-1' verwendet",
+            "speichern des Teils hinter \"flag=\" kann nicht schaden, Bsp. game.key",
+            "mit jedem neuanfang, bekommst du auch ein anderes Bild und eine neue \"flag=\"! ",
             "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
         ]
         return {
@@ -154,8 +153,8 @@ class Gruppe_HH_05(EscapeRoom):
         hints = [
             "Der Inhalt scheint verschlüsselt zu sein",
             "Hattest du den Schlüssel abgespeichert? Bsp. game.key?",
-            "Bitweise XOR verknüpfung vom Inhalt der Datei mit dem Schlüssel",
-            "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist",
+            "Bitweise XOR verknüpfung vom Inhalt der Datei mit dem Schlüssel (\"flag=\") aus vorherigem Rätsel.",
+            "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist!",
             "trotzdem solltest du die komplette Datei bearbeiten und auch wieder speichern. Bsp. ausgabe_encrypt.txt"
         ]
         return {
