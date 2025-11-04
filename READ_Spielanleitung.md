@@ -84,8 +84,8 @@ Finden und zwischenspeichern (wird in Level4 benötigt) eines in der Bild-Datei 
 
 **Geschichte**
 
-Warum kann ich den Inhalt dieser komische Datei nicht lesen? 
-Könnte sie Verschlüsselt worden sein? 
+Der Inhalt dieser Datei sieht komisch aus! 
+Könnte Verschlüsselt worden sein? 
 Was hat daß jetzt mit dem gefundenen Schlüssel zu tun?
 
 

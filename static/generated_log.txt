@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 993
-Firewall rule updated: allow port 9999
+Firewall rule updated: allow port 995
+Firewall rule updated: allow port 8443
 User login failed for user admin
 User login failed for user admin
 User login failed for user admin
-Configuration file changed
-User login failed for user user1
-Port 443 is filtered
-Port 8080 is filtered
-System rebooted at 23:59
 Firewall rule updated: allow port 143
-User login failed for user user1
-Security policy updated
-Backup completed successfully
-Firewall rule updated: allow port 443
-User login failed for user user1
-Connection accepted on port 993
-Firewall rule updated: allow port 443
-Secure connection established on port 8080
-Exposed service detected on port 443
-Backup completed successfully
+User service logged out
+Exposed service detected on port 21
+Unknown activity on port 80
+Exposed service detected on port 143
+Secure connection established on port 110
 Configuration file changed
-User login failed for user admin
-Security policy updated
-User login failed for user admin
-Connection accepted on port 21
-Unknown activity on port 21
-Unknown activity on port 22
-Unknown activity on port 9999
-Exposed service detected on port 22
-Backup completed successfully
-Secure connection established on port 995
-User login failed for user admin
-Exposed service detected on port 9999
-Unknown activity on port 443
+Firewall rule updated: allow port 8080
+System rebooted at 00:01
+Exposed service detected on port 995
+Port 21 is filtered
+Firewall rule updated: allow port 3306
+Antivirus scan started
+Connection accepted on port 993
+System rebooted at 00:01
+User user1 logged out
+System rebooted at 00:01
+Secure connection established on port 110
 Port 22 is filtered
-System rebooted at 03:33
-Unknown activity on port 9999
-Port 993 is filtered
-User login failed for user guest
+Unauthorized access attempt on port 143
+Configuration file changed
+Antivirus scan started
+Configuration file changed
+Unauthorized access attempt on port 3306
+Port 3306 is filtered
+Firewall rule updated: allow port 995
+Unauthorized access attempt on port 80
+Connection accepted on port 8443
+User service logged out
+Configuration file changed
+Unauthorized access attempt on port 9999
+Backup completed successfully
+Firewall rule updated: allow port 80
+System rebooted at 00:01
+Unknown activity on port 110
