@@ -145,16 +145,16 @@ class Gruppe_HH_05(EscapeRoom):
     def create_level4(self):
         gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
-            "Du hast jetzt einen Dateinamen " +
-            self.verschluesselt + ", schon mar reingeschaut?",
+            "Neben dem Bild war da noch eine andere Datei ",
+            self.verschluesselt ,
+            "(Eingabe für das Rätsel), schon mal reingeschaut?",
             f"<a href='{self.verschluesselt}' target='_blank'>" +
-            self.verschluesselt + " öffnen</a>",
+            self.verschluesselt + "</a> öffnen",
         ]
         hints = [
-            "kannst du den Inhalt lesen?",
-            "Hattest du die flag gespeichert? Bsp. game.key?",
-            "Bitweises XOR schon mal gesehen?",
-            "Denke drann den Inhalt des Key.File zu nutzen, nicht den Dateinamen",
+            "Der Inhalt scheint verschlüsselt zu sein",
+            "Hattest du den Schlüssel abgespeichert? Bsp. game.key?",
+            "Bitweise XOR verknüpfung vom Inhalt der Datei mit dem Schlüssel",
             "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist",
             "trotzdem solltest du die komplette Datei bearbeiten und auch wieder speichern. Bsp. ausgabe_encrypt.txt"
         ]
