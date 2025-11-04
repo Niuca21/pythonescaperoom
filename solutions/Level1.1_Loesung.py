@@ -1,3 +1,29 @@
+# Beispiellösung Level 1: Veronika
+# Lernziele:
+# 1. Strings in Python verstehen
+#    - Zugriff auf einzelne Zeichen
+#    - Iteration über Strings (for n in string)
+#
+# 2. ASCII-Werte berechnen
+#    - Funktion ord() kennenlernen
+#    - Umwandlung von Zeichen in Ganzzahlen
+#
+# 3. Listen und List Kompressionen
+#    - Erstellen von Listen über Ausdruckslisten: [ord(n) for n in string]
+#    - Aggregieren von Werten (sum())
+#
+# 4. Grundlegende mathematische Operationen
+#    - Addition von Werten
+#    - Bildung von zusammengesetzten Payloads
+#
+# 5. String-Formatierung
+#    - f-Strings zur dynamischen Erstellung von Strings
+#    - Zusammensetzen von Daten für Hashing
+#
+# 6. Kryptographie-Grundlagen (praktisch)
+#    - SHA-256 Hash berechnen mit hashlib
+#    - Nutzung des Hashwerts für Authentifizierung
+#    - Slicing von Strings, z. B. auth_hash[:12]
 import hashlib
 
 cookie = "Cookie hier hinzufügen"

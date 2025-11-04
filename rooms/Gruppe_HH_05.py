@@ -58,7 +58,7 @@ class Gruppe_HH_05(EscapeRoom):
         gamename = f"Diese Cookies sind nicht lecker"
         task_messages = [
             "Hey Buddy, ich habe jetzt die Kontrolle. ",
-            "Deine Dateien sind verschluesselt. :)",
+            "Willst du dein Admin-Konto zurück? Dann folge den Hinweisen… :)",
             "Finde zwei Werte: den Session-Token (Cookie) und die Schwachstelle in der Datei /.env",
             "Manipuliere deine Strings so das du alle gefundene ASCII-Werte (z. B. '67 111 107' und '45 54') summierst.",
             "Verbinde beide Summen durch einen Doppelpunkt (sum_cookie:sum_secret) und berechne daraus den SHA-256-Hash.",
@@ -66,7 +66,9 @@ class Gruppe_HH_05(EscapeRoom):
         ]
 
         hints = [
-            "Finde den Session-Token (Cookie) im Browser und entdecke die Schwachstelle in der versehentlich gelassenen Datei .env . Öffne die Datei im Browser in einem neuen Tab: http://127.0.0.1:5001/.env"
+            "Finde den Session-Token (Cookie) im Browser und entdecke die Schwachstelle in der versehentlich gelassenen Datei .env .",
+            "Öffne die Datei im Browser in einem neuen Tab: http://127.0.0.1:5001/.env",
+            "So führst du die Function aus: 'python def run(eingabe):'"
         ]
 
         self.response.set_cookie("hint", cookie_str)
@@ -100,11 +102,11 @@ class Gruppe_HH_05(EscapeRoom):
         ]
 
         hints = [
-            "Jede Zahl (z. B. -1338780358 UTC) zählt. Finde heraus, wie oft sie erscheint.",
-            "Setze die Anzahl der Vorkommen in der Reihenfolge ihres ersten Auftretens zusammen.",
-            "Beispiel: Wenn du 1, 3, 2 findest → {key1}{key2}{key3}.jpg = 133.jpg"
+            "Berücksichtige jede Zahl (z. B. -1338780358 UTC),",
+            "außer die in der Liste unten aufgeführten.",
+            "Ermittle, wie oft sie vorkommt, und gib den Wert als Dateinamen zurück (z. B. 443.jpg). ",
+            "So führst du die Function aus: 'def run(path): return Dateinamen "
         ]
-
         return {
             "gamename": gamename,
             "task_messages": task_messages,
