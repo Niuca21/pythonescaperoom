@@ -117,10 +117,10 @@ class Gruppe_HH_05(EscapeRoom):
     def create_level3(self):
         gamename = f"Finde den Schlüssel"
         task_messages = [
+            "Du hast eine Dateinamen bekommen " + self.bild + ",",
+            "(Eingabe für das Rätsel), schon eine Idee?",
             "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
-            "Hi,",
-            "Jetzt hast du eine Datei " + self.bild + ", schon eine Idee?",
-            "dies ist zwar kein CTF, aber ein flag ist trotzdem zu suchen!",
+            "dies ist zwar kein CTF, aber ein \"flag=\" gilt es trotzdem zu finden!",
         ]
         hints = [
             "schau mal im Bild!",
