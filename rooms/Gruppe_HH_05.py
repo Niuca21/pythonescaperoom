@@ -49,7 +49,6 @@ class Gruppe_HH_05(EscapeRoom):
     # ---------------------------
     def create_level1(self):
         cookie_data = COOKIE.read_cookie("static/cookie.json")
-
         cookie_str = COOKIE.get_random_cookie(cookie_data)
         flask_secret = os.getenv("FLASK_SECRET_KEY")
         auth_number = COOKIE.combine_cookie_and_secret(
@@ -87,11 +86,8 @@ class Gruppe_HH_05(EscapeRoom):
 
     def create_level2(self):
         gamename = "Textdatei mit Nebenwirkungen"
-
         path = "static/template.txt"
-
         placeholders = ["{key1}", "{key2}", "{key3}"]
-
         decrypted_path = TEXT.generate_decrypted_file(
             path, self.output_path, placeholders)
 
