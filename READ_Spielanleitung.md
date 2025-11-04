@@ -1,5 +1,8 @@
 # Spielübersicht
 
+# angepasster Server getestet auf Linux, Mac & Linux Subsystem auf Windows
+
+
 ## Anfang
 Du schaltest deinen Computer ein und siehst nur ein seltsames Anmeldefenster als Gast.  
 Plötzlich startet ein merkwürdiges Spiel, das dir Hinweise gibt, wie du dein Admin-Konto zurückbekommst.
