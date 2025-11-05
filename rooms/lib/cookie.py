@@ -1,5 +1,5 @@
 # ---------------------------
-# Level 1 (Mittel - Solution)
+# Level 1 (Mittel - Veronika)
 # ---------------------------
 
 import random
