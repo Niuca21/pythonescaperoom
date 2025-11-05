@@ -1,10 +1,13 @@
 # Spielübersicht
 
-# angepasster Server getestet auf Linux, Mac & Linux Subsystem auf Windows
+# Besonderheiten dieser Spiele-Version
+Der Server wurde angepasst, und auf Linux, Mac & im Linux Subsystem auf Windows getestet.
+Für die Nutzung auf einer reinen Windows Version müßten in einigen Dateien, 
+jeweils in den genutzten Dateipfaden der / (Slash) gegen einen \ Backslash ausgetauscht werden.
 
 
 ## Anfang
-Du schaltest deinen Computer ein und siehst nur ein seltsames Anmeldefenster als Gast.  
+Du schaltest deinen Computer ein und siehst nur ein seltsames Anmeldefenster als Gast.
 Plötzlich startet ein merkwürdiges Spiel, das dir Hinweise gibt, wie du dein Admin-Konto zurückbekommst.
 
 ---
