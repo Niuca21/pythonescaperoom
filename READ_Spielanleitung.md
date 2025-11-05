@@ -9,7 +9,7 @@ Plötzlich startet ein merkwürdiges Spiel, das dir Hinweise gibt, wie du dein A
 
 ---
 
-## Level 1 – Diese Cookies sind nicht lecker :)
+## Level 1 – Diese Cookies sind nicht lecker 
 
 **Geschichte**
 
@@ -63,7 +63,8 @@ Vielleicht ist dort gar nichts Bösartiges … doch offenbar hast du keine ander
 **Aufgabe:**  
 "In dieser Nachricht versteckt sich der Schlüssel zu deinem Bild:",
 Browser Fenster mit dem Geheimtextnachricht wird gezeigt,
-"Berücksichtige jede Zahl (z. B. -1338780358 UTC), außer die in der Liste unten aufgeführten. Ermittle, wie oft sie vorkommt, und gib den Wert als Dateinamen zurück (z. B. 443.jpg)."
+"Berücksichtige jede Zahl (z. B. -1338780358 UTC). Zähle sorgfältig, wie oft jede UTC-Zahl vorkommt, und kombiniere sie zu einer Dateiendung. Verwende den Wert des frühesten Datums zuerst, den des spätesten Datums zuletzt, und kombiniere die Zählungen zu einem Dateinamen (z. B. 443.jpg)."
+
 
 **Solution:**
 <pre> ```python def run(path): return Dateinamen print(run("static/ausgabe.txt")) ``` </pre>

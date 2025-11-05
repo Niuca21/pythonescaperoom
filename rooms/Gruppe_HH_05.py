@@ -56,12 +56,12 @@ class Gruppe_HH_05(EscapeRoom):
 
         gamename = f"Diese Cookies sind nicht lecker"
         task_messages = [
-            "Hey Buddy, ich habe jetzt die Kontrolle. ",
-            "Willst du dein Admin-Konto zurück? Dann folge den Hinweisen… :)",
-            "Finde zwei Werte: den Session-Token (Cookie) und die Schwachstelle in der Datei /.env",
-            "Manipuliere deine Strings so das du alle gefundene ASCII-Werte (z. B. '67 111 107' und '45 54') summierst.",
-            "Verbinde beide Summen durch einen Doppelpunkt (sum_cookie:sum_secret) und berechne daraus den SHA-256-Hash.",
-            "Die ersten 12 Zeichen dieses Hash-Werts bilden deinen Authentifizierungscode."
+            "Hey Buddy — ich habe die Kontrolle übernommen. "
+            "Willst du dein Admin-Konto zurück? Folge den Hinweisen, um deinen Authentifizierungscode zu berechnen."
+            "Aufgabe: Finde zwei Werte: den Session-Token (aus dem Cookie) und ein Geheimnis in der Datei .env."
+            "Verwandle beide Fundstellen in Zahlen: in jedem Fall summierst du die ASCII-Codes der jeweiligen Zeichenfolgen."
+            "Bildet für beide Summen jeweils eine Zahl (sum_cookie und sum_secret), verbinde sie mit einem Doppelpunkt → 'sum_cookie:sum_secret'."
+            "Berechne den SHA-256-Hash dieses Strings. Die ersten 12 Zeichen des Hex-Digests sind dein Authentifizierungscode."
         ]
 
         hints = [
@@ -94,14 +94,18 @@ class Gruppe_HH_05(EscapeRoom):
         task_messages = [
             "In dieser Nachricht versteckt sich der Schlüssel zu deinem Bild:",
             f"<a href='{decrypted_path}' target='_blank'>Geheimtext öffnen</a>",
-            "Zähle sorgfältig, wie oft jede UTC-Zahl vorkommt, und kombiniere sie zu einer Dateiendung. Do not count the list below."
+            "Zähle sorgfältig, wie oft jede UTC-Zahl vorkommt, und kombiniere sie zu einer Dateiendung.",
+            "Verwende den Wert des frühesten Datums zuerst, den des spätesten Datums zuletzt, und kombiniere die Zählungen zu einem Dateinamen (z. B. 443.jpg)."
         ]
 
         hints = [
-            "Berücksichtige jede Zahl (z. B. -1338780358 UTC),",
-            "außer die in der Liste unten aufgeführten.",
-            "Ermittle, wie oft sie vorkommt, und gib den Wert als Dateinamen zurück (z. B. 443.jpg). ",
-            "So führst du die Function aus: 'def run(path): return Dateinamen "
+            "Jede Zahl endet mit 'UTC'. Entferne ' UTC', bevor du sie weiterverarbeitest.",
+            "Beachte: etwa 20 prozent der Zahlen können absichtlich fehlerhaft sein (z.B. '1' → 'I', '0' → 'o'). Korrigiere sie, bevor du zählst.",
+            "Zähle, wie oft jeder UTC-Timestamp vorkommt. Ein Dictionary oder collections.Counter ist hilfreich.",
+            "Wandle die Zahlen in Integer um und finde das kleinste und das größte Datum.",
+            "Die Zählung des frühesten Datums kommt zuerst, die des spätesten Datums zuletzt für den Dateinamen.",
+            "Kombiniere die beiden Zahlen zu einem String und hänge '.jpg' an, z.B. '443.jpg'.",
+            "Führe die Funktion so aus: `def run(path): return dateiname`."
         ]
         return {
             "gamename": gamename,
@@ -117,7 +121,7 @@ class Gruppe_HH_05(EscapeRoom):
     def create_level3(self):
         gamename = f"Finde den Schlüssel"
         task_messages = [
-            "Du hast eine Dateinamen bekommen " + self.bild ,
+            "Du hast eine Dateinamen bekommen " + self.bild,
             "(Eingabe für das Rätsel), schon eine Idee?",
             "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
             "dies ist zwar kein CTF, aber ein \"flag=\" gilt es trotzdem zu finden!",
@@ -145,7 +149,7 @@ class Gruppe_HH_05(EscapeRoom):
         gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
             "Neben dem Bild war da noch eine andere Datei ",
-            self.verschluesselt ,
+            self.verschluesselt,
             "(Eingabe für das Rätsel), schon mal reingeschaut?",
             f"<a href='{self.verschluesselt}' target='_blank'>" +
             self.verschluesselt + "</a> öffnen",
