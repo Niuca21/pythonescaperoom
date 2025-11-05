@@ -2,8 +2,8 @@
 
 # Besonderheiten dieser Spiele-Version
 Der Server wurde angepasst, und auf Linux, Mac & im Linux Subsystem auf Windows getestet.
-Für die Nutzung auf einer reinen Windows Version müßten in einigen Dateien, 
-jeweils in den genutzten Dateipfaden der / (Slash) gegen einen \ Backslash ausgetauscht werden.
+Für die Nutzung auf einer reinen Windows Installation müßten in einigen Dateien, 
+jeweils in den genutzten Dateipfaden, der / (Slash) gegen einen \ Backslash ausgetauscht werden.
 
 
 ## Anfang
