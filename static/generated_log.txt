@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 80
-Firewall rule updated: allow port 3306
-User login failed for user admin
+Firewall rule updated: allow port 143
+Firewall rule updated: allow port 21
 User login failed for user admin
 User login failed for user admin
 Backup completed successfully
-Unknown activity on port 443
-Firewall rule updated: allow port 110
+Connection accepted on port 8080
+Firewall rule updated: allow port 21
+Unauthorized access attempt on port 993
+Unauthorized access attempt on port 8080
 Antivirus scan started
-Backup completed successfully
-User login failed for user service
-Security policy updated
-Secure connection established on port 22
-Secure connection established on port 9999
-Unauthorized access attempt on port 25
-Backup completed successfully
-Configuration file changed
-Antivirus scan started
-System rebooted at 12:45
+Connection accepted on port 9999
 Port 993 is filtered
-Exposed service detected on port 993
-Secure connection established on port 21
-Connection accepted on port 443
-User login failed for user user1
-Unknown activity on port 110
-Connection accepted on port 25
-Port 80 is filtered
-Firewall rule updated: allow port 995
-Unauthorized access attempt on port 3306
-User login failed for user user1
-Port 9999 is filtered
-Unauthorized access attempt on port 110
-Unknown activity on port 110
-Unknown activity on port 80
-Connection accepted on port 25
-Secure connection established on port 143
-Port 9999 is filtered
 Antivirus scan started
-Backup completed successfully
-Backup completed successfully
+Secure connection established on port 3306
+Secure connection established on port 995
+Secure connection established on port 110
+Configuration file changed
+Port 143 is filtered
+Port 8080 is filtered
+Configuration file changed
+Port 22 is filtered
+Secure connection established on port 21
+Firewall rule updated: allow port 9999
+Unauthorized access attempt on port 143
+Unknown activity on port 143
+Exposed service detected on port 143
+Unauthorized access attempt on port 995
+Antivirus scan started
+Exposed service detected on port 995
+Unauthorized access attempt on port 9999
+Unauthorized access attempt on port 143
+User login failed for user admin
+Unknown activity on port 143
+Unknown activity on port 8443
+User login failed for user guest
+Connection accepted on port 443
+Antivirus scan started
+Unauthorized access attempt on port 22
+Unauthorized access attempt on port 110
+Security policy updated
