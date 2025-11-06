@@ -5,6 +5,7 @@ from lib import text as TEXT  # Funktionssammlung Veronika Level 2
 
 from EscapeRoom import EscapeRoom
 from lib.log_generator import generate_logfile  # Lukasz
+from lib.utils import pretty_print # Lukasz
 import lib.stego as STEGO  # Funktionssammlung Oliver Level 3
 import lib.crypt as CRYPT  # Funktionssammlung Oliver Level 4
 
@@ -170,7 +171,7 @@ class Gruppe_HH_05(EscapeRoom):
         }
 
     # ---------------------------
-    # Level 5 (Lucasz)
+    # Level 5 (Lukasz)
     # ---------------------------
     def create_level5(self):
         gamename = f"Erweiterte Logfile-Analyse"
@@ -179,6 +180,15 @@ class Gruppe_HH_05(EscapeRoom):
         # Wenn mit der ver und wieder Entschlüsselten Datei gearbeitet werden soll.
         # Müßte in Beispiellösung mit der Datei "ausgabe_encrypt.txt" (aus Beispiellösung für Level4)
         # und in der kontrolle mit der Datei "tmp/ausgabe_encrypt.txt" gearbeitet werden
+
+
+
+# Ergebnis berechnen
+        result = self.check_ports_level5(log_data)
+# Debug-Ausgabe für mich (nicht für Spieler)
+        pretty_print(result)  # <- Importierte Funktion aus lib.utils
+
+
 
         task_messages = [
             "<b>🧠 Level 5: Erweiterte Logfile-Analyse</b>",
@@ -206,7 +216,7 @@ class Gruppe_HH_05(EscapeRoom):
         }
 
     # ---------------------------
-    # Level 6 (Lucasz)
+    # Level 6 (Lukasz)
     # ---------------------------
     def create_level6(self):
         gamename = "Port-Säuberung & Firewall-Wiederherstellung"
