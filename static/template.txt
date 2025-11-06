@@ -1,12 +1,12 @@
 Geschrieben am {key3} UTC. Ich nenne mich selten beim echten Namen, doch ist mein geheimer Key seit {key1} UTC.
 Ein Nickname wie der seit {key1} UTC begleitet fühlt sich einfach sicherer an.
-Schon als Kind, ich (geb. am {key1}), habe mich für Rätsel und versteckte Muster begeistert. Ich erinnere mich an Nächte um {key2} UTC, in denen ich bis zum Morgengrauen am {key2} UTC Bücher verschlang, immer mit als geheimen Begleiter.
+Schon als Kind, ich (geb. am {key1} UTC), habe mich für Rätsel und versteckte Muster begeistert. Ich erinnere mich an Nächte um {key2} UTC, in denen ich bis zum Morgengrauen am {key2} UTC Bücher verschlang, immer mit als geheimen Begleiter.
 Computer waren für mich nie nur Maschinen, sondern neugierige Gesprächspartner, die darauf warteten, dass ich ihre ASCII Geheimnisse wie entschlüsselte und war mein Schlüssel zu all dem.
 Ich finde faszinierend, es taucht überall auf in alten Notizen, Codes und Hinweisen.
 Neugier ist eine der schönsten Antriebe, und lehrt mich gleichzeitig Verantwortungsbewusstsein.
 Wenn du mich fragst, was ich am meisten mag: kreative Lösungen für echte Probleme.
 Und Ich mit ein guter Kaffee am Morgen, {key3} UTC, zusammen mit meinem Key, hält den Kopf klar und die Finger flink.
 
-Finde die richtige Reihenfolge. Wie öfter sind die Wörter dabei und gebe die Dateinahme als String "diezahlen.dateiformat" aus.
+Finde die richtige Reihenfolge. Wie öfter sind die Wörter dabei und gebe die Dateinahme "diezahlen.dateiformat" aus.
 Und wie OFT soll ich dir eigentlich die Hinweise streuen?
 {key1}{key2}{key3}.jpg ist das was du suchst!

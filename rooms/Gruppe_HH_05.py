@@ -1,7 +1,8 @@
-import random
-import string
-import time
+import os
 import re
+from lib import cookie as COOKIE  # Funktionssammlung Veronika Level 1
+from lib import text as TEXT  # Funktionssammlung Veronika Level 2
+
 from EscapeRoom import EscapeRoom
 from lib.log_generator import generate_logfile  # Lukasz
 import lib.stego as STEGO  # Funktionssammlung Oliver Level 3
@@ -13,20 +14,22 @@ class Gruppe_HH_05(EscapeRoom):
     def __init__(self, response=None):
         super().__init__(response)
         self.set_metadata("Veronika, Lukasz & Oliver", __name__)
-        
-        self.log_data = generate_logfile(40)     # Logfile generieren Lukasz 
+
+        self.log_data = generate_logfile(40)     # Logfile generieren Lukasz
         # Logfile speichern für andere Levels  ( Lukasz )
         with open("static/generated_log.txt", "w") as f:
             f.write(self.log_data)
-        
-        self.output_path = "static/output.txt" ## aus Raum 2 umkopiert
-        self.solution = self.count_decrypted_words( ## aus Raum 2 umkopiert
-            self.output_path)  ## aus Raum 2 umkopiert
-        
-        self.key = CRYPT.schluessel_erstellen(30)  # schluessel erstellen
-        self.bild = (f"static/" + self.solution) ## war "static/KEY.jpg"
+        # Level 2
+        self.output_path = TEXT.generate_decrypted_file("static/template.txt", "static/output.txt",
+                                                        ["{key1}", "{key2}", "{key3}"])  # aus Raum 2 umkopiert
+        self.solution = TEXT.count_decrypted_words(
+            self.output_path)
 
-        STEGO.random_bild(self.bild) # zufälliges Bild ermitteln und umkopieren
+        self.key = CRYPT.schluessel_erstellen(30)  # schluessel erstellen
+        self.bild = (f"static/" + self.solution)  # war "static/KEY.jpg"
+
+        # zufälliges Bild ermitteln und umkopieren
+        STEGO.random_bild(self.bild)
         STEGO.im_bild_verstecken(self.bild, self.key)
 
         self.verschluesselt = "static/text.crypt"
@@ -42,67 +45,73 @@ class Gruppe_HH_05(EscapeRoom):
 
     ### LEVELS ###
     # ---------------------------
-    # Level 1 (Easy - Veronika)
+    # Level 1 (Mittel - Veronika)
     # ---------------------------
     def create_level1(self):
-        cockie = self.ascii_cockie()
-        gamename = f"Diese Cockies sind nicht lecker"
+        cookie_data = COOKIE.read_cookie("static/cookie.json")
+        cookie_str = COOKIE.get_random_cookie(cookie_data)
+        flask_secret = os.getenv("FLASK_SECRET_KEY")
+        auth_number = COOKIE.combine_cookie_and_secret(
+            cookie_str, flask_secret)
+
+        gamename = f"Diese Cookies sind nicht lecker"
         task_messages = [
-            "Hey Buddy, ich habe jetzt die Kontrolle. ",
-            "Deine Dateien sind verschluesselt. ",
-            "Wenn du dein Passwort wiederhaben willst, folge den Anweisungen.",
-            "Hier ist mein Wallet: Diese Cockies sind nicht lecker!"
+            "Hey Buddy — ich habe die Kontrolle übernommen. "
+            "Willst du dein Admin-Konto zurück? Folge den Hinweisen, um deinen Authentifizierungscode zu berechnen."
+            "Aufgabe: Finde zwei Werte: den Session-Token (aus dem Cookie) und ein Geheimnis in der Datei .env."
+            "Verwandle beide Fundstellen in Zahlen: in jedem Fall summierst du die ASCII-Codes der jeweiligen Zeichenfolgen."
+            "Bildet für beide Summen jeweils eine Zahl (sum_cookie und sum_secret), verbinde sie mit einem Doppelpunkt → 'sum_cookie:sum_secret'."
+            "Berechne den SHA-256-Hash dieses Strings. Die ersten 12 Zeichen des Hex-Digests sind dein Authentifizierungscode."
         ]
 
         hints = [
-            "Schaue die Webseite an und danach stelle fest, sind die Cockies lecker und was die Gangster mit ASCII zu tun haben."
+            "Finde den Session-Token (Cookie) im Browser und entdecke die Schwachstelle in der versehentlich gelassenen Datei .env .",
+            "Öffne die Datei im Browser in einem neuen Tab: http://127.0.0.1:5001/.env",
+            "So führst du die Function aus: 'python def run(eingabe):'"
         ]
 
-        self.response.set_cookie("hint", cockie)
+        self.response.set_cookie("hint", cookie_str)
 
         return {
             "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
-            "solution_function": self.solution_level1,
-            "data": cockie
+            "solution_function": lambda x: auth_number,
+            "data": cookie_str
         }
 
     # ---------------------------
     # Level 2 (Schwierig - Veronika)
     # ---------------------------
+
     def create_level2(self):
         gamename = "Textdatei mit Nebenwirkungen"
-
         path = "static/template.txt"
-##        output_path = "static/output.txt" # nach Zeile 22 verschoben
-
-        self.placeholders = ["{key1}", "{key2}", "{key3}"]
-
-        decrypted_path = self.generate_decrypted_file(
-            path, self.output_path) ## self.output_path
-
-##        solution = self.count_decrypted_words(   # nach Zeile 23 verschoben
-##            output_path)  # nach Zeile 24 verschoben
-        print("Level 2 Lösung (intern):", self.solution) ## self.solution
+        placeholders = ["{key1}", "{key2}", "{key3}"]
+        decrypted_path = TEXT.generate_decrypted_file(
+            path, self.output_path, placeholders)
 
         task_messages = [
             "In dieser Nachricht versteckt sich der Schlüssel zu deinem Bild:",
             f"<a href='{decrypted_path}' target='_blank'>Geheimtext öffnen</a>",
-            "Zähle sorgfältig, wie oft jede UTC-Zahl vorkommt, und kombiniere sie zu einer Dateiendung. Do not count the list below."
+            "Zähle sorgfältig, wie oft jede UTC-Zahl vorkommt, und kombiniere sie zu einer Dateiendung.",
+            "Verwende den Wert des frühesten Datums zuerst, den des spätesten Datums zuletzt, und kombiniere die Zählungen zu einem Dateinamen (z. B. 443.jpg)."
         ]
 
         hints = [
-            "Jede Zahl (z. B. -1338780358 UTC) zählt. Finde heraus, wie oft sie erscheint.",
-            "Setze die Anzahl der Vorkommen in der Reihenfolge ihres ersten Auftretens zusammen.",
-            "Beispiel: Wenn du 1, 3, 2 findest → {key1}{key2}{key3}.jpg = 133.jpg"
+            "Jede Zahl endet mit 'UTC'. Entferne ' UTC', bevor du sie weiterverarbeitest.",
+            "Beachte: etwa 20 prozent der Zahlen können absichtlich fehlerhaft sein (z.B. '1' → 'I', '0' → 'o'). Korrigiere sie, bevor du zählst.",
+            "Zähle, wie oft jeder UTC-Timestamp vorkommt. Ein Dictionary oder collections.Counter ist hilfreich.",
+            "Wandle die Zahlen in Integer um und finde das kleinste und das größte Datum.",
+            "Die Zählung des frühesten Datums kommt zuerst, die des spätesten Datums zuletzt für den Dateinamen.",
+            "Kombiniere die beiden Zahlen zu einem String und hänge '.jpg' an, z.B. '443.jpg'.",
+            "Führe die Funktion so aus: `def run(path): return dateiname`."
         ]
-
         return {
             "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
-            "solution_function": self.count_decrypted_words,
+            "solution_function": TEXT.count_decrypted_words,
             "data": decrypted_path
         }
 
@@ -112,25 +121,24 @@ class Gruppe_HH_05(EscapeRoom):
     def create_level3(self):
         gamename = f"Finde den Schlüssel"
         task_messages = [
+            "Du hast eine Dateinamen bekommen " + self.bild,
+            "(Eingabe für das Rätsel), schon eine Idee?",
             "  <img src=" + self.bild + " alt='The Key you looking for' height='150'/> ",
-            "Hi,",
-            "Jetzt hast du eine Datei " + self.bild + ", schon eine Idee?",
-            "dies ist zwar kein CTF, aber ein flag ist trotzdem zu suchen!",
+            "dies ist zwar kein CTF, aber ein \"flag=\" gilt es trotzdem zu finden!",
         ]
         hints = [
             "schau mal im Bild!",
-            "suche nach dem flag= ",
-            "Eingabedaten sind der Dateiname des Bildes",
-            "mit jedem Bild oder neuanfang bekommst du auch eine andere flag",
-            "speichern kann nicht schaden, Bsp. game.key",
+            "suche nach dem \"flag=\" ",
             "als encoding wurde 'ISO-8859-1' verwendet",
+            "speichern des Teils hinter \"flag=\" kann nicht schaden, Bsp. game.key",
+            "mit jedem neuanfang, bekommst du auch ein anderes Bild und eine neue \"flag=\"! ",
             "in einem Linux Terminal funktioniert auch der Befehl 'strings [Dateiname]' "
         ]
         return {
-            "gamename": gamename, 
-            "task_messages": task_messages, 
-            "hints": hints, 
-            "solution_function": STEGO.im_bild_finden, 
+            "gamename": gamename,
+            "task_messages": task_messages,
+            "hints": hints,
+            "solution_function": STEGO.im_bild_finden,
             "data": self.bild
         }
 
@@ -140,23 +148,24 @@ class Gruppe_HH_05(EscapeRoom):
     def create_level4(self):
         gamename = f"Entschlüssel den Datei-Inhalt"
         task_messages = [
-            "Du hast jetzt einen Dateinamen " +
-            self.verschluesselt + ", schon mar reingeschaut?",
-            f"<a href='{self.verschluesselt}' target='_blank'>" + self.verschluesselt + " öffnen</a>",
+            "Neben dem Bild war da noch eine andere Datei ",
+            self.verschluesselt,
+            "(Eingabe für das Rätsel), schon mal reingeschaut?",
+            f"<a href='{self.verschluesselt}' target='_blank'>" +
+            self.verschluesselt + "</a> öffnen",
         ]
         hints = [
-            "kannst du den Inhalt lesen?",
-            "Hattest du die flag gespeichert? Bsp. game.key?",
-            "Bitweises XOR schon mal gesehen?",
-            "Denke drann den Inhalt des Key.File zu nutzen, nicht den Dateinamen",
-            "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist",
+            "Der Inhalt scheint verschlüsselt zu sein",
+            "Hattest du den Schlüssel abgespeichert? Bsp. game.key?",
+            "Bitweise XOR verknüpfung vom Inhalt der Datei mit dem Schlüssel (\"flag=\") aus vorherigem Rätsel.",
+            "den Key kannst du auch mehrfach hintereinander schreiben, falls er nicht lang genug ist!",
             "trotzdem solltest du die komplette Datei bearbeiten und auch wieder speichern. Bsp. ausgabe_encrypt.txt"
         ]
         return {
-            "gamename": gamename, 
-            "task_messages": task_messages, 
-            "hints": hints, 
-            "solution_function": CRYPT.entschluesseln, 
+            "gamename": gamename,
+            "task_messages": task_messages,
+            "hints": hints,
+            "solution_function": CRYPT.entschluesseln,
             "data": self.verschluesselt
         }
 
@@ -165,7 +174,7 @@ class Gruppe_HH_05(EscapeRoom):
     # ---------------------------
     def create_level5(self):
         gamename = f"Erweiterte Logfile-Analyse"
-##        log_data = self.log_data
+# log_data = self.log_data
         log_data = "tmp/ausgabe_encrypt.txt"
         # Wenn mit der ver und wieder Entschlüsselten Datei gearbeitet werden soll.
         # Müßte in Beispiellösung mit der Datei "ausgabe_encrypt.txt" (aus Beispiellösung für Level4)
@@ -237,59 +246,11 @@ class Gruppe_HH_05(EscapeRoom):
     ### Hilfsfunktionen ###
 
     # ---------------------------
-    # Level 1 (Easy - Veronika)
-    # ---------------------------
-    def ascii_cockie(self):
-        return "67 111 111 107 105 101 109 111 110 115 116 101 114"
-
-    def solution_level1(self, cockie):
-        return "".join(chr(int(n)) for n in cockie.split())
-
-    # ---------------------------
-    # Level 2 (Schwierig - Veronika)
-    # ---------------------------
-    def generate_decrypted_file(self, path, output_path):
-        self.utc_list = [
-            f"-{self.random_utc_timestamp()}" for _ in self.placeholders]
-
-        with open(path, "r", encoding="utf-8") as f:
-            text = f.read()
-
-        for ph, utc in zip(self.placeholders, self.utc_list):
-            text = text.replace(ph, utc)
-
-        desired_counts = [4, 4, 3]
-        additional_lines = []
-        for utc, count in zip(self.utc_list, desired_counts):
-            additional_lines.extend(
-                [f"Geheimer Key seit {utc} UTC." for _ in range(count)])
-        random.shuffle(additional_lines)
-        text += "\n\n" + "\n".join(additional_lines)
-
-        with open(output_path, "w", encoding="utf-8") as f:
-            f.write(text)
-
-        return output_path
-
-    @staticmethod
-    def random_utc_timestamp(start_year=2000, end_year=2025):
-        start = int(time.mktime(time.strptime(
-            f"{start_year}-04-12", "%Y-%m-%d")))
-        end = int(time.mktime(time.strptime(f"{end_year}-10-31", "%Y-%m-%d")))
-        return random.randint(start, end)
-
-    def count_decrypted_words(self, output_path):
-
-        with open(output_path, "r", encoding="utf-8") as f:
-            text = f.read()
-        return "443.jpg"
-
-    # ---------------------------
     # Level 3 (Oliver)
     # Die Hilfsfunktionen für Level 3 befinden sich in der Datei rooms/lib/stego.py
     # Importiert mit: import lib.stego as STEGO
     # ---------------------------
-    
+
     # ---------------------------
     # Level 4 (Oliver)
     # Die Hilfsfunktionen für Level 4 befinden sich in der Datei rooms/lib/crypt.py
@@ -299,6 +260,7 @@ class Gruppe_HH_05(EscapeRoom):
     # ---------------------------
     # Level 5 (Lucasz)
     # ---------------------------
+
     def check_ports_level5(self, log_data):
         result = self.parse_logfile_extended(log_data)
         self.level5_result = result  # Speichere für Level 6
@@ -368,7 +330,7 @@ class Gruppe_HH_05(EscapeRoom):
     # 2. Firewall-Regeln wiederherstellen (z. B. 'allow' entfernen)
         restored_firewall_rules = []
         for rule in firewall_rules:
-        # Beispiel: "Firewall rule updated: allow port 80" -> "Firewall rule restored: port 80"
+            # Beispiel: "Firewall rule updated: allow port 80" -> "Firewall rule restored: port 80"
             restored_rule = rule.replace("updated: allow", "restored:")
             restored_firewall_rules.append(restored_rule)
 
@@ -385,5 +347,3 @@ class Gruppe_HH_05(EscapeRoom):
             "alert": alert,
             "admin_account": admin_account
         }
-
-    ### SOLUTIONS ###

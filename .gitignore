@@ -1,6 +1,7 @@
 __pycache__/
 .venv/
+venv
 *.pyc
 ausgabe_encrypt.txt
 tmp.txt
-
+.DS_Store

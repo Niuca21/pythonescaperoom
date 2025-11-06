@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 Firewall rule updated: allow port 993
 Firewall rule updated: allow port 22
 User login failed for user admin
@@ -17,23 +18,46 @@ System rebooted at 23:59
 =======
 Firewall rule updated: allow port 25
 Firewall rule updated: allow port 443
+=======
+Firewall rule updated: allow port 143
+Firewall rule updated: allow port 21
+>>>>>>> aa56b07d98ebd857fe40106f5b1920aebc87695d
 User login failed for user admin
 User login failed for user admin
-Configuration file changed
-User login failed for user guest
-Port 25 is filtered
-Unknown activity on port 110
-Port 21 is filtered
-Unauthorized access attempt on port 25
-Firewall rule updated: allow port 110
-Exposed service detected on port 110
-Configuration file changed
 Backup completed successfully
-Secure connection established on port 143
-Secure connection established on port 8080
-Unknown activity on port 22
-Secure connection established on port 80
+Connection accepted on port 8080
+Firewall rule updated: allow port 21
+Unauthorized access attempt on port 993
+Unauthorized access attempt on port 8080
 Antivirus scan started
+Connection accepted on port 9999
+Port 993 is filtered
+Antivirus scan started
+Secure connection established on port 3306
+Secure connection established on port 995
+Secure connection established on port 110
+Configuration file changed
+Port 143 is filtered
+Port 8080 is filtered
+Configuration file changed
+Port 22 is filtered
+Secure connection established on port 21
+Firewall rule updated: allow port 9999
+Unauthorized access attempt on port 143
+Unknown activity on port 143
+Exposed service detected on port 143
+Unauthorized access attempt on port 995
+Antivirus scan started
+Exposed service detected on port 995
+Unauthorized access attempt on port 9999
+Unauthorized access attempt on port 143
+User login failed for user admin
+Unknown activity on port 143
+Unknown activity on port 8443
+User login failed for user guest
+Connection accepted on port 443
+Antivirus scan started
+<<<<<<< HEAD
 Unauthorized access attempt on port 21
 System rebooted at 00:01
 >>>>>>> faa3585cfae5e69c0dc39f300edbaaf8620ad634
@@ -82,3 +106,8 @@ Unknown activity on port 21
 Unknown activity on port 25
 Exposed service detected on port 995
 >>>>>>> faa3585cfae5e69c0dc39f300edbaaf8620ad634
+=======
+Unauthorized access attempt on port 22
+Unauthorized access attempt on port 110
+Security policy updated
+>>>>>>> aa56b07d98ebd857fe40106f5b1920aebc87695d

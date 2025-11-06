@@ -1,12 +1,18 @@
 # Spielübersicht
 
+# Besonderheiten dieser Spiele-Version
+Der Server wurde angepasst, und auf Linux, Mac & im Linux Subsystem auf Windows getestet.
+Für die Nutzung auf einer reinen Windows Installation müßten in einigen Dateien, 
+jeweils in den genutzten Dateipfaden, der / (Slash) gegen einen \ Backslash ausgetauscht werden.
+
+
 ## Anfang
-Du schaltest deinen Computer ein und siehst nur ein seltsames Anmeldefenster als Gast.  
+Du schaltest deinen Computer ein und siehst nur ein seltsames Anmeldefenster als Gast.
 Plötzlich startet ein merkwürdiges Spiel, das dir Hinweise gibt, wie du dein Admin-Konto zurückbekommst.
 
 ---
 
-## Level 1 – Diese Cookies sind nicht lecker :)
+## Level 1 – Diese Cookies sind nicht lecker 
 
 **Geschichte**
 
@@ -19,12 +25,23 @@ Ein merkwürdiges Spiel startet — und mitten auf dem Bildschirm erscheint eine
 
 
 **Lernziele:**
-1. **Session Kontext:** Für die Aufgabenerstellung wurde mithilfe von Python der Session-Kontext im Browser manipuliert, um einen versteckten Hinweis (Hint) zu platzieren.2)
-2. **Kodierung und generierte Zeichenketten:** Die Zeichenketen werden dabei im Browser verborgen.
-3. **Dekodierung:** Die Aufgabe des Spielers besteht darin, diese Zeichenkette zu finden und zu dekodieren.
+
+1. **Kodierung und generierte Zeichenketten:** Die Zeichenketen werden dabei im Browser verborgen.
+2. **Listen und List Kompression:** Erstellen von Listen über Ausdruckslisten: [ord(n) for n in string]
+3. **Grundlegende mathematische Operationen:** Addition von Werten, Bildung von zusammengesetzten Payloads, Aggregieren von Werten (sum())
+4. **String-Formatierung:** f-Strings zur dynamischen Erstellung von Strings, Zusammensetzen von Daten für Hashing
+5. **Kryptographie-Grundlagen (praktisch):** SHA-256 Hash berechnen mit hashlib, Nutzung des Hashwerts für Authentifizierung, Slicing von Strings, z. B. auth_hash[:12]
 
 **Aufgabe:**  
-Finde die versteckte Nachricht(Admin Password) in der ASCII-Zeichenkette.
+"Manipuliere deine Strings so das du alle gefundene ASCII-Werte (z. B. '67 111 107' und '45 54') summierst.",
+"Verbinde beide Summen durch einen Doppelpunkt (sum_cookie:sum_secret) und berechne daraus den SHA-256-Hash.",
+"Die ersten 12 Zeichen dieses Hash-Werts bilden deinen Authentifizierungscode."
+
+**Solution:**
+<pre> ```python def run(eingabe):
+    flask_secret_ascii = [ord(
+        n) for n in "adminpasssowrd"]
+ ``` </pre>
 
 ---
 
@@ -40,14 +57,20 @@ Vielleicht ist dort gar nichts Bösartiges … doch offenbar hast du keine ander
 
 
 **Lernziele:**
-1. **Arbeiten mit Dateien:** Eine Textdatei wird erstellt, die Hinweise für den nächsten Level enthält.  
-2. **String-Manipulation:** Platzhalter werden durch zufällig generierte Zeitstempel ersetzt.  
-3. **Arbeiten mit Zeitstempeln:** Spieler muss die Zeitstempel in normale UTC-Werte übersetzen.  
-4. **Reguläre Ausdrücke (Regex):** Zeitstempel im Skript gezielt finden und verarbeiten.  
-5. **Datenanalyse & Zähloperationen:** Vorkommen der Zeitstempel zählen, um eine neue Dateiname als Hinweis zu erzeugen.
+1. **Arbeiten mit Dateien:** Öffnen von Dateien mit open(), Lesen des gesamten Inhalts (read()), Umgang mit Encoding (UTF-8)
+2. **String-Manipulation:** Platzhalter werden durch zufällig generierte Zeitstempel ersetzt. Entfernen unerwünschter Teile (replace()). Sauberes Aufbereiten der gefundenen Werte. Umwandeln von Zahlen in . Zusammenfügen mit join(). Erzeugen eines Dateinamens wie z.B. "566.jpg".
+1. **Reguläre Ausdrücke (Regex):** Zeitstempel im Skript gezielt finden und verarbeiten. Muster definieren, z. B. "-\d+ UTC" oder "-\d+ UTC."
+2. **Listenoperation:** Entfernen von Duplikaten unter Beibehaltung der Reihenfolge (dict.fromkeys()). Indexierung und Slicing beispielsweise [:3]
+3. **Datenanalyse & Zähloperationen:** Vorkommen der Zeitstempel zählen, um eine neue Dateiname als Hinweis zu erzeugen. Zugriff auf Dictionary-Werte und Standardwerte (dict.get).
 
 **Aufgabe:**  
-Dekodiere die Zeitstempel, zähle die Werte und finde die neue Datei, die den nächsten Hinweis enthält.
+"In dieser Nachricht versteckt sich der Schlüssel zu deinem Bild:",
+Browser Fenster mit dem Geheimtextnachricht wird gezeigt,
+"Berücksichtige jede Zahl (z. B. -1338780358 UTC). Zähle sorgfältig, wie oft jede UTC-Zahl vorkommt, und kombiniere sie zu einer Dateiendung. Verwende den Wert des frühesten Datums zuerst, den des spätesten Datums zuletzt, und kombiniere die Zählungen zu einem Dateinamen (z. B. 443.jpg)."
+
+
+**Solution:**
+<pre> ```python def run(path): return Dateinamen print(run("static/ausgabe.txt")) ``` </pre>
 
 ## Level 3 – Strings in Bildern finden (Einfache Steganographie)
 
@@ -68,8 +91,8 @@ Finden und zwischenspeichern (wird in Level4 benötigt) eines in der Bild-Datei 
 
 **Geschichte**
 
-Warum kann ich den Inhalt dieser komische Datei nicht lesen? 
-Könnte sie Verschlüsselt worden sein? 
+Der Inhalt dieser Datei sieht komisch aus! 
+Könnte Verschlüsselt worden sein? 
 Was hat daß jetzt mit dem gefundenen Schlüssel zu tun?
 
 

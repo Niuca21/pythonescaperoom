@@ -1,5 +1,6 @@
 import importlib
 import os
+import traceback
 
 
 class EscapeRoom:
@@ -41,4 +42,10 @@ class EscapeRoom:
             return mod.run(data)
         except ModuleNotFoundError:
             print(f"Couldn't find: {os.getcwd()}/{filename}.")
+            return False
+        except Exception as e:
+            print(traceback.print_exc())
+            print(f"Error in solution check")
+            print(e)
+
             return False

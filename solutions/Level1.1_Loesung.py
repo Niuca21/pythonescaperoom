@@ -8,7 +8,7 @@
 #    - Funktion ord() kennenlernen
 #    - Umwandlung von Zeichen in Ganzzahlen
 #
-# 3. Listen und List Comprehensions
+# 3. Listen und List Kompressionen
 #    - Erstellen von Listen über Ausdruckslisten: [ord(n) for n in string]
 #    - Aggregieren von Werten (sum())
 #
@@ -26,12 +26,14 @@
 #    - Slicing von Strings, z. B. auth_hash[:12]
 import hashlib
 
+cookie = "Cookie hier hinzufügen"
 
-def run(eingabe: str) -> int:
+
+def run(_):
     flask_secret_ascii = [ord(
         n) for n in "adminpasssowrd"]
 
-    cookie_values = [ord(n) for n in eingabe]
+    cookie_values = [ord(n) for n in cookie]
     sum_cookie = sum(cookie_values)
     sum_secret = sum(flask_secret_ascii)
     payload = f"{sum_cookie}:{sum_secret}"
