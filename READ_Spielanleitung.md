@@ -115,15 +115,26 @@ und möglicherweise Firewall-Regeln manipuliert hat. Deine Aufgabe ist es, die S
 
 
 **Lernziele:**
-1. **Arbeiten mit regulären Ausdrücken**  Extrahieren von Portnummern aus Logzeilen.
+1. **Arbeiten mit regulären Ausdrücken**  Extrahieren von Portnummern und IP-Adressen aus Logzeilen.
 2. **Bedingte Logik anwenden**  Erkennen von sicherem oder unsicherem Port-Zugriff anhand von Schlüsselwörtern.
 3. **Fehleranalyse**  Zählen von fehlgeschlagenen Admin-Logins.
-4. **Listen und Dictionaries verwenden**  Strukturierte Rückgabe der Analyseergebnisse für weitere Verarbeitung.
+4. **Daten strukturieren** – Gib die Ergebnisse als JSON zurück (Ports, Firewall-Regeln, IPs, Statistiken).
 
 **Aufgaben**  
-1. Alle Portnummern mit Status und Grund.
-2. Die Anzahl der fehlgeschlagenen Admin-Logins.
-3. Alle Zeilen, die eine Änderung an Firewall-Regeln enthalten.
+1. Ports analysieren. Extrahiere alle Portnummern und bestimme ihren Status (open oder closed) sowie den Grund.
+2. Admin-Login-Fehler zählen. Wie oft ist ein Login für den Benutzer admin fehlgeschlagen?
+3. Firewall-Regeln finden. Liste alle Zeilen, die eine Änderung an Firewall-Regeln enthalten.
+4. IP-Adressen extrahieren. Sammle alle eindeutigen IP-Adressen aus dem Logfile.
+5. Statistik erstellen. Zähle offene und geschlossene Ports und sortiere die Firewall-Ports aufsteigend.
+6. Alles als JSON zurückgeben. Struktur:
+JSON{  "ports": [...],  "admin_login_failures": X,  "firewall_rules": [...],  "firewall_ports_sorted": [...],  "ip_addresses": [...],  "stats": {    "open_ports_count": X,    "closed_ports_count": Y  }}Weitere Zeilen anzeigen
+
+
+Hinweise
+
+Nutze re.findall(r"port (\d+)", line) für Ports.
+Verwende re.findall(r"\d{1,3}(?:\.\d{1,3}){3}", line) für IP-Adressen.
+Gib die Ergebnisse als JSON-String zurück (verwende json.dumps(..., indent=2)).
 
 
 ## Level 6 - Port-Säuberung & Firewall-Wiederherstellung

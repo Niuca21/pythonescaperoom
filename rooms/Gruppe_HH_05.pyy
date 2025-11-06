@@ -181,7 +181,8 @@ class Gruppe_HH_05(EscapeRoom):
     # ---------------------------
     def create_level5(self):
         gamename = f"Erweiterte Logfile-Analyse"
-        log_data = "tmp/ausgabe_encrypt.txt"
+        log_data = "static/generated_log.txt"
+        
     # Speichere die Analyse für Level 6
         self.level5_result = check_ports_level5(log_data)
 
@@ -204,10 +205,11 @@ class Gruppe_HH_05(EscapeRoom):
             "🧱 Verwende <code>if \"firewall rule updated\" in line</code>, um Firewall-Zeilen zu erfassen.",
             "✅ Gib ein JSON-String zurück mit den Schlüsseln: <code>ports</code>, <code>admin_login_failures</code>, <code>firewall_rules</code>." 
             "<br><b>Öffne das Logfile im Browser:</b> <a href='/static/ausgabe_encrypt.txt' target='_blank'>Logfile anzeigen</a>",
+            "<br><b>Öffne das Logfile im Browser:</b> /tmp/ausgabe_enrypt.txtLogfile anzeigen</a>",
         ]
 
         print(f"DEBUG: Level 5 geladen mit Datenquelle = {log_data}")
-
+        
         return {
             "gamename": gamename,
             "task_messages": task_messages,

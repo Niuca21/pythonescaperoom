@@ -3,15 +3,16 @@
 
 import random
 
-def generate_logfile(num_lines=40):
+def generate_logfile(num_lines=100):
     port_events = [
-        "Secure connection established on port {}",
-        "Unauthorized access attempt on port {}",
+
+        "Secure connection established on port {} at {} from {}",
+        "Unauthorized access attempt on port {} from {}",
         "Port {} is filtered",
-        "Connection accepted on port {}",
-        "Unknown activity on port {}",
-        "Firewall rule updated: allow port {}",
-        "Exposed service detected on port {}"
+        "Connection accepted on port {} at {}",
+        "Unknown activity on port {} from {}",
+        "Firewall rule updated: allow port {} from {}",
+        "Exposed service detected on port {} from {}"
     ]
 
     system_events = [
@@ -29,11 +30,11 @@ def generate_logfile(num_lines=40):
     times = ["00:01", "12:45", "03:33", "18:22", "23:59"]
 
     log_lines = []
-
-    # 1. Mindestens 2 Firewall-Regeln
+    # 1. Mindestens 2 
     for _ in range(2):
         port = random.choice(ports)
-        log_lines.append(f"Firewall rule updated: allow port {port}")
+        ip = f"{random.randint(1, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
+        log_lines.append(f"Firewall rule updated: allow port {port} from {ip}")
 
     # 2. Zufällig 2 oder 3 Admin-Login-Fehler
     for _ in range(random.randint(2, 3)):
@@ -44,7 +45,9 @@ def generate_logfile(num_lines=40):
         if random.random() < 0.6:
             template = random.choice(port_events)
             port = random.choice(ports)
-            log_lines.append(template.format(port))
+            timestamp = random.choice(times)
+            ip = f"{random.randint(1, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}.{random.randint(0, 255)}"
+            log_lines.append(template.format(port, timestamp, ip))
         else:
             template = random.choice(system_events)
             if "{}" in template:
@@ -53,4 +56,10 @@ def generate_logfile(num_lines=40):
             else:
                 log_lines.append(template)
 
+    # Fehlerhafte Einträge für Challenge
+        if random.random() < 0.05:
+            log_lines.append("ERROR: malformed log entry without port")
+
+    print(f"DEBUG: Logfile generiert mit {num_lines} Zeilen")
+    print("DEBUG: Beispiel-Logzeilen:\n", "\n".join(log_lines[:5]))
     return "\n".join(log_lines)

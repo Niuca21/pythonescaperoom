@@ -2,7 +2,7 @@ import re
 import os
 import json
 
-def run(log_text):
+def parse_logfile_extended(log_text):
     if os.path.isfile(log_text):
         with open(log_text, "r", encoding="utf-8") as f:
             log_text = f.read()
@@ -19,15 +19,19 @@ def run(log_text):
     for line in lines:
         line_lower = line.lower().strip()
 
+        # Admin-Login-Fehler zählen
         if "user login failed for user admin" in line_lower:
             admin_fail_count += 1
 
+        # Firewall-Regeln sammeln
         if "firewall rule updated" in line_lower:
             firewall_rules.append(line_lower)
 
+        # IP-Adressen extrahieren
         ips = re.findall(r"\d{1,3}(?:\.\d{1,3}){3}", line)
         ip_addresses.update(ips)
 
+        # Ports analysieren
         matches = re.findall(r"port (\d+)", line_lower)
         for match in matches:
             port = int(match)
@@ -55,14 +59,23 @@ def run(log_text):
                 "raw_line": line
             })
 
-    firewall_ports_sorted = sorted([int(re.search(r"port (\d+)", rule).group(1)) for rule in firewall_rules])
+        # Firewall-Ports sortieren
 
-    # Debug-Ausgaben hier:
-    print("DEBUG: Datei analysiert =", log_text[:50], "...")
-    print(f"DEBUG: Anzahl Zeilen = {len(lines)}")
+    firewall_ports_sorted = []
+    for rule in firewall_rules:
+        match = re.search(r"port (\d+)", rule)
+        if match:
+            firewall_ports_sorted.append(int(match.group(1)))
+        else:
+            print("WARNUNG: Keine Portnummer gefunden in Firewall-Regel:", rule)
+
+
+#firewall_ports_sorted = sorted([int(re.search(r"port (\d+)", rule).group(1)) for rule in firewall_rules])
+
+    print("DEBUG: Analyse gestartet für Datei")
     print(f"DEBUG: Admin-Fehler = {admin_fail_count}")
     print(f"DEBUG: Firewall-Regeln = {firewall_rules}")
-    print(f"DEBUG: IP-Adressen = {list(ip_addresses)}")
+    print(f"DEBUG: IP-Adressen = {ip_addresses}")
     print(f"DEBUG: Ports gefunden = {len(results)}")
     print("DEBUG: Vollständiges Ergebnis:\n", json.dumps({
         "ports": results,
@@ -75,7 +88,7 @@ def run(log_text):
         }
     }, indent=2))
 
-
+    # Rückgabe als JSON-String
     return json.dumps({
         "ports": results,
         "admin_login_failures": admin_fail_count,
@@ -87,5 +100,9 @@ def run(log_text):
             "closed_ports_count": closed_ports_count
         }
     }, indent=2)
+
+
+def check_ports_level5(log_data):
+    return parse_logfile_extended(log_data)  # JSON-String
 
 
