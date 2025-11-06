@@ -18,7 +18,6 @@ class Gruppe_HH_05(EscapeRoom):
     def __init__(self, response=None):
         super().__init__(response)
         self.set_metadata("Veronika, Lukasz & Oliver", __name__)
-        shutil.copy("tmp/ausgabe_encrypt.txt", "static/ausgabe_encrypt.txt")
         self.log_data = generate_logfile(40)     # Logfile generieren Lukasz
         # Logfile speichern für andere Levels  ( Lukasz )
         with open("static/generated_log.txt", "w") as f:
@@ -39,6 +38,7 @@ class Gruppe_HH_05(EscapeRoom):
         self.verschluesselt = "static/text.crypt"
         CRYPT.schluesselanwendung_datei(
             "static/generated_log.txt", self.verschluesselt, self.key)
+        shutil.copy("tmp/ausgabe_encrypt.txt", "static/ausgabe_encrypt.txt")    # Lukasz
 
         self.add_level(self.create_level1())  # Veronika
         self.add_level(self.create_level2())  # Veronika
@@ -212,7 +212,8 @@ class Gruppe_HH_05(EscapeRoom):
             "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
-            "solution_function": check_ports_level5,
+            "solution_function": lambda _: json.dumps(self.level5_result, indent=2),
+#            "solution_function": run,
             "data": log_data
         }
 
@@ -242,6 +243,18 @@ class Gruppe_HH_05(EscapeRoom):
 
 
      # Daten aus Level 5 holen und JSON in Dict umwandeln
+
+
+
+#        data_from_level5 = getattr(self, "level5_result", None)
+#        if not isinstance(data_from_level5, dict):
+#            print("WARNUNG: Level 5 Ergebnis ist kein Dict – Fallback wird verwendet")
+#            data_from_level5 = {
+#                "ports": [],
+#                "admin_login_failures": 0,
+#                "firewall_rules": []
+#            }
+
 
         data_from_level5 = getattr(self, "level5_result", None)
         try:

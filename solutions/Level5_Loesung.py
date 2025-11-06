@@ -3,10 +3,12 @@ import os
 import json
 
 def run(log_text):
+    print("DEBUG: run() gestartet mit log_text =", log_text)
     if os.path.isfile(log_text):
         with open(log_text, "r", encoding="utf-8") as f:
             log_text = f.read()
-
+    print("DEBUG: Dateiinhalt (erste 200 Zeichen):")
+    print(log_text[:200])
     results = []
     admin_fail_count = 0
     firewall_rules = []
@@ -15,6 +17,14 @@ def run(log_text):
     closed_ports_count = 0
 
     lines = log_text.strip().split("\n")
+
+    # Debug-Ausgabe zur Prüfung des Logfile-Inhalts
+    print("DEBUG: Pfad oder Inhalt der Logdatei:")
+    print(log_text[:200])
+
+    print("DEBUG: Erste 5 Zeilen der Logdatei:")
+    for i, line in enumerate(lines[:5]):
+        print(f"Zeile {i+1}: {repr(line)}")
 
     for line in lines:
         line_lower = line.lower().strip()
@@ -86,6 +96,18 @@ def run(log_text):
             "open_ports_count": open_ports_count,
             "closed_ports_count": closed_ports_count
         }
-    }, indent=2)
+    }, indent=2, sort_keys=True)
 
+
+#    return {
+#        "ports": results,
+#        "admin_login_failures": admin_fail_count,
+#        "firewall_rules": firewall_rules,
+#        "firewall_ports_sorted": firewall_ports_sorted,
+#        "ip_addresses": list(ip_addresses),
+#        "stats": {
+#            "open_ports_count": open_ports_count,
+#            "closed_ports_count": closed_ports_count
+#        }
+#    }
 
