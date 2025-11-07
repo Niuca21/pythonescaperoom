@@ -51,12 +51,3 @@ def run(path: str) -> str:
     solution = "".join(solution_numbers) + ".jpg"
     return solution
 
-    # counts = {}
-    # for key in clean_matches:
-    #    counts[key] = counts.get(key, 0) + 1
-
-    # unique_keys = list(dict.fromkeys(clean_matches))[:3]
-    # solution_numbers = [str(counts[k]) for k in unique_keys]
-    # solution = "".join(solution_numbers) + ".jpg"
-    # print(solution)
-    # return solution
