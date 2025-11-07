@@ -8,19 +8,15 @@
 #    - Funktion ord() kennenlernen
 #    - Umwandlung von Zeichen in Ganzzahlen
 #
-# 3. Listen und List Comprehensions
-#    - Erstellen von Listen über Ausdruckslisten: [ord(n) for n in string]
-#    - Aggregieren von Werten (sum())
-#
-# 4. Grundlegende mathematische Operationen
+# 3. Grundlegende mathematische Operationen
 #    - Addition von Werten
 #    - Bildung von zusammengesetzten Payloads
 #
-# 5. String-Formatierung
+# 4. String-Formatierung
 #    - f-Strings zur dynamischen Erstellung von Strings
 #    - Zusammensetzen von Daten für Hashing
 #
-# 6. Kryptographie-Grundlagen (praktisch)
+# 5. Kryptographie-Grundlagen (praktisch)
 #    - SHA-256 Hash berechnen mit hashlib
 #    - Nutzung des Hashwerts für Authentifizierung
 #    - Slicing von Strings, z. B. auth_hash[:12]
