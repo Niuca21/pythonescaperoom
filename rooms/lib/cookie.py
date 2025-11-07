@@ -28,11 +28,17 @@ def cookie_ascii(cookie):
 def combine_cookie_and_secret(cookie_str: str, flask_secret: list[int]) -> int:
     cookie_values = [ord(n) for n in cookie_str]
     flask_secret_ascii = [ord(n) for n in flask_secret]
+    print("Cookie_ascii", cookie_values)
+    print("Cookie_ascii", flask_secret_ascii)
 
     sum_cookie = sum(cookie_values)
+    print("Sum cookie values", sum_cookie)
     sum_secret = sum(flask_secret_ascii)
+    print("Sum secret values", sum_secret)
     payload = f"{sum_cookie}:{sum_secret}"
+    print("Payload", payload)
     auth_hash = hashlib.sha256(payload.encode()).hexdigest()
+    print("Auth hash", auth_hash)
     auth_number = auth_hash[:12]
 
     return auth_number
