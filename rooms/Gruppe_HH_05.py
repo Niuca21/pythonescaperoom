@@ -184,7 +184,7 @@ class Gruppe_HH_05(EscapeRoom):
         gamename = f"Erweiterte Logfile-Analyse"
         log_data = "tmp/ausgabe_encrypt.txt"
     # Speichere die Analyse für Level 6
-        self.level5_result = check_ports_level5(log_data)
+        self.level5_result = json.loads(check_ports_level5(log_data))
 
         log_text = open("tmp/ausgabe_encrypt.txt", "r", encoding="utf-8").read()
 
@@ -252,31 +252,17 @@ class Gruppe_HH_05(EscapeRoom):
         ]
 
 
-     # Daten aus Level 5 holen und JSON in Dict umwandeln
 
-
-
+   # Daten aus Level 5 holen und JSON in Dict umwandeln
 #        data_from_level5 = getattr(self, "level5_result", None)
-#        if not isinstance(data_from_level5, dict):
-#            print("WARNUNG: Level 5 Ergebnis ist kein Dict – Fallback wird verwendet")
-#            data_from_level5 = {
-#                "ports": [],
-#                "admin_login_failures": 0,
-#                "firewall_rules": []
-#            }
+#        try:
+        data_from_level5 = getattr(self, "level5_result", {})
 
-
-        data_from_level5 = getattr(self, "level5_result", None)
-        try:
-            data_from_level5 = json.loads(data_from_level5)
-        except (TypeError, json.JSONDecodeError):
-            print("Fehler beim Parsen von Level 5 JSON")
-            data_from_level5 = {
-                "ports": [],
-                "admin_login_failures": 0,
-                "firewall_rules": []
-            }
-
+        # Sortierung für deterministische Eingabe
+        if "ports" in data_from_level5:
+            data_from_level5["ports"].sort(key=lambda x: (x["port"], x["status"], x["reason"]))
+        if "firewall_rules" in data_from_level5:
+            data_from_level5["firewall_rules"].sort()
 
 
         print("DEBUG: Level 6 geladen")

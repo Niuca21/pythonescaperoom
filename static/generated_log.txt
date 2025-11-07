@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 21 from 157.30.58.252
-Firewall rule updated: allow port 25 from 81.164.97.199
+Firewall rule updated: allow port 9999 from 99.28.242.158
+Firewall rule updated: allow port 110 from 106.30.141.171
 User login failed for user admin
 User login failed for user admin
-System rebooted at 03:33
-Port 110 is filtered
-Secure connection established on port 3306 at 23:59 from 249.146.160.15
-Antivirus scan started
+User login failed for user admin
+Firewall rule updated: allow port 8443 from 23:59
+Secure connection established on port 22 at 12:45 from 160.172.254.0
+System rebooted at 18:22
+Port 8080 is filtered
+User login failed for user service
+Unauthorized access attempt on port 443 from 03:33
+Unknown activity on port 3306 from 00:01
+Unauthorized access attempt on port 80 from 03:33
+Configuration file changed
+Backup completed successfully
 Port 80 is filtered
 Security policy updated
-Exposed service detected on port 110 from 18:22
-Firewall rule updated: allow port 25 from 12:45
-Unauthorized access attempt on port 21 from 23:59
-Secure connection established on port 995 at 23:59 from 40.3.47.222
+Port 80 is filtered
 Configuration file changed
-Firewall rule updated: allow port 993 from 23:59
-Antivirus scan started
-Firewall rule updated: allow port 8443 from 12:45
-System rebooted at 23:59
-Unknown activity on port 80 from 18:22
-Port 25 is filtered
-Security policy updated
-Configuration file changed
-User root logged out
-Port 8080 is filtered
+Exposed service detected on port 80 from 18:22
+Port 110 is filtered
+Firewall rule updated: allow port 993 from 00:01
+Unknown activity on port 21 from 03:33
+ERROR: malformed log entry without port
+Port 110 is filtered
 User admin logged out
-User service logged out
-Firewall rule updated: allow port 9999 from 00:01
-Port 8080 is filtered
+ERROR: malformed log entry without port
+Unknown activity on port 143 from 12:45
+Backup completed successfully
 Security policy updated
-Port 443 is filtered
-Firewall rule updated: allow port 80 from 12:45
-Unauthorized access attempt on port 9999 from 00:01
-Antivirus scan started
-Exposed service detected on port 9999 from 00:01
-Secure connection established on port 3306 at 12:45 from 11.183.98.43
-Connection accepted on port 8080 at 18:22
-Firewall rule updated: allow port 8080 from 00:01
-Unknown activity on port 443 from 18:22
 Configuration file changed
+Antivirus scan started
+Antivirus scan started
+Unknown activity on port 110 from 23:59
+ERROR: malformed log entry without port
+System rebooted at 23:59
+Port 143 is filtered
+Backup completed successfully
+Port 21 is filtered
+User login failed for user root
