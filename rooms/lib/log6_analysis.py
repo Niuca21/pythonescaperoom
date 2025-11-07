@@ -24,10 +24,10 @@ def check_level6_solution(data):
     alert = None
     admin_account = None
     print("DEBUG: Admin-Failures =", admin_failures)  # NEU
-    if admin_failures >=3:
+    if admin_failures >= 3:
         alert = "ALERT: Too many admin login failures"
         admin_account = "unlocked"
-    if admin_failures >5:
+    if admin_failures > 5:
         alert = "CRITICAL ALERT: Admin account compromised!"
 
 

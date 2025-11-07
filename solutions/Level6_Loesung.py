@@ -20,7 +20,7 @@ def run(data):  # Musterlösung
 
     alert = None
     admin_account = None
-    if admin_failures >=3:
+    if admin_failures >= 3:
         alert = "ALERT: Too many admin login failures"
         admin_account = "unlocked"
     if admin_failures > 5:

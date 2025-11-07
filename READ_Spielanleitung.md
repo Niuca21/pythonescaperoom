@@ -127,14 +127,25 @@ und möglicherweise Firewall-Regeln manipuliert hat. Deine Aufgabe ist es, die S
 4. IP-Adressen extrahieren. Sammle alle eindeutigen IP-Adressen aus dem Logfile.
 5. Statistik erstellen. Zähle offene und geschlossene Ports und sortiere die Firewall-Ports aufsteigend.
 6. Alles als JSON zurückgeben. Struktur:
-JSON{  "ports": [...],  "admin_login_failures": X,  "firewall_rules": [...],  "firewall_ports_sorted": [...],  "ip_addresses": [...],  "stats": {    "open_ports_count": X,    "closed_ports_count": Y  }}Weitere Zeilen anzeigen
 
-
+```json
+{
+  "ports": [...],
+  "admin_login_failures": X,
+  "firewall_rules": [...],
+  "firewall_ports_sorted": [...],
+  "ip_addresses": [...],
+  "stats": {
+    "open_ports_count": X,
+    "closed_ports_count": Y
+  }
+}
 Hinweise
 
 Nutze re.findall(r"port (\d+)", line) für Ports.
 Verwende re.findall(r"\d{1,3}(?:\.\d{1,3}){3}", line) für IP-Adressen.
-Gib die Ergebnisse als JSON-String zurück (verwende json.dumps(..., indent=2)).
+Sortiere die Firewall-Ports numerisch aufsteigend.
+Gib die Ergebnisse als JSON-String zurück (verwende json.dumps(..., separators=(',', ':'), sort_keys=True) für stabile Vergleiche).
 
 
 ## Level 6 - Port-Säuberung & Firewall-Wiederherstellung

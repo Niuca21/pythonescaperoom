@@ -16,14 +16,6 @@ def parse_logfile_extended(log_text):
 
     lines = log_text.strip().split("\n")
 
-    # Debug-Ausgabe zur Prüfung des Logfile-Inhalts
-    print("DEBUG: Pfad oder Inhalt der Logdatei:")
-    print(log_text[:200])
-
-    print("DEBUG: Erste 5 Zeilen der Logdatei:")
-    for i, line in enumerate(lines[:5]):
-        print(f"Zeile {i+1}: {repr(line)}")
-
     for line in lines:
         line_lower = line.lower().strip()
 
@@ -67,34 +59,16 @@ def parse_logfile_extended(log_text):
                 "raw_line": line
             })
 
-        # Firewall-Ports sortieren
+    # Firewall-Ports sortieren
 
     firewall_ports_sorted = []
+
     for rule in firewall_rules:
         match = re.search(r"port (\d+)", rule)
         if match:
             firewall_ports_sorted.append(int(match.group(1)))
-        else:
-            print("WARNUNG: Keine Portnummer gefunden in Firewall-Regel:", rule)
 
-
-#firewall_ports_sorted = sorted([int(re.search(r"port (\d+)", rule).group(1)) for rule in firewall_rules])
-
-    print("DEBUG: Analyse gestartet für Datei")
-    print(f"DEBUG: Admin-Fehler = {admin_fail_count}")
-    print(f"DEBUG: Firewall-Regeln = {firewall_rules}")
-    print(f"DEBUG: IP-Adressen = {ip_addresses}")
-    print(f"DEBUG: Ports gefunden = {len(results)}")
-    print("DEBUG: Vollständiges Ergebnis:\n", json.dumps({
-        "ports": results,
-        "admin_login_failures": admin_fail_count,
-        "firewall_rules": firewall_rules,
-        "ip_addresses": list(ip_addresses),
-        "stats": {
-            "open_ports_count": open_ports_count,
-            "closed_ports_count": closed_ports_count
-        }
-    }, indent=2))
+    firewall_ports_sorted.sort()
 
     # Rückgabe als JSON-String
     return json.dumps({
@@ -107,18 +81,9 @@ def parse_logfile_extended(log_text):
             "open_ports_count": open_ports_count,
             "closed_ports_count": closed_ports_count
         }
-    }, indent=2, sort_keys=True)
-
+    }, separators=(',', ':'), sort_keys=True)
+#    }, indent=2)
 
 def check_ports_level5(log_data):
-    return parse_logfile_extended(log_data)  # JSON-String
+    return parse_logfile_extended(log_data)
 
-
-
-#def check_ports_level5(log_data):
-#    json_string = parse_logfile_extended(log_data)
-#    try:
-#        return json.loads(json_string)  # Rückgabe als Dict für Vergleich
-#    except json.JSONDecodeError:
-#        print("Fehler beim Parsen des JSON-Strings")
-#        return {}

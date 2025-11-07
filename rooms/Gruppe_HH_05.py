@@ -4,11 +4,12 @@ import shutil
 import json
 from lib import cookie as COOKIE  # Funktionssammlung Veronika Level 1
 from lib import text as TEXT  # Funktionssammlung Veronika Level 2
-
+from solutions.Level5_Loesung import run
 from EscapeRoom import EscapeRoom
 from lib.log_generator import generate_logfile  # Lukasz
 from lib.log6_analysis import check_level6_solution # lukasz
 from lib.log_analysis import check_ports_level5  # Lukasz
+from lib.log_analysis import parse_logfile_extended  # Lukasz
 import lib.stego as STEGO  # Funktionssammlung Oliver Level 3
 import lib.crypt as CRYPT  # Funktionssammlung Oliver Level 4
 
@@ -185,6 +186,14 @@ class Gruppe_HH_05(EscapeRoom):
     # Speichere die Analyse für Level 6
         self.level5_result = check_ports_level5(log_data)
 
+        log_text = open("tmp/ausgabe_encrypt.txt", "r", encoding="utf-8").read()
+
+        print("=== Deine Lösung ===")
+        print(parse_logfile_extended(log_text))
+
+        print("=== Musterlösung ===")
+        print(run(log_text))
+
 
 
         task_messages = [
@@ -192,9 +201,11 @@ class Gruppe_HH_05(EscapeRoom):
             "Du hast ein umfangreiches Logfile erhalten, das verschiedene Netzwerk- und Systemereignisse enthält.",
             "Deine Aufgabe:",
             "🔍 Analysiere das Logfile und finde wichtige Informationen:",
-            "1️⃣ Extrahiere alle Ports und bestimme ihren Status.",
+            "1️⃣ Extrahiere alle Ports und bestimme ihren Status. (open/closed) sowie den Grund.",
             "2️⃣ Zähle, wie oft ein Login für <i>admin</i> fehlgeschlagen ist.",
             "3️⃣ Liste alle Zeilen auf, die eine <i>Firewall-Regel</i> enthalten.",
+            "4️⃣ Extrahiere alle eindeutigen IP-Adressen.",
+            "5️⃣ Erstelle eine Statistik: offene und geschlossene Ports zählen, Firewall-Ports sortieren.",
             "📚 Lernziele: Reguläre Ausdrücke, Bedingte Logik, Fehlerbehandlung, Kombinierte Analyse, Listen und Dictionaries"
         ]
 
@@ -202,7 +213,7 @@ class Gruppe_HH_05(EscapeRoom):
             "🔍 Nutze <code>re.findall(r\"port (\\d+)\", line)</code>, um Portnummern zu extrahieren.",
             "✍️ Verwende <code>if \"user login failed for user admin\" in line</code>, um gezielt Admin-Fehler zu zählen.",
             "🧱 Verwende <code>if \"firewall rule updated\" in line</code>, um Firewall-Zeilen zu erfassen.",
-            "✅ Gib ein JSON-String zurück mit den Schlüsseln: <code>ports</code>, <code>admin_login_failures</code>, <code>firewall_rules</code>." 
+            "✅ Gib ein JSON-String zurück mit den Schlüsseln: <code>ports</code>, <code>admin_login_failures</code>, <code>firewall_rules</code>, <code>firewall_ports_sorted</code>, <code>ip_addresses</code>, <code>stats</code>.",
             "<br><b>Öffne das Logfile im Browser:</b> <a href='/static/ausgabe_encrypt.txt' target='_blank'>Logfile anzeigen</a>",
         ]
 
@@ -212,8 +223,7 @@ class Gruppe_HH_05(EscapeRoom):
             "gamename": gamename,
             "task_messages": task_messages,
             "hints": hints,
-            "solution_function": lambda _: json.dumps(self.level5_result, indent=2),
-#            "solution_function": run,
+            "solution_function": check_ports_level5,
             "data": log_data
         }
 
