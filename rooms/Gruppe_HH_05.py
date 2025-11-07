@@ -247,15 +247,15 @@ class Gruppe_HH_05(EscapeRoom):
         hints = [
             "🔍 Nutze die Daten aus Level 5: <code>ports</code>, <code>firewall_rules</code>, <code>admin_login_failures</code>.",
             "✍️ Verwende Bedingungen wie <code>if entry['status'] == 'open' and entry['reason'] != 'secure/accepted'</code>.",
-            "🧱 Entferne Duplikate mit <code>if rule not in restored_firewall_rules</code>.",            
+            "✍️ Verwende rule.replace('updated: allow', 'restored:'), um die Firewall-Regeln wiederherzustellen."
+            "🧱 Entferne Duplikate mit <code>if rule not in restored_firewall_rules</code>.",
             "📊 Gib ein JSON-String zurück mit den Schlüsseln: <code>ports</code>, <code>firewall_rules_restored</code>, <code>alert</code>, <code>admin_account</code>, <code>stats</code>."
+            "ℹ️ Hinweis: Falls der Vergleich beim ersten Versuch fehlschlägt, sprüfe den Level noch einmal mit derselben Datei."
         ]
 
 
 
    # Daten aus Level 5 holen und JSON in Dict umwandeln
-#        data_from_level5 = getattr(self, "level5_result", None)
-#        try:
         data_from_level5 = getattr(self, "level5_result", {})
 
         # Sortierung für deterministische Eingabe

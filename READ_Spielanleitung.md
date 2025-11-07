@@ -164,8 +164,17 @@ viele Fehlversuche erkannt wurden.
 3. **String-Manipulation**  Wiederherstellung von Firewall-Regeln durch Ersetzen von Textteilen.
 4. **Strukturierte Rückgabe**  Zusammenführen aller Ergebnisse in einem Dictionary zur weiteren Verwendung.
 
-**Aufgaben**  
+**Aufgaben** 
 1. Schließe alle Ports, die als „open“ markiert sind und deren Grund nicht „secure/accepted“ ist.
-2. Stelle manipulierte Firewall-Regeln wieder her.
-3. Entsperre den Admin-Account, wenn mehr als zwei Fehlversuche erkannt wurden.
+2. Stelle manipulierte Firewall-Regeln wieder her.(ersetze „updated: allow“ durch „restored:“).
+3. Entferne doppelte Firewall-Regeln.
+4. Entsperre den Admin-Account, wenn mehr als zwei Fehlversuche erkannt wurden.
+5. Gib ein JSON-Objekt zurück mit den Schlüsseln: 
+   - `ports` (Liste aller Ports mit aktualisiertem Status) 
+   - `firewall_rules_restored` 
+   - `alert` 
+   - `admin_account` 
+   - `stats` (Anzahl geschlossener Ports und wiederhergestellter Regeln) 
 
+**Hinweis:** 
+Falls der Vergleich beim ersten Versuch fehlschlägt, starte den Level **noch einmal mit derselben Datei** – das ist ein bekannter Trick, um die Engine zu überlisten.

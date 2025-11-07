@@ -1,40 +1,40 @@
-Firewall rule updated: allow port 9999 from 99.28.242.158
-Firewall rule updated: allow port 110 from 106.30.141.171
+Firewall rule updated: allow port 110 from 188.2.132.241
+Firewall rule updated: allow port 25 from 169.142.250.228
 User login failed for user admin
 User login failed for user admin
-User login failed for user admin
-Firewall rule updated: allow port 8443 from 23:59
-Secure connection established on port 22 at 12:45 from 160.172.254.0
-System rebooted at 18:22
-Port 8080 is filtered
-User login failed for user service
-Unauthorized access attempt on port 443 from 03:33
-Unknown activity on port 3306 from 00:01
-Unauthorized access attempt on port 80 from 03:33
-Configuration file changed
-Backup completed successfully
-Port 80 is filtered
+Firewall rule updated: allow port 443 from 03:33
 Security policy updated
-Port 80 is filtered
-Configuration file changed
-Exposed service detected on port 80 from 18:22
-Port 110 is filtered
-Firewall rule updated: allow port 993 from 00:01
-Unknown activity on port 21 from 03:33
-ERROR: malformed log entry without port
-Port 110 is filtered
-User admin logged out
-ERROR: malformed log entry without port
-Unknown activity on port 143 from 12:45
-Backup completed successfully
 Security policy updated
-Configuration file changed
 Antivirus scan started
 Antivirus scan started
-Unknown activity on port 110 from 23:59
+Unauthorized access attempt on port 21 from 23:59
+Security policy updated
+Unauthorized access attempt on port 3306 from 12:45
+Port 3306 is filtered
+Secure connection established on port 21 at 00:01 from 31.60.2.113
+Exposed service detected on port 25 from 23:59
+Secure connection established on port 8080 at 12:45 from 15.27.161.28
+Configuration file changed
+Port 80 is filtered
+Unknown activity on port 25 from 23:59
+Unauthorized access attempt on port 25 from 18:22
+Firewall rule updated: allow port 3306 from 03:33
+Backup completed successfully
+Unauthorized access attempt on port 9999 from 03:33
 ERROR: malformed log entry without port
-System rebooted at 23:59
+System rebooted at 03:33
+Unknown activity on port 21 from 00:01
+Exposed service detected on port 443 from 23:59
+Security policy updated
+Connection accepted on port 3306 at 12:45
+Exposed service detected on port 443 from 12:45
+Firewall rule updated: allow port 995 from 23:59
+Port 8443 is filtered
+Exposed service detected on port 3306 from 18:22
 Port 143 is filtered
-Backup completed successfully
-Port 21 is filtered
-User login failed for user root
+System rebooted at 00:01
+System rebooted at 12:45
+Unknown activity on port 8080 from 18:22
+Antivirus scan started
+User login failed for user user1
+Port 8443 is filtered
