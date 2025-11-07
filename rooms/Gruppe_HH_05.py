@@ -76,7 +76,7 @@ class Gruppe_HH_05(EscapeRoom):
             "Finde den Session-Token (Cookie) im Browser und entdecke die Schwachstelle in der versehentlich gelassenen Datei .env .",
             "Öffne die Datei im Browser in einem neuen Tab: http://127.0.0.1:5001/.env",
             "„Eingabeformat für die Lösung“ — Die Challenge erwartet eine run-Funktion, die einen String entgegennimmt (z. B. den Token-Wert oder die konkatenierten ASCII-Zeilen) und die Lösung zurückgibt.",
-            "Benenne Parameter sprechend (z. B. def run(eingabe):) und beschreibe klar, welches Format die Funktion akzeptiert."
+            "Benenne Parameter sprechend (z. B. def run():) und beschreibe klar, welches Format die Funktion akzeptiert."
         ]
 
         self.response.set_cookie("hint", cookie_str)
